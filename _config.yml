@@ -98,7 +98,7 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: 'git'
+  type: git
   repo: https://github.com/daizc311/daizc311.github.io
   # example, https://github.com/hexojs/hexojs.github.io
   branch: master

@@ -22,8 +22,8 @@ before_install:
 
 # Start: Build Lifecycle
 install:
-  - yarn install
-  - yarn install hexo-deployer-git
+  - yarn add
+  - yarn add hexo-deployer-git
 
 # 执行清缓存，生成网页操作
 script:
@@ -38,3 +38,12 @@ after_script:
   - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml
   - hexo deploy
 # End: Build LifeCycle
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  local-dir: public
