@@ -7,10 +7,10 @@ favicon:
 function: # 功能开关，可选值（true,false）
   fancybox: true # 灯箱功能
   SmoothScroll: true # 平滑滚动
-  pjax: false # Pjax 无刷新加载页面，暂时存在较大问题
   
 # 附加图标库 用于自定义字体 www.iconfont.cn 登录->创建项目->添加图标->获取链接
-iconlib: # //at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css
+iconlib: //at.alicdn.com/t/font_1592904_ebmtvlhjw4d.css
+#iconlib: # //at.alicdn.com/t/font_1592904_frisaji9q6i.css
 
 cdn: # 这里可以修改站点使用的库的CDN
   mdui:
@@ -23,8 +23,6 @@ cdn: # 这里可以修改站点使用的库的CDN
     js: https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
   SmoothScroll:
     js: https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js
-  pjax:
-    js: //cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js
   lazysizes:
     js: https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js
   highlight:
@@ -69,7 +67,7 @@ social:
     - rgb(231, 106, 141)
     - rgba(231, 106, 141, .15)
   GitHub:
-    - https://github.com/nexmoe/
+    - https://github.com/daizc311/
     - icon-github
     - rgb(25, 23, 23)
     - rgba(25, 23, 23, .15)
@@ -84,7 +82,7 @@ analytics: # 统计系统，目前支持 Google analytics.js 统计、Google Tag
   cnzz_site_id: #<ID>
   tencent_site_id: #<ID>
   la_site_id: #<ID>
-  baidu_site_id: #<ID>
+  baidu_site_id: 2d58a3bbad91b9b1329b309e254176cc
   gtm_container_id: #<ID>
 
 comment: gitalk # 评论框，目前支持 gitalk,gitment,valine,disqus,disqusjs,changyan,livere,DiscussBot
@@ -97,8 +95,8 @@ gitalk:
   clientSecret: 43e99fa852795c9a7b3eb924b2558c64b84bbdeb # GitHub Client Secret
 
 gitment:
-  owner: nexmoe # 持有该 repo 的 GitHub username
-  repo: nexmoe.github.io # 存放评论的 issue 所在的 repo
+  owner: daizc311 # 持有该 repo 的 GitHub username
+  repo: DreamCcc_HEXO # 存放评论的 issue 所在的 repo
   clientID: 80b2453b6d5f37ad6225 # GitHub Client ID
   clientSecret: 43e99fa852795c9a7b3eb924b2558c64b84bbdeb # GitHub Client Secret
 
