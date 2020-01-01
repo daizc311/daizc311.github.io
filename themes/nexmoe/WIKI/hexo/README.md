@@ -1,28 +1,14 @@
-# 快速开始
+# 欢迎使用 Nexmoe
 
-## 遇到问题怎么办？
+## 介绍
 
 在使用 Nexmoe 之前，请仔细阅读 [Hexo 的官方文档](https://hexo.io/zh-cn/docs/)，完成对 Hexo 的安装，并完成对 `站点配置文件` 的基本配置（标题、介绍、作者、时区、语言等）。
 
-#### 1、查阅 Hexo 官方文档
-
-一般遇到的问题都是对 Hexo 不熟悉导致的，本主题作者也不是很了解 Hexo，所以经常会去看官方文档。
-
-<font color="blue" size="16">Hexo 官方文档解决大部分问题！</font>
-
 请仔细阅读 [Hexo 的官方文档](https://hexo.io/zh-cn/docs/)
 
 请仔细阅读 [Hexo 的官方文档](https://hexo.io/zh-cn/docs/)
 
 请仔细阅读 [Hexo 的官方文档](https://hexo.io/zh-cn/docs/)
-
-#### 2、查阅本文档
-
-本文档内容较少，只解决常见问题
-
-#### 3、使用搜索引擎
-
-以上方法解决不了的问题，搜索引擎一定能解决，如果搜索引擎都解决不了，那就没办法了。
 
 ## 下载
 
@@ -39,7 +25,7 @@
 
 #### [使用 Git](https://github.com/nexmoe/hexo-theme-nexmoe)
 
-你可以自己决定想要使用的分支；使用 Git 下载 nexmoe 以后还可以使用 `git pull` 更新 nexmoe。
+你可以自己决定想要使用的分支；使用 Git 下载nexmoe以后还可以使用 `git pull` 更新nexmoe。
 
 ``` bash {4}
 cd themes
@@ -60,7 +46,7 @@ npm install hexo-wordcount@2 --save
 ```
 同时你需要把nexmoe主题目录下的 `_config.example.yml` 复制一份并把副本重命名为 `_config.yml`。
 ``` bash
-cp _config.example.yml _config.yml
+cp -i _config.example.yml _config.yml
 ```
 因为在主题的开发迭代过程中，`主题的配置文件` 很有可能会有变动。所以我们把 `_config.yml` 添加到了 `.gitignore` 之中，这样可以避免使用 `git pull` 更新主题的用户出现冲突。
 
