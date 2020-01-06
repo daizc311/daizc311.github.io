@@ -1,3 +1,15 @@
+---
+title: '计划任务的Spring实现与手动实现'
+date: 2019/06/04 10:23:06
+updated: 2020/1/6 13:31
+cover: https://i.loli.net/2019/07/21/5d33d5dc1531213134.png
+comments: true
+tags: 
+    - java
+    - spring
+categories: 
+    - [Study, Java]
+---
 ## 使用Spring Scheduled的计划任务 
 
 ### 关键方法

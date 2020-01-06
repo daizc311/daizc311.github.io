@@ -1,3 +1,15 @@
+---
+title: '好用常用人人都要会的最基本的Maven插件收集'
+date: 2019/03/11 01:05:56
+updated: 2020/1/6 13:31
+comments: true
+tags: 
+    - java
+    - maven
+categories: 
+    - [Study, Java]
+---
+
 # 好用常用人人都要会的最基本的Maven插件收集
 大部分的插件其实都可以从[MAVEN官方的可用插件列表]( https://maven.apache.org/plugins/index.html)中直接找到
 在这里取了比较常用并且实用的几个插件做一点说明

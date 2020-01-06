@@ -1,0 +1,15 @@
+.DS_Store
+
+public
+
+*.log
+
+_config.yml
+
+node_modules
+
+.idea
+
+.directory
+
+WIKI/.vuepress/dist

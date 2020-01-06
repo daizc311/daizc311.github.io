@@ -1,3 +1,17 @@
+---
+title: 'SpringBoot中的redis密码问题'
+date: 2019/05/13 12:03:01
+updated: 2020/1/6 13:31
+comments: true
+tags: 
+    - spring
+    - java
+    - dubug
+categories: 
+    - [Study, Java]
+---
+
+
 ## 出现问题
  
 出问题的配置如下
