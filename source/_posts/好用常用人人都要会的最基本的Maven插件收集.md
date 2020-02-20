@@ -1,7 +1,7 @@
 ---
 title: '好用常用人人都要会的最基本的Maven插件收集'
 date: 2019/03/11 01:05:56
-updated: 2020/1/6 13:31
+updated: 2020/2/20 15:41:36
 comments: true
 tags: 
     - java
@@ -9,6 +9,9 @@ tags:
 categories: 
     - [Study, Java]
 ---
+
+把手上的好几个项目的pom整理了一遍 规范了一下model 整理出了一些插件 方便新手们入门maven
+<!--more-->
 
 # 好用常用人人都要会的最基本的Maven插件收集
 大部分的插件其实都可以从[MAVEN官方的可用插件列表]( https://maven.apache.org/plugins/index.html)中直接找到
@@ -20,6 +23,8 @@ categories:
 - 要根据环境复制对应的配置文件
 
 这里选出的插件足以应对大部分情况了 
+
+
 ## Maven依赖管理插件[maven-dependency-plugin](https://maven.apache.org/plugins/maven-dependency-plugin)
 
 主要用于管理依赖，比如引入某个特殊的jar包，或者从某个jar包中提取文件

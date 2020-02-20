@@ -1,7 +1,7 @@
 ---
 title: 'java8函数设计[1]-在filter中根据Key去重的函数'
 date: 2019/12/19 17:54:52
-updated: 2020/1/6 13:31
+updated: 2020/2/20 15:41:36
 comments: true
 tags: 
     - lambda
@@ -10,14 +10,16 @@ categories:
     - [Study, Java]
 ---
 
+函数接口是如何写出来的？
+<!--more-->
 
-# java8函数设计
+# java函数接口设计
 ## 在filter中根据Key去重的函数 StreamUtil.distinctByKey()
-
 
 ### 具体使用方法
 
 - 该函数用于在filter中根据传入参数的某一属性进行过滤，以保证在收集为map的情况下不会出现重复主键
+
 
 ```java
 List<entry<string, string="">&gt; simpleList = baseProjects.stream()

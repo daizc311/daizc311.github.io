@@ -1,7 +1,7 @@
 ---
 title: '[Zookeeper学习-第一章]zk环境搭建[单机+控制台]'
 date: 2019/7/1 15:53:24
-updated: 2020/1/6 13:31
+updated: 2020/2/20 15:41:36
 comments: true
 tags: 
     - java
@@ -10,7 +10,8 @@ categories:
     - [Study, Java]
 ---
 
-&gt; 环境为 Centos + OracleJAVA ，准备搭建 zookeeper-3.5.5 + 用于方便展示节点的zookeeperAdmin
+系统环境为 Centos ，由于项目需要，准备搭建 zookeeper-3.5.5 + 用于方便展示节点的zookeeperAdmin用作公司开发之用
+<!--more-->
 
 ## zookeeper-3.5.5
 

@@ -1,7 +1,7 @@
 ---
 title: 'SpringBoot中的redis密码问题'
 date: 2019/05/13 12:03:01
-updated: 2020/1/6 13:31
+updated: 2020/2/20 15:41:36
 comments: true
 tags: 
     - spring
@@ -11,6 +11,8 @@ categories:
     - [Study, Java]
 ---
 
+很简单的一个问题，花了大力气去解决。重要的是解决问题的方式和思路。
+<!--more-->
 
 ## 出现问题
  
@@ -35,6 +37,7 @@ spring:
 
 
 ```
+
 
 报错的日志
 

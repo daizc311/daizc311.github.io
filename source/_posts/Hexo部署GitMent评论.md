@@ -1,7 +1,7 @@
 ---
 title: 'Hexo部署GitMent评论'
 date: 2018/12/23 11:02:53
-updated: 2020/1/6 13:31
+updated: 2020/2/20 15:41:36
 comments: true
 tags: 
     - blog
@@ -9,6 +9,8 @@ categories:
     - [Study, HEXO]
 ---
 
+之前还没换主题的时候就是这样手动配置的，现在gitment都没人用了git-talk比较方便
+<!--more-->
 
 # GitMent简介 #
   Gitment是一个基于GitHub Issues的评论系统，他使用一个Github Repository的Issues区作为评论的存储区。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。<!-- more -->
