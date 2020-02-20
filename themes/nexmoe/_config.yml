@@ -1,4 +1,4 @@
-avatar: /images/avatar.png # 网站 Logo
+avatar: /images/avatar.jpg # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
   path: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg
   width: 1440
@@ -61,7 +61,7 @@ maxTagcloud: 0  # 0 表示不限制
 
 social:
   哔哩哔哩:
-    - https://space.bilibili.com/20238211
+    - https://space.bilibili.com/1424744
     - icon-bilibili
     - rgb(231, 106, 141)
     - rgba(231, 106, 141, .15)
@@ -70,6 +70,21 @@ social:
     - icon-github
     - rgb(25, 23, 23)
     - rgba(25, 23, 23, .15)
+  Telegram:
+    - https://t.me/DreamCcc
+    - icon-telegram
+    - rgb(39,167,229)
+    - rgba(39,167,229,.1)
+  V2EX:
+    - https://www.v2ex.com/member/DreamSpace
+    - icon-v2ex
+    - rgb(25, 23, 23)
+    - rgba(25, 23, 23, .15)
+  Steam:
+    - https://steamcommunity.com/id/daizc311
+    - icon-steam
+    - rgb(14, 71, 161)
+    - rgba(14, 71, 161, .1)
 
 site_verification: # 向搜索引擎验证你对站点的所有权，用于向搜索引擎提交 sitemap 和管理站点被搜索引擎收录的情况。
   google:
