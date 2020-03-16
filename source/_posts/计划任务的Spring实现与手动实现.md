@@ -2,9 +2,9 @@
 title: '计划任务的Spring实现与手动实现'
 date: 2019/06/04 10:23:06
 updated: 2020/2/20 15:41:36
-cover: https://i.loli.net/2019/07/21/5d33d5dc1531213134.png
-coverWidth: 600
-coverHeight: 600
+cover: /2019/06/04/计划任务的Spring实现与手动实现/title.jpg
+coverWidth: 716
+coverHeight: 540
 comments: true
 categories: 
     - [<del>我永远爱学习</del>]
@@ -13,7 +13,7 @@ tags:
     - spring
 ---
 
-手写了计划任务之后才发现SpringScheduled竟然比手写还简单
+手写计划任务当然比不过简单又好用的SpringScheduled
 <!--more-->
 ## 使用Spring Scheduled的计划任务 
 

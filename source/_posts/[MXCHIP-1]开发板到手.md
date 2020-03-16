@@ -8,8 +8,8 @@ tags:
     - IOT
     - C
 cover: /2020/03/10/%5BMXCHIP-1%5D开发板到手/title.jpg
-coverWidth: 1200
-coverHeight: 750
+coverWidth: 1210
+coverHeight: 905
 ---
 
 这是一个从没玩过单片机开发的菜鸡闲暇时间瞎折腾的故事

@@ -3,6 +3,9 @@ title: '好用常用人人都要会的最基本的Maven插件收集'
 date: 2019/03/11 01:05:56
 updated: 2020/2/20 15:41:36
 comments: true
+cover: /2019/03/11/好用常用人人都要会的最基本的Maven插件收集/title.jpg
+coverWidth: 776
+coverHeight: 450
 categories: 
     - [<del>我永远爱学习</del>]
 tags: 
@@ -107,7 +110,7 @@ tags:
     <configuration>
         <!-- 一般而言，target与source是保持一致的，但是，有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中不能使用低版本jdk中不支持的语法 )，会存在target不同于source的情况 -->
         <!-- 源代码使用的JDK版本 -->
-        <source>1.8 
+        <source>1.8</source>
         <!-- 需要生成的目标class文件的编译版本 -->
         <target>1.8</target> 
         <!-- 字符集编码 -->
