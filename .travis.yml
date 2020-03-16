@@ -17,7 +17,6 @@ branches:
 
 # 在install之前安装依赖
 before_install:
-  - export TZ='Asia/Shanghai'
   - yarn global add hexo
   - yarn global add hexo-cli
 
@@ -30,6 +29,7 @@ install:
 
 # 执行清缓存，生成网页操作
 script:
+  - export TZ='Asia/Shanghai'
   - hexo clean
   - hexo generate
 
