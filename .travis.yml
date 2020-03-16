@@ -17,6 +17,7 @@ branches:
 
 # 在install之前安装依赖
 before_install:
+  - export TZ='Asia/Shanghai'
   - yarn global add hexo
   - yarn global add hexo-cli
 
