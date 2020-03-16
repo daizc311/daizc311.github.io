@@ -3,11 +3,11 @@ title: '好用常用人人都要会的最基本的Maven插件收集'
 date: 2019/03/11 01:05:56
 updated: 2020/2/20 15:41:36
 comments: true
+categories: 
+    - [<del>我永远爱学习</del>]
 tags: 
     - java
     - maven
-categories: 
-    - [Study, Java]
 ---
 
 把手上的好几个项目的pom整理了一遍 规范了一下model 整理出了一些插件 方便新手们入门maven

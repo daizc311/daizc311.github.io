@@ -3,12 +3,12 @@ title: 'SpringBoot中的redis密码问题'
 date: 2019/05/13 12:03:01
 updated: 2020/2/20 15:41:36
 comments: true
+categories: 
+    - [<del>我永远爱学习</del>]
 tags: 
     - spring
     - java
     - dubug
-categories: 
-    - [Study, Java]
 ---
 
 很简单的一个问题，花了大力气去解决。重要的是解决问题的方式和思路。

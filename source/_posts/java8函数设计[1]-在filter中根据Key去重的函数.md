@@ -3,11 +3,11 @@ title: 'java8函数设计[1]-在filter中根据Key去重的函数'
 date: 2019/12/19 17:54:52
 updated: 2020/2/20 15:41:36
 comments: true
+categories: 
+    - [<del>我永远爱学习</del>]
 tags: 
     - lambda
     - java
-categories: 
-    - [Study, Java]
 ---
 
 函数接口是如何写出来的？

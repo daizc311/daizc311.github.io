@@ -3,10 +3,10 @@ title: 'Hexo部署GitMent评论'
 date: 2018/12/23 11:02:53
 updated: 2020/2/20 15:41:36
 comments: true
+categories: 
+    - [<del>搞点骚操作</del>]
 tags: 
     - blog
-categories: 
-    - [Study, HEXO]
 ---
 
 之前还没换主题的时候就是这样手动配置的，现在gitment都没人用了git-talk比较方便

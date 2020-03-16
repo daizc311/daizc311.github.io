@@ -3,10 +3,10 @@ title: '[WSL2]子系统ubuntu安装jdk8'
 date: 2019/1/4 15:42:01
 updated: 2020/2/20 15:41:36
 comments: true
+categories: 
+    - [<del>搞点骚操作</del>]
 tags: 
     - linux
-categories: 
-    - [Study, OperationAndMaintenance]
 ---
 
 这是个大坑 平时装个JDK这么简单的事 在WSL上问题还真不少
