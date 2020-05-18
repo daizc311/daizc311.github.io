@@ -7,7 +7,7 @@ tags:
     - 单片机
     - IOT
     - C
-cover: /2019/03/10/%5BMXCHIP-1%5D开发板到手/title.jpg
+cover: /2019/03/10/%5BMXCHIP-1%5D开发板到手/title_s.jpg
 coverWidth: 1210
 coverHeight: 905
 ---
@@ -21,7 +21,7 @@ coverHeight: 905
 
  #### 作案工具
 
-{% asset_img 1.jpg [作案工具] %}
+{% asset_img 1_s.jpg [作案工具] %}
 
  - 庆科EMW3031开发板
  - 庆科EMW3165开发板
@@ -46,7 +46,7 @@ coverHeight: 905
 
  ##### 物理接线
 
-{% asset_img 4.jpg [物理接线] %}
+{% asset_img 4_s.jpg [物理接线] %}
 
 ```
 第一条接线 [用户串口] 对应驱动是USB-TTL的驱动 USB-SERIAL CH340
@@ -77,7 +77,7 @@ USB-TTL应该就是其中之一，所以才需要安装一个驱动来将USB口�
 
 1. 先将开发版上的`MODULE SELECT`拨动到BootLoader启动模式，即BOOT=ON,STATUS=OFF。
 
-{% asset_img 5.jpg [软件连接] %}
+{% asset_img 5_s.jpg [软件连接] %}
 
 2. 在其[官网新文档的角落](https://mxchip.yuque.com/books/share/8ac5e519-671d-4444-a93d-20e0aadfc793/ombbz2)翻到了这个表格，根据表格内容在SecureCRT中建立连接
 
