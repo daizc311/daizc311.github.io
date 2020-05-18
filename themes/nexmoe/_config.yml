@@ -1,11 +1,11 @@
-avatar: /images/avatar.jpg # 网站 Logo
+avatar: https://i.v2ex.co/IKKW2Toi.jpeg # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
   path: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg
   width: 1440
   height: 960
 favicon:
-  href: /favicon.ico # 网站图标
-  type: image/png # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
+  href: https://i.v2ex.co/IKKW2Tois.jpeg # 网站图标
+  type: image/jpeg # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
 
 function: # 功能开关，可选值（true,false）
   avatarRotateZ: true # 头像旋转
