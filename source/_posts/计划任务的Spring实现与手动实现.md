@@ -7,7 +7,7 @@ coverWidth: 716
 coverHeight: 540
 comments: true
 categories: 
-    - [<del>我永远爱学习</del>]
+    - [我永远爱学习]
 tags: 
     - java
     - spring

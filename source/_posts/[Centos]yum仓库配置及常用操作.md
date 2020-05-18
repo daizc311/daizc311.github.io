@@ -4,7 +4,7 @@ date: 2019/1/2 20:46:25
 updated: 2020/2/20 15:41:36
 comments: true
 categories: 
-    - [<del>搞点骚操作</del>]
+    - [搞点骚操作]
 tags: 
     - linux
 ---

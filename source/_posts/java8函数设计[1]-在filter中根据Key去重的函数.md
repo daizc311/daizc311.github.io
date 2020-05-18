@@ -7,7 +7,7 @@ coverWidth: 599
 coverHeight: 271
 comments: true
 categories: 
-    - [<del>我永远爱学习</del>]
+    - [我永远爱学习]
 tags: 
     - lambda
     - java

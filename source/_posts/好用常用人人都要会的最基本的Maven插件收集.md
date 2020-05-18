@@ -7,7 +7,7 @@ cover: /2019/03/11/好用常用人人都要会的最基本的Maven插件收集/t
 coverWidth: 776
 coverHeight: 450
 categories: 
-    - [<del>我永远爱学习</del>]
+    - [我永远爱学习]
 tags: 
     - java
     - maven

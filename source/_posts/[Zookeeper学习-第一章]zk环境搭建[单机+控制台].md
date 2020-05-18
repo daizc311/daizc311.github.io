@@ -4,7 +4,7 @@ date: 2019/7/1 15:53:24
 updated: 2020/2/20 15:41:36
 comments: true
 categories: 
-    - [<del>我永远爱学习</del>]
+    - [我永远爱学习]
 tags: 
     - java
     - zookeeper
