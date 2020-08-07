@@ -1,5 +1,5 @@
 ---
-title: 改造Spring-data-redis 设置过期时间
+title: 改造Spring-data-redis 优雅设置过期时间
 comments: true
 categories:
   - [我永远爱学习]
@@ -32,5 +32,5 @@ public interface CacheDemo{
 }
 ```
 
-这篇文章就将以定制Cache具体实现类的方式优雅的实现这个功能
+这篇文章就将以定制Cache具体实现类的方式优雅的实现这个功能.
 <!--more-->
