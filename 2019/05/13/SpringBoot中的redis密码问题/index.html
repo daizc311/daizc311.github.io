@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>SpringBoot中的redis密码问题 - DreamCcc</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="https://i.v2ex.co/IKKW2Tois.jpeg" type="image/jpeg" />
+  <meta name="description" content="很简单的一个问题，花了大力气去解决。重要的是解决问题的方式和思路。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot中的redis密码问题">
+<meta property="og:url" content="http://yoursite.com/2019/05/13/SpringBoot%E4%B8%AD%E7%9A%84redis%E5%AF%86%E7%A0%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="DreamCcc">
+<meta property="og:description" content="很简单的一个问题，花了大力气去解决。重要的是解决问题的方式和思路。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="leanote://file/getImage?fileId=5d847766e1488a763c000011">
+<meta property="og:image" content="leanote://file/getImage?fileId=5d84778be1488a763c000012">
+<meta property="og:image" content="leanote://file/getImage?fileId=5d8477a7e1488a763c000013">
+<meta property="og:image" content="leanote://file/getImage?fileId=5d8478d0e1488a763c000014">
+<meta property="og:image" content="leanote://file/getImage?fileId=5d8478e8e1488a763c000015">
+<meta property="og:image" content="leanote://file/getImage?fileId=5d847965e1488a763c000016">
+<meta property="og:image" content="leanote://file/getImage?fileId=5d847984e1488a763c000017">
+<meta property="og:image" content="leanote://file/getImage?fileId=5d847996e1488a763c000018">
+<meta property="article:published_time" content="2019-05-13T04:03:01.000Z">
+<meta property="article:modified_time" content="2020-02-20T07:41:36.000Z">
+<meta property="article:author" content="Daizc">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="spring">
+<meta property="article:tag" content="dubug">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="leanote://file/getImage?fileId=5d847766e1488a763c000011">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+  
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1592904_u7sy98fs39g.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1619794651594">
+
+   
+    <style>
+      .nexmoe-avatar img:hover {
+        -webkit-transform: rotateZ(360deg);
+        -moz-transform: rotateZ(360deg);
+        transform: rotateZ(360deg);
+      }	
+    </style>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Daizc" class="mdui-btn mdui-btn-icon"><img src="https://i.v2ex.co/IKKW2Toi.jpeg"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Daizc">
+            <img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>16</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>3</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <input id="search_value" name="q" type="search" placeholder="Search">
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Social</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://t.me/DreamCcc" target="_blank" mdui-tooltip="{content: 'Telegram'}" style="color: rgb(39,167,229);background-color: rgba(39,167,229,.1);">
+            <i class="nexmoefont icon-telegram"></i>
+        </a><a class="mdui-ripple" href="https://www.v2ex.com/member/DreamSpace" target="_blank" mdui-tooltip="{content: 'V2EX'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont iconCN_VEX_S_NEXMOE"></i>
+        </a><a class="mdui-ripple" href="https://github.com/daizc311/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/1424744" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://steamcommunity.com/id/daizc311" target="_blank" mdui-tooltip="{content: 'Steam'}" style="color: rgb(14, 71, 161);background-color: rgba(14, 71, 161, .1);">
+            <i class="nexmoefont icon-steam"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/想到啥写啥/">想到啥写啥</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/我永远爱学习/">我永远爱学习</a>
+          <span class="category-list-count">12</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/搞点骚操作/">搞点骚操作</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Tagcloud</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/C/" style="font-size: 13.33px;">C</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/dubug/" style="font-size: 10px;">dubug</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/zookeeper/" style="font-size: 13.33px;">zookeeper</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 16.67px;">单片机</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 Daizc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+  
+      <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+          <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot中的redis密码问题" class="lazyload">
+          <h1>SpringBoot中的redis密码问题</h1>
+      </div>
+  
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年05月13日</a>
+    <a><i class="nexmoefont icon-areachart"></i>2.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 14 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -none-link" href="/tags/dubug/" rel="tag">dubug</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/java/" rel="tag">java</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/spring/" rel="tag">spring</a>
+    
+    
+  </div>
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">出现问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">查询资料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%92%E7%BA%B3"><span class="toc-number">2.1.</span> <span class="toc-text">归纳</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0%E6%8E%A2%E7%A9%B6"><span class="toc-number">3.</span> <span class="toc-text">原因探究</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-number">3.1.</span> <span class="toc-text">原因分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E8%B7%9F%E8%B8%AA"><span class="toc-number">3.2.</span> <span class="toc-text">源码跟踪</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">解决问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">修改配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E6%AC%A1%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="toc-number">4.2.</span> <span class="toc-text">再次解决问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">成功解决问题</span></a></li></ol>
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    <p>很简单的一个问题，花了大力气去解决。重要的是解决问题的方式和思路。</p>
+<span id="more"></span>
+
+<h2 id="出现问题"><a href="#出现问题" class="headerlink" title="出现问题"></a>出现问题</h2><p>出问题的配置如下</p>
+<hr>
+<p>application.yml</p>
+<pre><code class="yml">spring:
+  redis:
+    # REDIS_URL
+    url: redis://192.168.1.233:6379
+    # 如果有密码
+    password: testpassword123
+    # 存储到分区1
+    database: 1
+    # 默认超时2000
+    timeout: 3000
+
+</code></pre>
+<p>报错的日志</p>
+<pre><code class="log">[20190827 20:42:53] ERROR 7900 --- [nio-8086-exec-2] c.z.v.d.a.c.mvc.GlobalExceptionHandler   : Unable to connect to Redis; nested exception is io.lettuce.core.RedisCommandExecutionException: NOAUTH Authentication required.
+
+org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis; nested exception is io.lettuce.core.RedisCommandExecutionException: NOAUTH Authentication required.
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getNativeConnection(LettuceConnectionFactory.java:1092)
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getConnection(LettuceConnectionFactory.java:1065)
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getSharedConnection(LettuceConnectionFactory.java:865)
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getConnection(LettuceConnectionFactory.java:340)
+    at org.springframework.data.redis.cache.DefaultRedisCacheWriter.execute(DefaultRedisCacheWriter.java:238)
+    at org.springframework.data.redis.cache.DefaultRedisCacheWriter.get(DefaultRedisCacheWriter.java:109)
+    at org.springframework.data.redis.cache.RedisCache.lookup(RedisCache.java:82)
+    at org.springframework.cache.support.AbstractValueAdaptingCache.get(AbstractValueAdaptingCache.java:58)
+    at org.springframework.cache.interceptor.AbstractCacheInvoker.doGet(AbstractCacheInvoker.java:73)
+    at org.springframework.cache.interceptor.CacheAspectSupport.findInCaches(CacheAspectSupport.java:554)
+    at org.springframework.cache.interceptor.CacheAspectSupport.findCachedItem(CacheAspectSupport.java:519)
+    at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:401)
+    at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:345)
+    at org.springframework.cache.interceptor.CacheInterceptor.invoke(CacheInterceptor.java:61)
+    at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+    at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+    at com.zunchen.video.dmp.service.impl.onvif.OnvifDeviceCacheServiceImpl$EnhancerBySpringCGLIB$913f47a3.connectOnvifDevice(&lt;generated&gt;)
+    at com.zunchen.video.dmp.admin.api.ConnectDeviceApiController.connect(ConnectDeviceApiController.java:36)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:498)
+    at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+    at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+    at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+    at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+    at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+    at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+    at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+    at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+    at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+    at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:890)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+    at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:154)
+    at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:122)
+    at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:107)
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+    at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+    at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+    at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+    at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+    at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+    at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+    at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+    at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+    at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+    at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+    at java.lang.Thread.run(Thread.java:748)
+Caused by: io.lettuce.core.RedisCommandExecutionException: NOAUTH Authentication required.
+    at io.lettuce.core.ExceptionFactory.createExecutionException(ExceptionFactory.java:135)
+    at io.lettuce.core.LettuceFutures.awaitOrCancel(LettuceFutures.java:122)
+    at io.lettuce.core.AbstractRedisAsyncCommands.select(AbstractRedisAsyncCommands.java:1194)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:498)
+    at io.lettuce.core.FutureSyncInvocationHandler.handleInvocation(FutureSyncInvocationHandler.java:57)
+    at io.lettuce.core.internal.AbstractInvocationHandler.invoke(AbstractInvocationHandler.java:80)
+    at com.sun.proxy.$Proxy206.select(Unknown Source)
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getNativeConnection(LettuceConnectionFactory.java:1087)
+    ... 69 common frames omitted</code></pre>
+<h2 id="查询资料"><a href="#查询资料" class="headerlink" title="查询资料"></a>查询资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/392009425">spring boot 配置redis 报错 NOAUTH Authentication required</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.twblogs.net/a/5b7e13012b717768385523f9/zh-cn">springboot整合redis报错NOAUTH Authentication required.解决方案</a></li>
+</ul>
+<h3 id="归纳"><a href="#归纳" class="headerlink" title="归纳"></a>归纳</h3><p>  大多解决方案都是通过配置注入的RedisConfig来setPassword解决的，SpringBoot未注入密码的原因仍然不明。</p>
+<h2 id="原因探究"><a href="#原因探究" class="headerlink" title="原因探究"></a>原因探究</h2><h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>  由报错信息可以看出，最终抛出的异常是io.lettuce.core.RedisCommandExecutionException，其中lettuce不知道是什么。</p>
+<p>  通过查阅资料 <a target="_blank" rel="noopener" href="https://toutiao.io/posts/pknpcs/preview">高级的 Redis Java 客户端 Lettuce</a> 得知lettuce是springboot2.0中用来代替jedis的新的redis客户端。</p>
+<p>  那为何lettuce为何会报错呢？这是我最大的疑惑，我决定去spring.redis的自动配置类中看看到底发生了什么</p>
+<h3 id="源码跟踪"><a href="#源码跟踪" class="headerlink" title="源码跟踪"></a>源码跟踪</h3><p>&gt; spring.redis的自动配置包：org.springframework.boot.autoconfigure.data.redis</p>
+<p><img data-sizes="auto" data-src="leanote://file/getImage?fileId=5d847766e1488a763c000011" alt="" class="lazyload"></p>
+<p>看着这个目录结构，第一反应直奔LettuceConnectionConfiguration中去看源码。</p>
+<p><img data-sizes="auto" data-src="leanote://file/getImage?fileId=5d84778be1488a763c000012" alt="" class="lazyload"></p>
+<p>在其构造方法处打断点发现是拿到了密码的，发现同类下有一方法createLettuceConnectionFactory();明显是创建连接工厂的方法，断点套上去。</p>
+<p><img data-sizes="auto" data-src="leanote://file/getImage?fileId=5d8477a7e1488a763c000013" alt="" class="lazyload"></p>
+<p>这个方法中干了啥，它看了看配置文件中有没有包含${spring.redis.sentinel}和${spring.redis.cluster}的配置，如果有就拿对应的配置去创建连接工厂。但是yml中既没有配置哨兵模式也没有配置集群模式，所以进入独立模式getStandaloneConfig();</p>
+<p><img data-sizes="auto" data-src="leanote://file/getImage?fileId=5d8478d0e1488a763c000014" alt="" class="lazyload"></p>
+<p>顺手计算一下，看看standaloneConfig长什么样子…..嗯???!!!……密码呢？……发生了啥？</p>
+<p><img data-sizes="auto" data-src="leanote://file/getImage?fileId=5d8478e8e1488a763c000015" alt="" class="lazyload"></p>
+<p>问题找到了，感觉自己好蠢。</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><pre><code class="yml">spring:
+  redis:
+    # REDIS_URL 中自己带上密码
+    # Connection URL. Overrides host, port, and password. User is ignored. Example:
+    # redis://user:password@example.com:6379
+    # url: redis://UserIsIgnored:testpassword123@192.168.1.233:6379
+    # HOST 和 PASSWORD 是一套配置
+    host: 192.168.1.233
+    # 如果有密码 （用于RedisTemplate ，Lettuce不会拿这个password）
+    password: testpassword123
+    # 存储到分区1
+    database: 1
+    # 默认超时2000
+    timeout: 3000</code></pre>
+<p>修改后启动：</p>
+<pre><code class="log">[20190828 03:15:04] ERROR 8564 --- [nio-8086-exec-2] c.z.v.d.a.c.mvc.GlobalExceptionHandler   : Unable to connect to Redis; nested exception is io.lettuce.core.RedisCommandExecutionException: NOAUTH Authentication required.
+
+org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis; nested exception is io.lettuce.core.RedisCommandExecutionException: NOAUTH Authentication required.
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getNativeConnection(LettuceConnectionFactory.java:1092)
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getConnection(LettuceConnectionFactory.java:1065)
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getSharedConnection(LettuceConnectionFactory.java:865)
+    at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getConnection(LettuceConnectionFactory.java:340)
+    at org.springframework.data.redis.cache.DefaultRedisCacheWriter.execute(DefaultRedisCacheWriter.java:238)
+    at org.springframework.data.redis.cache.DefaultRedisCacheWriter.get(DefaultRedisCacheWriter.java:109)
+    at org.springframework.data.redis.cache.RedisCache.lookup(RedisCache.java:82)
+    at org.springframework.cache.support.AbstractValueAdaptingCache.get(AbstractValueAdaptingCache.java:58)
+    at org.springframework.cache.interceptor.AbstractCacheInvoker.doGet(AbstractCacheInvoker.java:73)
+    at org.springframework.cache.interceptor.CacheAspectSupport.findInCaches(CacheAspectSupport.java:554)
+    at org.springframework.cache.interceptor.CacheAspectSupport.findCachedItem(CacheAspectSupport.java:519)
+    at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:401)
+    at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:345)
+    at org.springframework.cache.interceptor.CacheInterceptor.invoke(CacheInterceptor.java:61)
+    at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+    at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+    at com.zunchen.video.dmp.service.impl.onvif.OnvifDeviceCacheServiceImpl$EnhancerBySpringCGLIB$b001f767.connectOnvifDevice(&lt;generated&gt;)
+    at com.zunchen.video.dmp.admin.api.ConnectDeviceApiController.connect(ConnectDeviceApiController.java:36)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:498)
+    at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+    at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+    at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+    at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+    at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+    at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+    at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+    at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+    at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+    at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:890)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+    at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:154)
+    at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:122)
+    at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:107)
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+    at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+    at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+    at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+    at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+    at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+    at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+    at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+    at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+    at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+    at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+    at java.lang.Thread.run(Thread.java:748)</code></pre>
+<p>仍然在报错，这下尴尬了。</p>
+<h3 id="再次解决问题"><a href="#再次解决问题" class="headerlink" title="再次解决问题"></a>再次解决问题</h3><p><img data-sizes="auto" data-src="leanote://file/getImage?fileId=5d847965e1488a763c000016" alt="" class="lazyload"></p>
+<p>径直来到报错信息提示的地方，估计是红框出出现了异常。此处调用的是接口方法，不知道进了那个方法，没关系，打个断点强制步入。</p>
+<p><img data-sizes="auto" data-src="leanote://file/getImage?fileId=5d847984e1488a763c000017" alt="" class="lazyload"></p>
+<p>有点懒，不想解释了，直接画图，发现是redisURISupplier中的password仍然是空的。不想知道为什么了，我只想解决问题。源码点过去看下。</p>
+<p><img data-sizes="auto" data-src="leanote://file/getImage?fileId=5d847996e1488a763c000018" alt="" class="lazyload"></p>
+<p> 查看该类的构造方法，这个东西正在解析RedisURI，那RedisURI哪儿来的呢？配置里配的呗。
+ </p>
+<h2 id="成功解决问题"><a href="#成功解决问题" class="headerlink" title="成功解决问题"></a>成功解决问题</h2><pre><code class="yml">spring:
+  redis:
+    # REDIS_URL 中自己带上密码
+    # Connection URL. Overrides host, port, and password. User is ignored. Example:
+    # redis://user:password@example.com:6379
+    url: redis://UserIsIgnored:testpassword123@192.168.1.233:6379
+    # HOST 和 PASSWORD 是一套配置
+    # host: 192.168.1.233
+    # 如果有密码 （用于RedisTemplate ，Lettuce不会拿这个password）
+    # password: testpassword123
+    # 存储到分区1
+    database: 1
+    # 默认超时2000
+    timeout: 3000</code></pre>
+<p>这次好了，redis成功连接。大功告成。</p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>Author：</strong>Daizc<br>
+<strong>Link：</strong><a href="http://yoursite.com/2019/05/13/SpringBoot%E4%B8%AD%E7%9A%84redis%E5%AF%86%E7%A0%81%E9%97%AE%E9%A2%98/" title="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;13&#x2F;SpringBoot%E4%B8%AD%E7%9A%84redis%E5%AF%86%E7%A0%81%E9%97%AE%E9%A2%98&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;13&#x2F;SpringBoot%E4%B8%AD%E7%9A%84redis%E5%AF%86%E7%A0%81%E9%97%AE%E9%A2%98&#x2F;</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'DreamCcc_HEXO',
+        owner: 'daizc311',
+        admin: 'daizc311'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+<script src="/js/app.js?v=1619794651596"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+
+ 
+<script> 
+!function(e,t,a){function n(){c(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),o(),r()}function r(){for(var e=0;e<d.length;e++)d[e].alpha<=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText="left:"+d[e].x+"px;top:"+d[e].y+"px;opacity:"+d[e].alpha+";transform:scale("+d[e].scale+","+d[e].scale+") rotate(45deg);background:"+d[e].color+";z-index:99999");requestAnimationFrame(r)}function o(){var t="function"==typeof e.onclick&&e.onclick;e.onclick=function(e){t&&t(),i(e)}}function i(e){var a=t.createElement("div");a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)}function c(e){var a=t.createElement("style");a.type="text/css";try{a.appendChild(t.createTextNode(e))}catch(t){a.styleSheet.cssText=e}t.getElementsByTagName("head")[0].appendChild(a)}function s(){return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}var d=[];e.requestAnimationFrame=function(){return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,1e3/60)}}(),n()}(window,document);
+</script>
+
+  
+
+
+
+
+
+    <!-- baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2d58a3bbad91b9b1329b309e254176cc';
+    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+</body>
+
+</html>
