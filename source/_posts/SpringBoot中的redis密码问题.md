@@ -8,7 +8,7 @@ categories:
 tags: 
     - spring
     - java
-    - dubug
+    - debug
 ---
 
 很简单的一个问题，花了大力气去解决。重要的是解决问题的方式和思路。
