@@ -96,13 +96,13 @@ jdk代理的问题，换用cglib代理就好了。随便找个配置类，加上
    }
    ```
 5. 打上断点开始Debug，看看controller有没有被swagger扫到
-   ![ApiListingReferenceScanner](imgs/hYScf3.png "ApiListingReferenceScanner")
+   ![ApiListingReferenceScanner](https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/note/%5BDEBUG%E6%97%A5%E8%AE%B0%5DSwagger%E6%89%AB%E4%B8%8D%E5%88%B0%E7%B1%BB-Jdk%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E7%9A%84%E5%8F%8D%E5%B0%84%E7%B1%BB%E5%9E%8B%E6%95%85%E9%9A%9C/ApiListingReferenceScanner.png "ApiListingReferenceScanner")
    发现swagger是直接从spring中取出的RequestHandler，而我们的Controller是被Spring正常扫描的(废话，没被Spring扫到都不能用了好吧)
 6. 前往步骤3处打上条件断点
-   ![RequestHandlerSelectors#1](imgs/nlE19P.png "RequestHandlerSelectors#1")
+   ![RequestHandlerSelectors#1](https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/note/%5BDEBUG%E6%97%A5%E8%AE%B0%5DSwagger%E6%89%AB%E4%B8%8D%E5%88%B0%E7%B1%BB-Jdk%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E7%9A%84%E5%8F%8D%E5%B0%84%E7%B1%BB%E5%9E%8B%E6%95%85%E9%9A%9C/RequestHandlerSelectors%231.png "RequestHandlerSelectors#1")
    ？？？这是咋回事
 7. 继续排查
-   ![RequestHandlerSelectors#2](imgs/qO2YfA.png "RequestHandlerSelectors#2")
+   ![RequestHandlerSelectors#2](https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/note/%5BDEBUG%E6%97%A5%E8%AE%B0%5DSwagger%E6%89%AB%E4%B8%8D%E5%88%B0%E7%B1%BB-Jdk%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E7%9A%84%E5%8F%8D%E5%B0%84%E7%B1%BB%E5%9E%8B%E6%95%85%E9%9A%9C/RequestHandlerSelectors%232.png "RequestHandlerSelectors#2")
    草，这个类被jdk代理了，这直接导致反射获取类型的时候获取到了jdk的`Proxy$?.class`这个类型，从而导致检查注解失败 
    `declaringClass()`方法原本应该获取到声明类，我们预计他应该会返回我们Controller的真实类型，但是由于Controller实现了一个接口，
    导致Spring使用了jdk代理这个对象，从而导致获取声明类时获取到了jdk代理所用的类型，最终导致获取注解失败
@@ -123,7 +123,7 @@ jdk代理的问题，换用cglib代理就好了。随便找个配置类，加上
    ```
    采用jdk的方式代理会更快，相较于cglib会有一定的性能提升，但应该仅在启动时有提升，类加载完毕Bean注册完成后应该都是一样的，随口BB一句没有验证过是否正确。
  - 最后上个图对比一下
-   ![RequestHandlerSelectors#3](imgs/04Fb5e.png "RequestHandlerSelectors#3")
+   ![RequestHandlerSelectors#3](https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/note/%5BDEBUG%E6%97%A5%E8%AE%B0%5DSwagger%E6%89%AB%E4%B8%8D%E5%88%B0%E7%B1%BB-Jdk%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E7%9A%84%E5%8F%8D%E5%B0%84%E7%B1%BB%E5%9E%8B%E6%95%85%E9%9A%9C/RequestHandlerSelectors%233.png "RequestHandlerSelectors#3")
 
 
 
