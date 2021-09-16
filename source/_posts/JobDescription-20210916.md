@@ -6,6 +6,8 @@ categories:
 tags:
 - blog
 ---
+写了两个JD，随手记录一下。
+<!--more-->
 
 ## JobDescription-A
 
