@@ -7,4 +7,4 @@ permalink: PY.html
 comments: false
 ---
 
-- [![baidu](https://www.baidu.com/img/baidu_resultlogo@2.png)](https://www.baidu.com/ "有问题找百度")
+- [![baidu](https://www.baidu.com/img/baidu_resultlogo@2.png)](https://www.baidu.com/ "有问题找百度！")
