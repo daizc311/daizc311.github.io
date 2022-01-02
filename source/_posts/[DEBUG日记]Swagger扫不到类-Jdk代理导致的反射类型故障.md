@@ -1,5 +1,6 @@
 ---
-title: '[DEBUG日记]Swagger扫不到类-Jdk代理导致的反射类型故障' date: 2021-09-02 18:07:29
+title: '[DEBUG日记]Swagger扫不到类-Jdk代理导致的反射类型故障' 
+date: 2021-09-02 18:07:29
 
 categories:
 
