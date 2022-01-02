@@ -30,7 +30,7 @@ Error: D:\Users\Link\WebstormProjects\angularDemo\src\polyfills.ts is missing fr
 √ Browser application bundle generation complete.
 ```
 编译失败，但浏览器启动成功。弹出一个明晃晃的`Cannot GET /`。
-
+<!--more-->
 仔细看了下报错，但完全没明白这个提示的意思，感觉就是说`src\polyfills.ts`没找到，所以ts编译失败啥的，让我检查tsconfig里是否有配置`files`或者`include`属性。
 ```json
 {
