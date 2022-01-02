@@ -1,17 +1,24 @@
 ---
 title: Angular初学排坑日记（一）cnpm安装惨案
 date: 2022-01-03 02:02:31
+categories:
+- [我永远爱学习]
 tags:
+- 前端
+- Angular
 ---
 
 # Angular初学排坑日记（一）cnpm安装惨案
 
-拿了台新电脑来玩，直接拿scoop配环境，配好了node环境和npm
-
+最近做中间件开发，涉及到不少的项目改造，发现有不少中间件的前端都是拿Angular写的，自己看Angular看不太懂，前端同事都是vue玩家，
+也不太玩得转这玩意儿，但是改不动中间件的前端的确蛮吃亏，再加上之前群里朋友煽风点火，于是有了折腾下Angular的念头。
+正好拿了台新电脑来玩，准备整个Angular玩玩，于是直接拿scoop配环境配好了node环境和npm。
+<!--more-->
+## 初始环境
 - node:16.13.1
 - npm:8.1.2
 
-直连npm源会走代理，下载略慢，于是随手装个cnpm
+直连npm源会走代理，下载略慢，于是顺手装个cnpm
 ```shell
 PS C:\Users\Link\WebstormProjects> npm install -g cnpm
 ```
