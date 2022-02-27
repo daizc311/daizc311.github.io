@@ -2,6 +2,9 @@
 language: node_js
 # 指定需要sudo权限
 sudo: required
+# git 参数
+git:
+  depth: 3
 # 指定node_js版本
 node_js:
   - 16
@@ -13,6 +16,7 @@ cache:
 # 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项
 branches:
   only:
+    - hexo
     - hexo-update
 
 # 在install之前安装依赖
@@ -42,11 +46,11 @@ after_script:
   - hexo deploy
 # End: Build LifeCycle
 
-#deploy:
-#  provider: pages
-#  skip-cleanup: true
-#  github-token: $GH_TOKEN
-#  keep-history: true
-#  on:
-#    branch: master
-#  local-dir: public
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  local-dir: public

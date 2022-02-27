@@ -1,11 +1,11 @@
 .DS_Store
-
+.idea
+.directory
 public
+node_modules
 
 *.log
+db.json
 
-.idea
-
-.directory
 
 WIKI/.vuepress/dist
