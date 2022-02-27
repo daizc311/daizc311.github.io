@@ -117,3 +117,22 @@ admin:
   password_hash: $2a$10$N4B0KqCB1nYUA0mQF3hTO.alrrRyK/tWfBgn6j7VlVq5XKQpNLEkS
   secret: dreamccc
 
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: false
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: false
+

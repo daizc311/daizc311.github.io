@@ -1,9 +1,7 @@
 ---
 title: Angular初学排坑日记（二） windows软链接惨案
 date: 2022-01-03 02:32:10
-cover: /2022/01/03/Angular初学排坑日记（二）windows软链接惨案/title.png
-coverWidth: 1247
-coverHeight: 546
+cover: ../images/posts/Angular初学排坑日记（二）windows软链接惨案/title.png
 
 categories:
 - [我永远爱学习]
@@ -11,7 +9,6 @@ categories:
 tags:
 - 前端
 - Angular
-
 ---
 
 # Angular初学排坑日记（二） windows软链接惨案

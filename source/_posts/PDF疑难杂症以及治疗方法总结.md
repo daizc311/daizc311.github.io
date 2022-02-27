@@ -7,9 +7,9 @@ categories:
 tags:
 - pdf
 
-cover: https://www.adobe.com/content/dam/dx-dc/images/acrobat/about-adobe-pdf/desktop/DC-about-pdf-new-720x474.png.img.png
-coverWidth: 720
-coverHeight: 424
+# cover: https://www.adobe.com/content/dam/dx-dc/images/acrobat/about-adobe-pdf/desktop/DC-about-pdf-new-720x474.png.img.png
+cover: ../images/posts/PDF疑难杂症/DC-about-pdf-new-720x474.png.img.png
+
 ---
 
 PDF是一个由Adobe编写现由国际标准化组织 (ISO) 维护的一个开放式标准，PDF 文档可以包含链接和按钮、表单域、音频、视频和业务逻辑。这种文件可进行电子签名，因此政府机构大量在用，但是仍然是个煞笔格式。
