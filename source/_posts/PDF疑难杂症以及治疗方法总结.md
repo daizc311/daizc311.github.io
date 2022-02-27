@@ -7,7 +7,7 @@ categories:
 tags:
 - pdf
 
-cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/PDF疑难杂症/DC-about-pdf-new-720x474.png.img.png
+cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/PDF疑难杂症以及治疗方法总结/DC-about-pdf-new-720x474.png.img.png
 
 ---
 
