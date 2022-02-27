@@ -8,9 +8,7 @@ categories:
     - [想到啥写啥]
 tags: 
     - Games
-cover: https://pic2.zhimg.com/v2-e0a965a2365bdadda41dedcb9fe5ec58_r.jpg
-coverWidth: 1284
-coverHeight: 722
+cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/Death_Standing/v2-e0a965a2365bdadda41dedcb9fe5ec58_r.jpg
 ---
 
 
@@ -51,8 +49,7 @@ coverHeight: 722
 - 运送`mama`和`开罗尔艺术家`的时候可以绕道和妹子一起去泡温泉！！
 - 如果在生日那天送快递，对周围呼喊时会有~~不明人员~~祝你生日快乐！！！
 
-![生日小彩蛋](http://a1.qpic.cn/psc?/2f78ab1d-9f0c-40a8-b8ed-fc20fe8c44e3/xBo1HguJwfqPLd*kRKpWsEcMYmv9E9Xd4f9mt2mu7KM*p481WV2wbbRi8Pi2Qf0KNPq5q9t9TbFkqWnbRd9nwQ!!/b&ek=1&kp=1&pt=0&bo=gAc4BIAHOAQRECc!&tl=3&vuin=736233029&tm=1589817600&sce=60-2-2&rf=viewer_311)
-
+- ![生日小彩蛋](/source/images/posts/Death_Standing/birth.jfif)
 
 ### 白金感言
 
@@ -62,7 +59,7 @@ coverHeight: 722
 
 对于习惯于快节奏对抗的玩家来说，这款游戏极有可能与他们无缘——被劝退于前两章的新手教程，而留存下来的玩家则是适合慢节奏大片时间游玩的玩家，只有被筛选出来的玩家才有机会尽情享受这款游戏带来的震撼与感动。
 
-{% asset_img IMG_20200319_004053.jpg [白金截图] %}
+![白金截图](/source/images/posts/Death_Standing/IMG_20200319_004053.jpg)
 
 ###  一句话总结
 

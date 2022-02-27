@@ -83,7 +83,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 56bf5522f4fe        4232addbc345        "dotnet ZooKeeper...."   About an hour ago   Up 2 minutes        0.0.0.0:2182-&gt;80/tcp   zookeeper-admin
 
 ```
-![zookeeper-admin](leanote://file/getImage?fileId=5d84827ce1488a763c000019)
+![zookeeper-admin](/source/images/posts/[Zookeeper学习-第一章]zk环境搭建[单机+控制台]/zookeeper-config.png)
 
 界面看上去还不错。
 
