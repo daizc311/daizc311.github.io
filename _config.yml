@@ -106,7 +106,7 @@ theme: nexmoe
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/daizc311/daizc311.github.io/
+  repo: git@github.com:daizc311/daizc311.github.io.git
   branch: master
   # example, https://github.com/hexojs/hexojs.github.io
 
