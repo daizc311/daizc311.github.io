@@ -7,8 +7,7 @@ categories:
 tags:
 - pdf
 
-# cover: https://www.adobe.com/content/dam/dx-dc/images/acrobat/about-adobe-pdf/desktop/DC-about-pdf-new-720x474.png.img.png
-cover: ../images/posts/PDF疑难杂症/DC-about-pdf-new-720x474.png.img.png
+cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/PDF疑难杂症/DC-about-pdf-new-720x474.png.img.png
 
 ---
 

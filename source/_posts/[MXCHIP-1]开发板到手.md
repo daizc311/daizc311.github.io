@@ -7,7 +7,7 @@ tags:
     - 单片机
     - IOT
     - C
-cover: ../images/posts/[MXCHIP-1]开发板到手/title_s.jpg
+cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/[MXCHIP-1]开发板到手/title_s.jpg
 ---
 
 这是一个从没玩过单片机开发的菜鸡闲暇时间瞎折腾的故事
@@ -19,7 +19,7 @@ cover: ../images/posts/[MXCHIP-1]开发板到手/title_s.jpg
 
  #### 作案工具
 
-![作案工具](../images/posts/[MXCHIP-1]开发板到手/1_s.jpg)
+![作案工具](/source/images/posts/[MXCHIP-1]开发板到手/1_s.jpg)
 
  - 庆科EMW3031开发板
  - 庆科EMW3165开发板
@@ -44,7 +44,7 @@ cover: ../images/posts/[MXCHIP-1]开发板到手/title_s.jpg
 
  ##### 物理接线
 
-![物理接线](../images/posts/[MXCHIP-1]开发板到手/4_s.jpg)
+![物理接线](/source/images/posts/[MXCHIP-1]开发板到手/4_s.jpg)
 
 ```
 第一条接线 [用户串口] 对应驱动是USB-TTL的驱动 USB-SERIAL CH340
@@ -65,7 +65,7 @@ PS：这里也被卡了不少时间，原因就是不知道RXD和TXD需要反着
 首先，我完全是个门外汉，我猜测这两驱动的作用可能是一样的，以前的外围设备都是通过COM口和PC相连接的，现在的电脑都没有COM口，于是需要一个将COM口转为USB口的设备。
 USB-TTL应该就是其中之一，所以才需要安装一个驱动来将USB口映射为虚拟的COM口供软件连接。至于开发板为何可以用microUsb直连电脑我猜测是开发板中内置了芯片来转换，因为我看了新平台`MXKIT`的说明文档，新平台中只需要一根线就可以同时接上两个接口，所以我做出了这个猜测。
 
-![驱动管理](../images/posts/[MXCHIP-1]开发板到手/3.jpg)
+![驱动管理](/source/images/posts/[MXCHIP-1]开发板到手/3.jpg)
 
 
  ##### 软件连接
@@ -76,7 +76,7 @@ USB-TTL应该就是其中之一，所以才需要安装一个驱动来将USB口�
 1. 先将开发版上的`MODULE SELECT`拨动到BootLoader启动模式，即BOOT=ON,STATUS=OFF。
 
 
-![软件连接](../images/posts/[MXCHIP-1]开发板到手/5_s.jpg)
+![软件连接](/source/images/posts/[MXCHIP-1]开发板到手/5_s.jpg)
 
 2. 在其[官网新文档的角落](https://mxchip.yuque.com/books/share/8ac5e519-671d-4444-a93d-20e0aadfc793/ombbz2)翻到了这个表格，根据表格内容在SecureCRT中建立连接
 
@@ -92,7 +92,7 @@ USB-TTL应该就是其中之一，所以才需要安装一个驱动来将USB口�
 
 3. 建立好连接后点一下开发板上的restart重启一下就能能看到日志了,如下图左边是用户日志，来自于microUsb(COM4)，右边是调试日志，来自于usb-ttl(COM9)，平时的debug时的日志也都输出到这里。
 
- ![Bootloader日志](../images/posts/[MXCHIP-1]开发板到手/6.jpg)
+ ![Bootloader日志](/source/images/posts/[MXCHIP-1]开发板到手/6.jpg)
  
  
  

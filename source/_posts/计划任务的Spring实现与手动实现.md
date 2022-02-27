@@ -2,7 +2,7 @@
 title: '计划任务的Spring实现与手动实现'
 date: 2019/06/04 10:23:06
 updated: 2020/2/20 15:41:36
-cover: ../images/posts/计划任务的Spring实现与手动实现/title.jpg
+cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/计划任务的Spring实现与手动实现/title.jpg
 comments: true
 categories: 
     - [我永远爱学习]

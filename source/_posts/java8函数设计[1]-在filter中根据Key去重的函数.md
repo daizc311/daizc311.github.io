@@ -2,7 +2,7 @@
 title: "java8函数设计[1]-在filter中根据Key去重的函数"
 date: 2019/12/19 17:54:52
 updated: 2020/2/20 15:41:36
-cover: ../images/posts/java8函数设计[1]-在filter中根据Key去重的函数/title.jpg
+cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/java8函数设计[1]-在filter中根据Key去重的函数/title.jpg
 comments: true
 categories: 
     - [我永远爱学习]
