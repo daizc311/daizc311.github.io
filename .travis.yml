@@ -4,7 +4,7 @@ language: node_js
 sudo: required
 # 指定node_js版本
 node_js:
-  - 12
+  - 16
 # 指定缓存模块，可选。缓存可加快编译速度。
 cache:
   directories:
@@ -13,7 +13,7 @@ cache:
 # 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项
 branches:
   only:
-    - hexo
+    - hexo-update
 
 # 在install之前安装依赖
 before_install:
@@ -22,9 +22,9 @@ before_install:
 
 # Start: Build Lifecycle
 install:
-  - yarn add hexo
-  - yarn add hexo-deployer-git
-  - yarn add hexo-wordcount
+#  - yarn add hexo
+#  - yarn add hexo-deployer-git
+#  - yarn add hexo-wordcount
   - yarn install
 
 # 执行清缓存，生成网页操作
