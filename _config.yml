@@ -136,3 +136,9 @@ jsonContent:
     categories: false
     tags: false
 
+sitemap:
+  path: sitemap.xml
+  template: ./sitemap_template.xml`
+  rel: true
+  tags: true
+  categories: true
