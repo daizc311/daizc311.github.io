@@ -29,10 +29,15 @@ search:
 
 cdn: # 这里可以修改站点使用的库的CDN
   mdui:
-    css: https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css
-    js: https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js
+    css: https://note.bequick.run/cache/npm/mdui@0.4.3/dist/css/mdui.min.css
+    js: https://note.bequick.run/cache/npm/mdui@0.4.3/dist/js/mdui.min.js
+  jquery:
+    js: https://note.bequick.run/cache/npm/jquery@3.4.1/dist/jquery.min.js
+  fancybox:
+    css: https://note.bequick.run/cache/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
+    js: https://note.bequick.run/cache/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
   lazysizes:
-    js: https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js、
+    js: https://note.bequick.run/cache/npm/lazysizes@5.1.0/lazysizes.min.js
   disqusjs:
     css: https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.min.css
     js: https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.min.js
@@ -40,7 +45,7 @@ cdn: # 这里可以修改站点使用的库的CDN
     css: https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css
     js: https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js
   valine:
-    js: https://cdn.jsdelivr.net/npm/valine
+    js: https://note.bequick.run/cache/npm/valine
 
 menu:
   回到首页:
