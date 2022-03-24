@@ -28,7 +28,7 @@ jobs:
 #        if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
       - name: Hexo Deploy
-        uses: daizc311/hexo-action@v1.0.4
+        uses: daizc311/hexo-action@master
         with:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
           user_name: daizc311  # (or delete this input setting to use bot account)
