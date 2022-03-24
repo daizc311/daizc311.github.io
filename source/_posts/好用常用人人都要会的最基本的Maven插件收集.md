@@ -3,7 +3,7 @@ title: '好用常用人人都要会的最基本的Maven插件收集'
 date: 2019-03-11 03:05:56
 updated: 2020/2/20 15:41:36
 comments: true
-cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/好用常用人人都要会的最基本的Maven插件收集/title.jpg
+cover: https://oss.note.dreamccc.cn/note/images/posts/好用常用人人都要会的最基本的Maven插件收集/title.jpg?x-oss-process=style/blog_title
 categories: 
     - [我永远爱学习]
 tags: 

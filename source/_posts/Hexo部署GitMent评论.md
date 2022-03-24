@@ -14,7 +14,7 @@ tags:
 之前还没换主题的时候就是这样手动配置的，现在gitment都没人用了git-talk比较方便
 <!--more-->
 
-# GitMent简介 #
+## GitMent简介
   Gitment是一个基于GitHub Issues的评论系统，他使用一个Github Repository的Issues区作为评论的存储区。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。<!-- more -->
 
 ### Initialize Comments 时提示 Error: Validation Failed ### 

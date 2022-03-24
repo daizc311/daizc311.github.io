@@ -1,15 +1,13 @@
 ---
 title: Angular初学排坑日记（一）cnpm安装惨案
 date: 2022-01-03 02:02:31
-cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Angular初学排坑日记（一）cnpm安装惨案/angular-homepage.jpg
+cover: https://oss.note.dreamccc.cn/note/images/posts/Angular初学排坑日记（一）cnpm安装惨案/angular-homepage.jpg?x-oss-process=style/blog_title
 categories:
 - [我永远爱学习]
 tags:
 - 前端
 - Angular
 ---
-
-# Angular初学排坑日记（一）cnpm安装惨案
 
 最近做中间件开发，涉及到不少的项目改造，发现有不少中间件的前端都是拿Angular写的，自己看Angular看不太懂，前端同事都是vue玩家，
 也不太玩得转这玩意儿，但是改不动中间件的前端的确蛮吃亏，再加上之前群里朋友煽风点火，于是有了折腾下Angular的念头。

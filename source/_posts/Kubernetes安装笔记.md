@@ -3,13 +3,12 @@ title: 'Kubernetes安装笔记'
 date: 2022/01/24 02:37:21
 updated: 2022/01/24 02:37:21
 comments: true
-cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Kubernetes安装笔记/Kubernetes-Cluster.webp
+cover: https://oss.note.dreamccc.cn/note/images/posts/Kubernetes安装笔记/Kubernetes-Cluster.webp?x-oss-process=style/blog_title
 categories:
 - [我永远爱学习]
 tags:
 - kubernetes
 ---
-# Kubernetes安装笔记
 
 本篇仅纯笔记，记录安装踩坑和一些细节，本次安装也仅仅只安装了3台机器，组建最小集群。
 

@@ -1,7 +1,7 @@
 ---
 title: MIUI清理自带应用
 date: 2022-02-01 17:44:26
-cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/MIUI清理自带应用/laji-miui.jpg
+cover: https://oss.note.dreamccc.cn/note/images/posts/MIUI清理自带应用/laji-miui.jpg?x-oss-process=style/blog_title
 
 categories:
 - [想到啥写啥]
