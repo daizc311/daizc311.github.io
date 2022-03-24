@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
   push:
     branches: [ hexo ]
-#   pull_request:
-#     branches: [ hexo ]
+  pull_request:
+    branches: [ hexo ]
 
 jobs:
   build:
