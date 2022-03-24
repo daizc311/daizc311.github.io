@@ -3,10 +3,8 @@ title: '[Centos]yum仓库配置及常用操作'
 date: 2019/1/2 20:46:25
 updated: 2020/2/20 15:41:36
 comments: true
-categories: 
-    - [搞点骚操作]
 tags: 
-    - linux
+    - Linux
 ---
 
 yum时不时抽风？仓库获取不到最新资源？先理解yum是怎么工作的吧！

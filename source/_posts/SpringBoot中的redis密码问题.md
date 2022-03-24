@@ -6,9 +6,9 @@ comments: true
 categories: 
     - [我永远爱学习]
 tags: 
-    - spring
-    - java
-    - debug
+    - Spring
+    - Java
+    - Debug
 ---
 
 ## 由于站点迁移导致的数据丢失，该文章已做归档处理

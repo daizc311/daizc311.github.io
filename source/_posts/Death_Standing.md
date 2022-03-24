@@ -5,7 +5,7 @@
 title: "Death_Standing"
 date: 2020/3/12 20:30:53
 categories: 
-    - [想到啥写啥]
+    - [最后的倔强]
 tags: 
     - Games
 cover: https://oss.note.dreamccc.cn/note/images/posts/Death_Standing/v2-e0a965a2365bdadda41dedcb9fe5ec58_r.jpg?x-oss-process=style/blog_title

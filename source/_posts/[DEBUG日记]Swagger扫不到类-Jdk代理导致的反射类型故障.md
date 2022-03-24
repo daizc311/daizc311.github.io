@@ -8,7 +8,9 @@ categories:
 
 tags:
 
-- debug
+- Java
+- Spring
+- Debug
 
 ---
 

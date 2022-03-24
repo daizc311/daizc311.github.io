@@ -6,8 +6,7 @@ comments: true
 categories: 
     - [我永远爱学习]
 tags: 
-    - java
-    - zookeeper
+    - Java
 ---
 
 太长懒得写了 用作注册中心->手动维护节点->节点树操作 最后配合feign完成服务动态调用

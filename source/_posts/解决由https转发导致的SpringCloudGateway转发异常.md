@@ -5,9 +5,9 @@ comments: true
 categories:
     - [我永远爱学习]
 tags:
-    - spring 
-    - java 
-    - debug
+    - Spring 
+    - Java 
+    - Debug
 ---
 
 错误日志如下:

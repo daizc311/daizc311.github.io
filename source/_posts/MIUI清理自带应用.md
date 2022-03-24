@@ -4,9 +4,11 @@ date: 2022-02-01 17:44:26
 cover: https://oss.note.dreamccc.cn/note/images/posts/MIUI清理自带应用/laji-miui.jpg?x-oss-process=style/blog_title
 
 categories:
-- [想到啥写啥]
+- [随便写写]
 tags:
-- blog
+- MIUI
+- Android
+- Shell
 ---
 ## 系统版本
 

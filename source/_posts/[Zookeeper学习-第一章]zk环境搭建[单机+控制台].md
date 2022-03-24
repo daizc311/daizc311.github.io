@@ -6,8 +6,7 @@ comments: true
 categories: 
     - [我永远爱学习]
 tags: 
-    - java
-    - zookeeper
+    - Java
 ---
 
 系统环境为 Centos ，由于项目需要，准备搭建 zookeeper-3.5.5 + 用于方便展示节点的zookeeperAdmin用作公司开发之用

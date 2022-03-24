@@ -7,8 +7,8 @@ cover: https://oss.note.dreamccc.cn/note/images/posts/好用常用人人都要�
 categories: 
     - [我永远爱学习]
 tags: 
-    - java
-    - maven
+    - Java
+    - Maven
 ---
 
 把手上的好几个项目的pom整理了一遍 规范了一下model 整理出了一些插件 方便新手们入门maven

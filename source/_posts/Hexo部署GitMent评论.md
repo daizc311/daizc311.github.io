@@ -3,10 +3,9 @@ title: 'Hexo部署GitMent评论'
 date: 2018/12/23 11:02:53
 updated: 2020/2/20 15:41:36
 comments: true
-categories: 
-    - [搞点骚操作]
 tags: 
-    - blog
+    - Blog
+    - Hexo
 ---
 
 # 由于站点迁移导致的数据丢失，该文章已做归档处理

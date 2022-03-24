@@ -7,8 +7,7 @@ comments: true
 categories: 
     - [我永远爱学习]
 tags: 
-    - lambda
-    - java
+    - Java
 ---
 
 函数接口是如何写出来的？

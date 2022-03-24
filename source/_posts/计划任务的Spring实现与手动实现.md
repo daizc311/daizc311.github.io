@@ -7,8 +7,8 @@ comments: true
 categories: 
     - [我永远爱学习]
 tags: 
-    - java
-    - spring
+    - Java
+    - Spring
 ---
 
 手写计划任务当然比不过简单又好用的SpringScheduled

@@ -7,7 +7,7 @@ cover: https://oss.note.dreamccc.cn/note/images/posts/Kubernetes安装笔记/Kub
 categories:
 - [我永远爱学习]
 tags:
-- kubernetes
+- Kubernetes
 ---
 
 本篇仅纯笔记，记录安装踩坑和一些细节，本次安装也仅仅只安装了3台机器，组建最小集群。
