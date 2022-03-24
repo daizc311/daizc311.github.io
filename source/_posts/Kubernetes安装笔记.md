@@ -3,6 +3,7 @@ title: 'Kubernetes安装笔记'
 date: 2022/01/24 02:37:21
 updated: 2022/01/24 02:37:21
 comments: true
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Kubernetes安装笔记/Kubernetes-Cluster.webp
 categories:
 - [我永远爱学习]
 tags:

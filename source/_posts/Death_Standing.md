@@ -8,7 +8,7 @@ categories:
     - [想到啥写啥]
 tags: 
     - Games
-cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/Death_Standing/v2-e0a965a2365bdadda41dedcb9fe5ec58_r.jpg
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Death_Standing/v2-e0a965a2365bdadda41dedcb9fe5ec58_r.jpg
 ---
 
 

@@ -7,7 +7,7 @@ tags:
     - 单片机
     - IOT
     - C
-cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/[MXCHIP-1]开发板到手/title_s.jpg
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/[MXCHIP-1]开发板到手/title_s.jpg
 ---
 
 这是一个从没玩过单片机开发的菜鸡闲暇时间瞎折腾的故事

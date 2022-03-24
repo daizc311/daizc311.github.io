@@ -7,7 +7,7 @@ tags:
     - 单片机
     - IOT
     - C
-cover: https://dreamccc-note-ia.oss-cn-chengdu.aliyuncs.com/images/posts/[MXCHIP-2]真机调试/title.jpg
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/[MXCHIP-2]真机调试/title.jpg
 ---
 
 离上一篇文章发布已经时隔很久了，整理了一下最近学习的操作做个记录免得忘掉了。
