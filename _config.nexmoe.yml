@@ -8,202 +8,123 @@ favicon:
   type: image/jpeg # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
 
 function: # 功能开关，可选值（true,false）
-  avatarRotateZ: true # 头像旋转
-  clickHeart: true # 鼠标点击小心心 ♥
+  avatarRotateZ: true # [已失效] 头像旋转
+  clickHeart: true # [已失效] 鼠标点击小心心 ♥
   globalToc: true # 开启该功能会自动开启文章 TOC（文章目录） 功能
-  darkmode: false # 是否启用暗色主题，可选值（true,false）
+  wordCount: false # 是否开启文章字数统计 (true, false)
 
 imageCDN: # 图片 CDN 功能
   enable: true # 开启该功能
   origin: /source/images/ # 图片原始目录
   to: https://oss.note.dreamccc.cn/note/images/ # 图片 CDN 域名
 
-# 附加图标库 用于自定义字体 www.iconfont.cn 登录->创建项目->添加图标->获取链接
+# 自定义样式，启用后可在站点的source文件夹下新建custom.css自定义站点样式
+customStyles:
+  - custom.css
+
+# 附加图标库 使用说明：https://docs.nexmoe.com/config/icon
 iconlib: //at.alicdn.com/t/font_1592904_u7sy98fs39g.css
-
-# search: https://cn.bing.com/search?q=site:nexmoe.com # https://www.google.com/search?q={你的博客链接}
-search:
-  type: local # 可选engine（用搜索引擎搜索）、swiftype、或local（本地搜索）
-#  url: https://cn.bing.com/search?q=site:note.bequick.run # 搜索引擎地址，在type为swiftype时无效 e.g:https://www.google.com/search?q={你的博客链接}
-#  id: <swiftype-id> # swiftype的id，见启用教程。在type为engine时无效
-
-cdn: # 这里可以修改站点使用的库的CDN
-  mdui:
-    css: https://note.bequick.run/cache/npm/mdui@0.4.3/dist/css/mdui.min.css
-    js: https://note.bequick.run/cache/npm/mdui@0.4.3/dist/js/mdui.min.js
-  jquery:
-    js: https://note.bequick.run/cache/npm/jquery@3.4.1/dist/jquery.min.js
-  fancybox:
-    css: https://note.bequick.run/cache/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
-    js: https://note.bequick.run/cache/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
-  lazysizes:
-    js: https://note.bequick.run/cache/npm/lazysizes@5.1.0/lazysizes.min.js
-  disqusjs:
-    css: https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.min.css
-    js: https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.min.js
-  gitalk:
-    css: https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css
-    js: https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js
-  valine:
-    js: https://note.bequick.run/cache/npm/valine
 
 menu:
   回到首页:
     - /
     - icon-home
-#  文章归档:  # 使用说明：https://docs.nexmoe.com/article/archive
+  文章归档:
     - /archive.html
 #    - icon-container
-#  关于博客:
+#  我的朋友:
+#    - /PY.html
+#  给我赞助:
+#    - /donate.html
+#    - icon-coffee
+#  关于博主:
 #    - /about.html
 #    - icon-info-circle
-#  我的朋友:
-#    - /PY.html # 使用说明：https://docs.nexmoe.com/article/py
 
 widgets:
-- search
-- social
-- category
-- tagcloud
-#- archive #settings: widgetAchive
-# - recent_posts
-# - link #settings: widgetLink
+  - name: search
+    enable: true
+    options:
+      search:
+        type: local # 可选engine（用搜索引擎搜索）、swiftype、或local（本地搜索）
+  #        url: https://cn.bing.com/search?q=site:nexmoe.com # 搜索引擎地址，在type为swiftype时无效 e.g:https://www.google.com/search?q={你的博客链接}
+  #        id: <swiftype-id> # swiftype的id，见启用教程。在type为engine时无效
+  - name: social
+    enable: true
+    options:
+      social:
+        Telegram:
+          - https://t.me/DreamCcc
+          - icon-telegram
+          - rgb(39,167,229)
+          - rgba(39,167,229,.1)
+        V2EX:
+          - https://www.v2ex.com/member/DreamSpace
+          - iconCN_VEX_S_NEXMOE
+          - rgb(25, 23, 23)
+          - rgba(25, 23, 23, .15)
+        GitHub:
+          - https://github.com/daizc311/
+          - icon-github
+          - rgb(25, 23, 23)
+          - rgba(25, 23, 23, .15)
+        哔哩哔哩:
+          - https://space.bilibili.com/1424744
+          - icon-bilibili
+          - rgb(231, 106, 141)
+          - rgba(231, 106, 141, .15)
+        Steam:
+          - https://steamcommunity.com/id/daizc311
+          - icon-steam
+          - rgb(14, 71, 161)
+          - rgba(14, 71, 161, .1)
+  - name: category
+    enable: true
+  - name: tagcloud
+    enable: true
+    options:
+      maxTagcloud: 17  # 标签云组件显示的标签数量，0 表示不限制
+  - name: hitokoto # 一言 widget
+    enable: false
+    options:
+      widgetHitokoto: # 一言组件
+        loading_placeholder: '🚀 获取中...' # 正在一言时的占位符
+        loading_error_placeholder: '🐞 获取失败...' # 加载一言失败时的占位符
+        category: # 一言句子类型（可选），不配置的话随机获取，详见 https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
+  - name: archive #settings: widgetAchive
+    enable: false
+    options:
+      widgetAchive: #文章归档组件
+        archive_type: 'year' #按月展示还是按年展示
+        show_count: true  #是否展示数量
+  - name: recent_posts
+    enable: true
+  - name: link #settings: widgetLink
+    enable: false
+    options:
+      widgetLink: #链接组件
+        - title: 小舒同学
+          img: https://xsm.nexmoe.com/images/Infinite/Snipaste_2022-05-18_20-46-50.png
+          link: https://xiaoshu.app/
+        - title: 折影轻梦
+          img: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png
+          link: https://nexmoe.com/
 
-maxTagcloud: 0  # 标签云组件显示的标签数量，0 表示不限制
+copyTip: "著作权归作者所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
 
-social:
-#  QQ群:
-#    - https://jq.qq.com/?_wv=1027&k=5CfKHun
-#    - icon-QQ
-#    - rgb(249, 174, 8)
-#    - rgba(249, 174, 8, .1)
-  Telegram:
-    - https://t.me/DreamCcc
-    - icon-telegram
-    - rgb(39,167,229)
-    - rgba(39,167,229,.1)
-  V2EX:
-    - https://www.v2ex.com/member/DreamSpace
-    - iconCN_VEX_S_NEXMOE
-    - rgb(25, 23, 23)
-    - rgba(25, 23, 23, .15)
-  GitHub:
-    - https://github.com/daizc311/
-    - icon-github
-    - rgb(25, 23, 23)
-    - rgba(25, 23, 23, .15)
-  哔哩哔哩:
-    - https://space.bilibili.com/1424744
-    - icon-bilibili
-    - rgb(231, 106, 141)
-    - rgba(231, 106, 141, .15)
-  Steam:
-    - https://steamcommunity.com/id/daizc311
-    - icon-steam
-    - rgb(14, 71, 161)
-    - rgba(14, 71, 161, .1)
+slotHead: ''
 
-# 自定义样式，启用后可在站点的source文件夹下新建custom.css自定义站点样式
-customstyle: false
-color: # 配色方案，从first到seventh为优先级为1-7的颜色，默认为彩虹配色
-  first: # 同时作为主题色
-    r: 255
-    g: 78
-    b: 106
-  second:
-    r: 255
-    g: 118
-    b: 30
-  third:
-    r: 255
-    g: 185
-    b: 0
-  fourth:
-    r: 51
-    g: 213
-    b: 122
-  fifth:
-    r: 0
-    g: 219
-    b: 255
-  sixth:
-    r: 26
-    g: 152
-    b: 255
-  seventh:
-    r: 144
-    g: 144
-    b: 255
+slotFooter: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>'
 
-# 向搜索引擎验证你对站点的所有权，用于向搜索引擎提交 sitemap 和管理站点被搜索引擎收录的情况。
-site_verification:
-  google:
-  baidu:
-
-# 统计系统，目前支持 Google analytics.js 统计、Google Tag Manager 统计、CNZZ 统计、腾讯统计、51.La统计、百度统计
-analytics:
-  google_site_id: #<ID>
-  gtags_site_id:  G-7CW66F0MFV
-  cnzz_site_id: #<ID>
-  tencent_site_id: #<ID>
-  la_site_id: #<ID>
-  baidu_site_id: #<ID>
-  gtm_container_id: #<ID>
-
-# 评论框，目前支持 gitalk,gitment,valine,disqus,disqusjs,changyan,livere,DiscussBot 使用 false 可以关闭
-comment: false
-gitalk:
-  admin: daizc311 # 拥有对该repo进行操作的 GitHub username
-  owner: daizc311 # 持有该 repo 的 GitHub username
-  repo: daizc311.github.io # 存放评论的 issue 所在的 repo
-  clientID: <API_ID> # GitHub Client ID
-  clientSecret: <API_Key> # GitHub Client Secret
-gitment:
-  owner: daizc311 # 持有该 repo 的 GitHub username
-  repo: daizc311.github.io # 存放评论的 issue 所在的 repo
-  clientID: <API_ID> # GitHub Client ID
-  clientSecret: <API_Key> # GitHub Client Secret
-valine:
-  appId: <API_ID> # leancloud application app id
-  appKey: <API_Key> # leancloud application app key
-disqus:
-  shortname: <shortname> # 你的 Disqus shortname
-disqusjs:
-  shortname: <shortname> # 你的 Disqus shortname
-  sitename: <sitename> # 你站点的名称，将会显示在「评论基础模式」的 header 中；该配置应该和 Disqus Admin - Settings - General - Website Name 一致
-  api: https://disqus.skk.moe/disqus/ # DisqusJS 请求的 API Endpoint，通常情况下你应该配置一个 Disqus API 的反代并填入反代的地址。你也可以直接使用 DISQUS 官方 API 的 Endpoint https://disqus.com/api/，或是使用SukkaW搭建的 Disqus API 反代 Endpoint https://disqus.skk.moe/disqus/。
-  apikey: <api_key> # DisqusJS 向 API 发起请求时使用的 API Key，你应该在配置 Disqus Application 时获取了 API Key;DisqusJS 支持填入一个 包含多个 API Key 的 Array，在每次请求时会随机使用其中一个；如果你只需要填入一个 API Key，则可以填入 String 或 Array。
-  admin: <admin> # 你的站点的 Disqus Moderator 的用户名（也就是你的用户名）。你可以在 Disqus - Settings - Account - Username 获取你的 Username
-  adminLabel: <adminLabel> # 你想显示在 Disqus Moderator Badge 中的文字。该配置应和 Disqus Admin - Settings - Community - Moderator Badge Text 相同
-changyan:
-  appid: <APP_ID> # 畅言的 APPID
-  conf: <CONF> # 畅言的 CONF
-  thread_key_type: path # 可选 id 或 path
-livere:
-  data_uid: <data_uid> # 你的来必力 UID，可以在来必力后台获取
-DiscussBot:
-  id: <id> # 站点id
-  comments: 5 # 可能是限制每位用户单页面评论最多条数？
-  color: # 评论框主色调
-  dislike: 0 # 显示差评按钮
-  icons: 0 # 图标主题
-  diff: 0 # 每位用户name不同颜色
-
-copyright: '<strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可'
-copyTip: false # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
-
-# achive widget behavior
-#widgetAchive: #文章归档组件
-#  archive_type: 'year' #按月展示还是按年展示
-#  show_count: true  #是否展示数量
-
-widgetLink: #链接组件
-  - title: <title>
-    img : <img_path>
-    link : <url>
-  - title: <title>
-    img : <img_path>
-    link : <url>
 
 # 自定义侧边栏尾部内容
-sidebar: '<br/><br/><img src="https://note.bequick.run/images/github_io.svg"/><br/><br/><svg viewBox="0 0 105 36" role="img" width="105px" height="41px" aria-hidden="true"><path fill="#222222" d="M11.679 26.754h2.353v6.423h4.111v2.06H11.68v-8.483zM20.58 31.02v-.024c0-2.436 1.965-4.412 4.584-4.412 2.62 0 4.56 1.951 4.56 4.387v.025c0 2.436-1.965 4.41-4.584 4.41-2.618 0-4.56-1.95-4.56-4.386zm6.743 0v-.024c0-1.223-.885-2.291-2.183-2.291-1.285 0-2.147 1.042-2.147 2.266v.025c0 1.222.886 2.29 2.171 2.29 1.298 0 2.159-1.042 2.159-2.266zM32.604 31.517v-4.763h2.389v4.714c0 1.223.618 1.806 1.564 1.806.946 0 1.564-.557 1.564-1.745v-4.775h2.39v4.7c0 2.74-1.564 3.939-3.978 3.939s-3.93-1.223-3.93-3.878M44.112 26.755h3.274c3.032 0 4.79 1.744 4.79 4.192v.025c0 2.447-1.782 4.265-4.838 4.265h-3.226v-8.483zm3.31 6.397c1.408 0 2.34-.775 2.34-2.146v-.024c0-1.357-.932-2.145-2.34-2.145h-.958v4.316l.959-.001zM55.596 26.754h6.791v2.06h-4.438v1.442h4.014v1.951h-4.014v3.03h-2.353v-8.483zM65.661 26.754h2.353v6.423h4.111v2.06h-6.464v-8.483zM78.273 26.693h2.268l3.614 8.544h-2.522l-.62-1.515H77.74l-.606 1.515h-2.474l3.614-8.544zm2.062 5.2l-.946-2.413-.959 2.412h1.905zM87.186 26.754H91.2c1.298 0 2.195.34 2.765.921.498.485.752 1.14.752 1.976v.024c0 1.296-.693 2.156-1.746 2.605l2.025 2.957H92.28l-1.71-2.57h-1.03v2.57h-2.353v-8.483zm3.905 4.072c.8 0 1.262-.388 1.262-1.006v-.024c0-.667-.486-1.006-1.275-1.006h-1.54v2.038l1.553-.002zM98.112 26.754h6.827v2h-4.498v1.284h4.075v1.854h-4.075v1.346H105v1.999h-6.888v-8.483zM6.528 32.014c-.33.744-1.023 1.272-1.944 1.272-1.286 0-2.171-1.067-2.171-2.29v-.025c0-1.223.86-2.266 2.146-2.266.97 0 1.708.595 2.02 1.406h2.48c-.398-2.02-2.173-3.526-4.475-3.526-2.62 0-4.584 1.977-4.584 4.41v.024c0 2.436 1.94 4.388 4.56 4.388 2.24 0 3.991-1.45 4.453-3.393H6.528z"></path><path d="M89.012 22.355l.257-.887c.306-1.056.192-2.031-.321-2.748-.472-.66-1.259-1.049-2.214-1.094l-18.096-.229a.358.358 0 01-.285-.151.367.367 0 01-.04-.326.481.481 0 01.42-.321l18.263-.232c2.166-.099 4.512-1.856 5.333-3.998L93.37 9.65a.659.659 0 00.028-.36C92.216 3.975 87.468 0 81.792 0c-5.23 0-9.67 3.373-11.263 8.061a5.34 5.34 0 00-3.756-1.039 5.356 5.356 0 00-4.637 6.644c-4.099.12-7.386 3.475-7.386 7.6 0 .368.028.735.082 1.1a.354.354 0 00.348.305l33.408.004h.009a.44.44 0 00.415-.32z" fill="#F6821F"></path><path d="M95.04 9.847c-.167 0-.334.004-.5.013a.28.28 0 00-.079.017.285.285 0 00-.182.192l-.712 2.456c-.305 1.055-.192 2.03.322 2.746.471.661 1.258 1.05 2.213 1.094l3.858.232a.351.351 0 01.275.149.365.365 0 01.041.328.484.484 0 01-.42.32l-4.008.232c-2.176.1-4.521 1.856-5.342 3.998l-.29.756a.212.212 0 00.095.262c.03.017.062.027.096.028h13.802a.366.366 0 00.356-.265 9.846 9.846 0 00.367-2.677c-.001-5.457-4.429-9.88-9.891-9.88z" fill="#FBAD41"></path></svg>'
+slotSidebar: '<br/><br/><img src="https://note.bequick.run/images/github_io.svg"/><br/><br/>
+              <svg viewBox="0 0 105 36" role="img" width="105px" height="41px" aria-hidden="true"><path fill="#222222" d="M11.679 26.754h2.353v6.423h4.111v2.06H11.68v-8.483zM20.58 31.02v-.024c0-2.436 1.965-4.412 4.584-4.412 2.62 0 4.56 1.951 4.56 4.387v.025c0 2.436-1.965 4.41-4.584 4.41-2.618 0-4.56-1.95-4.56-4.386zm6.743 0v-.024c0-1.223-.885-2.291-2.183-2.291-1.285 0-2.147 1.042-2.147 2.266v.025c0 1.222.886 2.29 2.171 2.29 1.298 0 2.159-1.042 2.159-2.266zM32.604 31.517v-4.763h2.389v4.714c0 1.223.618 1.806 1.564 1.806.946 0 1.564-.557 1.564-1.745v-4.775h2.39v4.7c0 2.74-1.564 3.939-3.978 3.939s-3.93-1.223-3.93-3.878M44.112 26.755h3.274c3.032 0 4.79 1.744 4.79 4.192v.025c0 2.447-1.782 4.265-4.838 4.265h-3.226v-8.483zm3.31 6.397c1.408 0 2.34-.775 2.34-2.146v-.024c0-1.357-.932-2.145-2.34-2.145h-.958v4.316l.959-.001zM55.596 26.754h6.791v2.06h-4.438v1.442h4.014v1.951h-4.014v3.03h-2.353v-8.483zM65.661 26.754h2.353v6.423h4.111v2.06h-6.464v-8.483zM78.273 26.693h2.268l3.614 8.544h-2.522l-.62-1.515H77.74l-.606 1.515h-2.474l3.614-8.544zm2.062 5.2l-.946-2.413-.959 2.412h1.905zM87.186 26.754H91.2c1.298 0 2.195.34 2.765.921.498.485.752 1.14.752 1.976v.024c0 1.296-.693 2.156-1.746 2.605l2.025 2.957H92.28l-1.71-2.57h-1.03v2.57h-2.353v-8.483zm3.905 4.072c.8 0 1.262-.388 1.262-1.006v-.024c0-.667-.486-1.006-1.275-1.006h-1.54v2.038l1.553-.002zM98.112 26.754h6.827v2h-4.498v1.284h4.075v1.854h-4.075v1.346H105v1.999h-6.888v-8.483zM6.528 32.014c-.33.744-1.023 1.272-1.944 1.272-1.286 0-2.171-1.067-2.171-2.29v-.025c0-1.223.86-2.266 2.146-2.266.97 0 1.708.595 2.02 1.406h2.48c-.398-2.02-2.173-3.526-4.475-3.526-2.62 0-4.584 1.977-4.584 4.41v.024c0 2.436 1.94 4.388 4.56 4.388 2.24 0 3.991-1.45 4.453-3.393H6.528z"></path><path d="M89.012 22.355l.257-.887c.306-1.056.192-2.031-.321-2.748-.472-.66-1.259-1.049-2.214-1.094l-18.096-.229a.358.358 0 01-.285-.151.367.367 0 01-.04-.326.481.481 0 01.42-.321l18.263-.232c2.166-.099 4.512-1.856 5.333-3.998L93.37 9.65a.659.659 0 00.028-.36C92.216 3.975 87.468 0 81.792 0c-5.23 0-9.67 3.373-11.263 8.061a5.34 5.34 0 00-3.756-1.039 5.356 5.356 0 00-4.637 6.644c-4.099.12-7.386 3.475-7.386 7.6 0 .368.028.735.082 1.1a.354.354 0 00.348.305l33.408.004h.009a.44.44 0 00.415-.32z" fill="#F6821F"></path><path d="M95.04 9.847c-.167 0-.334.004-.5.013a.28.28 0 00-.079.017.285.285 0 00-.182.192l-.712 2.456c-.305 1.055-.192 2.03.322 2.746.471.661 1.258 1.05 2.213 1.094l3.858.232a.351.351 0 01.275.149.365.365 0 01.041.328.484.484 0 01-.42.32l-4.008.232c-2.176.1-4.521 1.856-5.342 3.998l-.29.756a.212.212 0 00.095.262c.03.017.062.027.096.028h13.802a.366.366 0 00.356-.265 9.846 9.846 0 00.367-2.677c-.001-5.457-4.429-9.88-9.891-9.88z" fill="#FBAD41"></path></svg>'
+
+# 评论框插槽
+slotComment: '请在你的配置文件中设置评论框插槽'
+
+slotCopyright: '<strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可'
+
+slotArticleEnd: '<p><img data-fancybox="gallery" src="https://i.dawnlab.me/53a8c7cf3ad77a0f0a456ce2c6afe88a.png" 
+alt="53a8c7cf3ad77a0f0a456ce2c6afe88a.png" data-caption="53a8c7cf3ad77a0f0a456ce2c6afe88a.png" loading="lazy"></p>'
