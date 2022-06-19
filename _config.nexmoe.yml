@@ -114,7 +114,7 @@ copyTip: "著作权归作者所有。\n商业转载请联系作者获得授权�
 
 slotHead: ''
 
-slotFooter: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>'
+slotFooter: '<script src="/extend/rainbowClick.js"></script>'
 
 
 # 自定义侧边栏尾部内容
