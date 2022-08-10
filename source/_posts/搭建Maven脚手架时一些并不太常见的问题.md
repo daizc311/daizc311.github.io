@@ -3,10 +3,11 @@ title: '搭建Maven脚手架时一些并不太常见的问题'
 date: 2022/08/10 15:55:00
 updated: 2022/08/10 15:55:00
 comments: true
+cover: https://oss.note.dreamccc.cn/note/images/posts/搭建Maven脚手架时一些并不太常见的问题/title.jpg?x-oss-process=style/blog_title
 categories:
 - [我永远爱学习]
-
 tags:
+- Java
 - Maven
 ---
 
