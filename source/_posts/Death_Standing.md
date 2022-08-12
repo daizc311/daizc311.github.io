@@ -1,7 +1,4 @@
 ---
-
-
-
 title: "Death_Standing"
 date: 2020/3/12 20:30:53
 categories: 
