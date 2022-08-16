@@ -49,7 +49,7 @@ public class CustomOAS3TypeNameResolver extends TypeNameResolver {
 }
 ```
 
-### 替换掉原本的`TypeNameResolver`
+## 替换掉原本的`TypeNameResolver`
 
 1. 原本的`TypeNameResolver`是个私有静态单例，上面还打了`final`标记，看起来是没有替换原本变量的可能了。
 2. 往上一层走到`ModelResolver`类中，这个类提供了两个构造，其中一个支持传入`TypeNameResolver`参数，可以从这里入手覆盖。
