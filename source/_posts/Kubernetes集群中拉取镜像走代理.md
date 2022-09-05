@@ -7,7 +7,9 @@ categories:
 - [我永远爱学习]
 tags:
 - Kubernetes
+  
 ---
+
 **三种方式**
 - systemd中配置docker进程环境变量
 - docker守护线程用户代理配置
@@ -18,10 +20,12 @@ tags:
 ## systemd中配置docker进程环境变量
 
 ### 方式一
+
 - 一般来说直接改`/usr/lib/systemd/system/docker.service`就行，在其中的`[Service]`块中加上环境变量
     - `Environment="HTTP_PROXY=http://192.167.20.38:1080"`
     - `Environment="HTTPS_PROXY=http://192.167.20.38:1080"`
 - 最后再重启docker就行
+  
 ```shell
 [root@vmw253 ~]# systemctl daemon-reload
 [root@vmw253 ~]# systemctl restart docker
@@ -37,6 +41,7 @@ Environment="HTTP_PROXY=http://192.167.20.38:1080"
 Environment="HTTPS_PROXY=http://192.167.20.38:1080"
 Environment="NO_PROXY=localhost,127.0.0.1,*.myhuaweicloud.com,192.167.0.0/16,192.168.0.0/16"
 ```
+
 - 然后与方式一一样重启docker,两种方式没啥区别都是一样的
 
 

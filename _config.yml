@@ -93,8 +93,13 @@ pagination_dir: page
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
 include:
-exclude:
+exclude: 
 ignore:
+  - "cache/**/*"
+  - "**/*.yaml"
+  - "**/*.yml"
+  - "**/*.json"
+  - "**/*.xml"
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
