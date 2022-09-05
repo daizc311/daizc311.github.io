@@ -1,0 +1,88 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: clone-read
+  namespace: tekton-pipelines
+spec:
+  description: | 
+    This pipeline clones a git repo, then echoes the README file to the stdout.
+  params:
+  - name: repo-ssh-url
+    type: string
+    description: Git仓库地址(ssh协议)
+  - name: revision
+    type: string
+    default: master
+    description: 分支名或者修订名
+  workspaces:
+  - name: shared-data
+    description: | 
+      This workspace contains the cloned repo files, so they can be read by the
+      next task.
+  tasks:
+  - name: fetch-source
+    taskRef:
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: shared-data
+    params:
+    - name: ssh-url
+      value: $(params.repo-ssh-url)
+    - name: revision
+      value: ${params.revision}
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: clone-read-run-12
+  namespace: tekton-pipelines
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: clone-read
+  workspaces:
+  - name: shared-data
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  params:
+  - name: repo-url
+    value: ssh://git@git.kailinesb.com:2222/front/ng-kboss.git
+---
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: debug-task-26
+  namespace: tekton-pipelines
+spec:
+  podTemplate:
+    securityContext:
+      fsGroup: 65532
+  debug:
+    breakpoint: ["onFailure"]  
+  serviceAccountName: build-bot
+  taskRef:
+    kind: Task
+    name: git-clone
+  params:
+  # git-clone:0.8 的bug
+  # https://github.com/tektoncd/catalog/issues/1052
+  - name: userHome
+    value: "/home/nonroot"
+  - name: url
+    value: ssh://git@git.kailinesb.com:2222/front/ng-kboss.git
+  workspaces:
+  - name: output
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
