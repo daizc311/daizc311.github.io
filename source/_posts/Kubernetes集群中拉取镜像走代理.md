@@ -2,7 +2,7 @@
 
 title: Kubernetes集群中拉取镜像走代理
 date: 2022-09-05 09:00:00
-cover: https://oss.note.dreamccc.cn/note/images/posts/Kubernetes安装笔记/Kubernetes-Cluster.webp?x-oss-process=style/blog_title
+cover: https://oss.note.dreamccc.cn/note/images/posts/Kubernetes集群中拉取镜像走代理/title.png?x-oss-process=style/blog_title
 categories:
 - [我永远爱学习]
 tags:
