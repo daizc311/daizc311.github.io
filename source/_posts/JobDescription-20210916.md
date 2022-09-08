@@ -2,11 +2,9 @@
 
 title: JobDescription-20210916
 date: 2021-09-16 23:27:38
-categories:
-- [给老板买车]
 
 ---
-写了两个JD，随手记录一下。
+
 <!--more-->
 
 ## JobDescription-A
