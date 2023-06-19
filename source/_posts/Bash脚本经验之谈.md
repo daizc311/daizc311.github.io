@@ -29,7 +29,7 @@ tags:
     ```
     - 注: 写快了很容易犯低超低级错误
 
-2. 使用`$`符号取值时，单引号中的值不会计算:
+2. 使用`$`符号取值时,单引号中的值不会计算:
     ```bash
     root@7f1ca1fb0b2e:/# A=666
     root@7f1ca1fb0b2e:/# echo $A
@@ -42,7 +42,7 @@ tags:
     - 注: 超长字符串时注意需要分辨
   
 
-3. 多行语句时，切记检查`转义符\`后有无空格
+3. 多行语句时,切记检查`转义符\`后有无空格
     ```bash
     root@7f1ca1fb0b2e:/# echo \
     > $A
@@ -67,18 +67,27 @@ tags:
     asd\
     dsa
     ```
-    - 注: 眼睛都看直了没看出来问题，最后发现是个单引号
+    - 注: 眼睛都看直了没看出来问题,最后发现是个单引号
+  
+5. 使用if块时,注意前后留空格
+    ```bash
+    root@7f1ca1fb0b2e:/# if [[-z "$UNIT_TEST" ]] ;then echo "true";else echo "false";fi;
+    bash: [[-z: command not found
+    false
+    root@7f1ca1fb0b2e:/# if [[ -z "$UNIT_TEST" ]] ;then echo "true";else echo "false";fi;
+    true    
+    ```
 
-5. jq取值时，直接取出的值是jsonFormat的，需要加`-r`参数取原始值
+6. jq取值时,直接取出的值是jsonFormat的,需要加`-r`参数取原始值
     ```bash
     root@7f1ca1fb0b2e:/# echo '{"key":"value"}'|jq .key
     "value"
     root@7f1ca1fb0b2e:/# echo '{"key":"value"}'|jq -r .key
     value
     ```
-    - 注: 用之前先看看`--help`吧，求你了
+    - 注: 用之前先看看`--help`吧,求你了
 
-6. 使用jq拼接json最好的办法是用模板字符串(参数能够确定时)
+7. 使用jq拼接json最好的办法是用模板字符串(参数能够确定时)
     ```bash
     root@7f1ca1fb0b2e:/# PARAM=$( jq -n  \
     --arg beam_projectKey "$beam_projectKey"\
@@ -90,7 +99,7 @@ tags:
      '{projectKey:$beam_projectKey,version: $beam_version,branch: $beam_branch,description: $beam_description,commitHash: $beam_commitHash,imageTag: $beam_imageTag,createUserId: "USR-000000",createUserName: "GitLab-CI"}'\
     )
     ```
-   - 注: 千万别想着直接用jq动态插入/替换值，真的很累
+   - 注: 千万别想着直接用jq动态插入/替换值,真的很累
 
 ### 吸取的一些经验
 
@@ -109,3 +118,19 @@ tags:
     - 使用`&&`进行指令连接,最后使用`||`兜底,相当于做了个`try-catch`.使得这行指令的返回值始终为'0'
 2. 写流水线时不要头铁直接启动流水线进行调试,使用shell反弹将流水线中的bash反弹到本机进行调试,最后一次性将命令粘进脚本中,这样更省时间.
 3. 能写python不写bash,如果流水线由自己控制,那尽量保证镜像中带一个python环境,不要在乎那点大小,能快速出活才是最关键的.
+4. 如果bash脚本需要定义在yaml文件中,遇到长指令的时候最好使用`|`文本块放置
+    ```yaml
+    aaa:
+        bbb:
+        - echo start
+        - |
+          echo '推送到Beam[本地]' && \
+          RESULT=$(curl -s -XPOST "http://192.167.20.38:8888/artifact/save" \
+            -H "Accept: application/json" \
+            -H "Content-Type: application/json" \
+            -H "Auth: ******" \
+            --data-raw "$PARAM"  --compressed) && \
+          echo $RESULT|jq . || \
+          echo '[本地]Beam服务未启动'
+        - echo end
+    ```
