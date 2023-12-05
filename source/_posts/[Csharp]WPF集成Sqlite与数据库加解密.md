@@ -17,6 +17,10 @@ cover: https://oss.note.dreamccc.cn/note/images/posts/[Csharp]WPF集成Sqlite与
 
 ## 一句话总结
 
+**关于依赖安装**  
+抽象层选用`Entity Framework Core`，只能安装`3.x.x`版本的。
+因为`.NETFramework`是传统框架，只支持到3版本，不然就只能装大版本为6的`Entity Framework(EF6)`，但是由于EF6已经不积极维护了，综合考虑还是更建议装`EFC3`。
+
 **关于数据库加密**  
 SQLite原版没有实现数据库加密，要加密就只能选用其他的SqLite发行版，他们的加密方式各异，用谁创建的数据库就得用谁读写。
 推荐[SQLiteStudio](https://sqlitestudio.pl/)工具，可以选择很多加解密方式。
@@ -48,5 +52,12 @@ var connectString =  sqliteConnectionStringBuilder.ToString();
  - [(4#)Incompatible SQLCipher 4 database](https://github.com/utelle/SQLite3MultipleCiphers/issues/47)
  - [(5#)SQLiteStudio](https://sqlitestudio.pl/)
 
+
 ## WPF应用集成数据库
- 通过阅读文档(1#)，大概了解了下DotNet的ORM生态,基本上就是用巨硬自家的解决方案`Entity Framework`，然后我们打开
+通过阅读文档(1#)，大概了解了下DotNet的ORM生态,基本上就是用巨硬自家的解决方案`Entity Framework`。
+然后我打开Nuget，开始安装依赖，很快就遇到了第一个问题**没法安装**
+
+![第一个问题](/source/images/posts/[Csharp]WPF集成Sqlite与数据库加解密/EFC_Nuget.png)
+
+为什么？因为这个包是`Entity Framework Core`，是给`DotNet Core`使用的对象映射框架。
+而我们的基础框架是`.NETFramework 4.8.1`，只能用传统的`Entity Framework`，可恶的巨硬。
