@@ -1,11 +1,11 @@
 ---
 title: '解决Springdoc-OAS3中Schema重复的问题'
 date: 2022/08/16 09:52:05
-cover:  https://oss.note.dreamccc.cn/note/images/posts/解决Springdoc-OAS3中Schema重复的问题/swagger_logo.svg
+cover:  https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/解决Springdoc-OAS3中Schema重复的问题/swagger_logo.svg
 coverHeight: 270
 coverWidth: 938 
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 tags:
 - Java
 ---
@@ -81,4 +81,4 @@ public class BeamApplication {
 ```
 
 重启项目后，打开openapi文档。相同SimpleName的Schema已经区分来了。
-![完成截图](https://oss.note.dreamccc.cn/note/images/posts/解决Springdoc-OAS3中Schema重复的问题/截图_选择区域_20220816104309.png)
+![完成截图](https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/解决Springdoc-OAS3中Schema重复的问题/截图_选择区域_20220816104309.png)

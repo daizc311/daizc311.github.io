@@ -1,9 +1,9 @@
 ---
 title: 修复Ubuntu下ADB设备无权限的问题
 date: 2022-09-05 09:00:00
-cover: https://oss.note.dreamccc.cn/note/images/posts/修复Ubuntu下ADB设备无权限的问题/title.png?x-oss-process=style/blog_title
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/修复Ubuntu下ADB设备无权限的问题/title.png?x-oss-process=style/blog_title
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 tags:
 - Android
 - Linux

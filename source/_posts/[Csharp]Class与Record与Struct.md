@@ -3,12 +3,12 @@ title: '[Csharp]Class与RecordStruct'
 date: 2023-12-14 11:20:22
 categories:
 
-  - [ 我永远爱学习 ]
+  - 我永远爱学习
 tags:
 
   - 'CSharp'
   - '.NET'
-cover:  https://oss.note.dreamccc.cn/note/images/posts/[Csharp]Class与RecordStruct/Class_Struct_Record.png
+cover:  https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/[Csharp]Class与RecordStruct/Class_Struct_Record.png
 ---
 
 <!--more-->
@@ -85,7 +85,7 @@ Console.WriteLine(structB);
 Console.WriteLine(recordB);
 ```
 
-![均可以正常序列化](https://oss.note.dreamccc.cn/note/images/posts/[Csharp]Class与RecordStruct/Class_Struct_Record.png)
+![均可以正常序列化](https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/[Csharp]Class与RecordStruct/Class_Struct_Record.png)
 
 ### struct是值类型，是不可变的
 

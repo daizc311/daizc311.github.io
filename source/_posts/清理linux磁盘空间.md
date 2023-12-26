@@ -1,9 +1,9 @@
 ---
 title: 清理linux磁盘空间
 date: 2022-01-10 17:22:24
-cover: https://oss.note.dreamccc.cn/note/images/posts/清理linux磁盘空间/title.png?x-oss-process=style/blog_title
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/清理linux磁盘空间/title.png?x-oss-process=style/blog_title
 categories:
-- [就是一些笔记]
+- 就是一些笔记
 tags:
 - Linux
 ---

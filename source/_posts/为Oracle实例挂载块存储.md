@@ -1,9 +1,9 @@
 ---
 title: '为Oracle实例挂载块存储'
 date: 2022/08/12 16:43:10
-cover: https://oss.note.dreamccc.cn/note/images/posts/为Oracle实例挂载块存储/title.png?x-oss-process=style/blog_title
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/为Oracle实例挂载块存储/title.png?x-oss-process=style/blog_title
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 
 tags:
 - Cloud
@@ -27,7 +27,7 @@ tags:
 ## 附加到实例
 
 买好了块存储，点进详情就可以附加到实例。这里需要注意下，如果多个实例想挂载同一个块存储，那需要选择`读/写 - 可共享选项`。
-![附加到实例](cover: https://oss.note.dreamccc.cn/note/images/posts/为Oracle实例挂载块存储/attach2instance.png)
+![附加到实例](cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/为Oracle实例挂载块存储/attach2instance.png)
 
 ## 参考资料
 - [xfs-vs-ext4](https://www.partitionwizard.com/partitionmanager/xfs-vs-ext4.html)

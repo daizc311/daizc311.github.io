@@ -1,9 +1,9 @@
 ---
 title: PostgreSql单表存储多关联关系
 date: 2023-02-16 09:56:00
-cover: https://oss.note.dreamccc.cn/note/images/posts/PostgreSql单表存储多关联关系/title.png?x-oss-process=style/blog_title
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/PostgreSql单表存储多关联关系/title.png?x-oss-process=style/blog_title
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 tags:
 - Database
 ---

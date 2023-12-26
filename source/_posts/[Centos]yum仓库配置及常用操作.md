@@ -6,7 +6,7 @@ comments: true
 tags: 
     - Linux
 categories:
-- [就是一些笔记]
+- 就是一些笔记
 ---
 
 yum时不时抽风？仓库获取不到最新资源？先理解yum是怎么工作的吧！

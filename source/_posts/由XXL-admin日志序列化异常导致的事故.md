@@ -1,9 +1,9 @@
 ---
 title: 由XXL-admin日志序列化异常导致的事故
 date: 2022-08-12 17:03:00
-cover: https://oss.note.dreamccc.cn/note/images/posts/由XXL-admin日志序列化异常导致的事故/title.png?x-oss-process=style/blog_title
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/由XXL-admin日志序列化异常导致的事故/title.png?x-oss-process=style/blog_title
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 tags:
 - Java
 - Debug
@@ -32,7 +32,7 @@ com.xxl.job.core.thread.TriggerCallbackThread#doCallback[166]
 ```
 
 ### 反序列化失败的callback日志示例
-- [xxl-job-callback-1660189083244.log](https://oss.note.dreamccc.cn/note/images/posts/由XXL-admin日志序列化异常导致的事故/xxl-job-callback-1660189083244.log)
+- [xxl-job-callback-1660189083244.log](https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/由XXL-admin日志序列化异常导致的事故/xxl-job-callback-1660189083244.log)
 
 ### 服务器反序列化造成的错误日志
 ```log

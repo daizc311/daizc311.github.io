@@ -1,10 +1,10 @@
 ---
 title: 在K8s中部署projector-idea-u
 date: 2022-06-06 11:31:17
-cover: https://oss.note.dreamccc.cn/note/images/posts/在K8s中部署projector-idea-u/Snipaste_2022-06-06_09-30-38.jpg
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/在K8s中部署projector-idea-u/Snipaste_2022-06-06_09-30-38.jpg
 
 categories:
-- [我永远爱学习]
+- 我永远爱学习
   
 tags:
 - 容器化

@@ -2,7 +2,7 @@
 title: 改造Spring-data-redis 优雅设置过期时间
 comments: true
 categories:
-  - [我永远爱学习]
+  - 我永远爱学习
 tags:
   - Java
 date: 2020-08-07 12:00:55

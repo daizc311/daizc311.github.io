@@ -1,10 +1,10 @@
 ---
 title: Angular初学排坑日记（二） windows软链接惨案
 date: 2022-01-03 02:32:10
-cover: https://oss.note.dreamccc.cn/note/images/posts/Angular初学排坑日记（二）windows软链接惨案/title.png?x-oss-process=style/blog_title
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Angular初学排坑日记（二）windows软链接惨案/title.png?x-oss-process=style/blog_title
 
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 
 tags:
 - 前端

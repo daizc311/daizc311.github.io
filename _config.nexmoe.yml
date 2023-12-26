@@ -16,7 +16,7 @@ function: # 功能开关，可选值（true,false）
 imageCDN: # 图片 CDN 功能
   enable: true # 开启该功能
   origin: /source/images/ # 图片原始目录
-  to: https://oss.note.dreamccc.cn/note/images/ # 图片 CDN 域名
+  to: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/ # 图片 CDN 域名
 
 # 自定义样式，启用后可在站点的source文件夹下新建custom.css自定义站点样式
 customStyles:

@@ -1,9 +1,9 @@
 ---
 title: Bash脚本经验之谈
 date: 2023-06-19 15:50:00
-cover: https://oss.note.dreamccc.cn/note/images/posts/Bash脚本经验之谈/title.png
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Bash脚本经验之谈/title.png
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 
 tags:
 - 乱七八糟

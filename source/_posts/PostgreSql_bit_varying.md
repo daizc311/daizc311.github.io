@@ -2,7 +2,7 @@
 title: PostgreSql bit varying
 date: 2023-02-15 15:32:00
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 tags:
 - Database
 ---

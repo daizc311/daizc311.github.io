@@ -2,7 +2,7 @@
 title: 定制Jackson注解实现字段脱敏
 date: 2020-12-10 09:51:54
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 
 tags:
 - Java

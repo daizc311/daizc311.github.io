@@ -2,12 +2,12 @@
 title: "[MXCHIP-2]真机调试"
 date: 2019/5/21 11:11:53
 categories: 
-    - [我永远爱学习]
+    - 我永远爱学习
 tags: 
     - 单片机
     - IOT
     - C
-cover: https://oss.note.dreamccc.cn/note/images/posts/[MXCHIP-2]真机调试/title.jpg?x-oss-process=style/blog_title
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/[MXCHIP-2]真机调试/title.jpg?x-oss-process=style/blog_title
 ---
 
 离上一篇文章发布已经时隔很久了，整理了一下最近学习的操作做个记录免得忘掉了。

@@ -1,9 +1,9 @@
 ---
 title: Angular项目搭建（三）-集成clarity 
 date: 2022-02-28 20:01:43
-cover: https://oss.note.dreamccc.cn/note/images/posts/Angular项目搭建（三）-集成clarity/img_accessible_applications.svg
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Angular项目搭建（三）-集成clarity/img_accessible_applications.svg
 categories:
-- [我永远爱学习]
+- 我永远爱学习
 
 tags:
 - 前端

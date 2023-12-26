@@ -2,8 +2,8 @@
 title: Linux下的简单网络管理
 date: 2022-08-25 17:28:52
 categories:
-- [我永远爱学习]
-cover: https://oss.note.dreamccc.cn/note/images/posts/Linux下的简单网络管理/title.png?x-oss-process=style/blog_title
+- 我永远爱学习
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Linux下的简单网络管理/title.png?x-oss-process=style/blog_title
 tags:
 - Linux
 

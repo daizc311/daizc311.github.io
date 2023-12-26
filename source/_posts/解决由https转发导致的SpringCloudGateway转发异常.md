@@ -3,7 +3,7 @@ title: 解决由https转发导致的SpringCloudGateway转发异常
 date: 2021-07-26 11:06:50
 comments: true
 categories:
-    - [我永远爱学习]
+    - 我永远爱学习
 tags:
     - Spring 
     - Java 

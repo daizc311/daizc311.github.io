@@ -4,7 +4,7 @@ date: 2019/05/13 12:03:01
 updated: 2020/2/20 15:41:36
 comments: true
 categories: 
-    - [我永远爱学习]
+    - 我永远爱学习
 tags: 
     - Spring
     - Java

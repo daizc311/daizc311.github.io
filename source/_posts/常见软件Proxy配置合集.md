@@ -2,9 +2,9 @@
 
 title: 常见软件Proxy配置合集
 date: 2022-09-08 10:50:00
-cover: https://oss.note.dreamccc.cn/note/images/clash.png?x-oss-process=style/blog_title
+cover: https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/clash.png?x-oss-process=style/blog_title
 categories:
-- [就是一些笔记]
+- 就是一些笔记
 tags:
 - Linux
   
