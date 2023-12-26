@@ -3,12 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: DreamCcc
+title: Bequick.Run
 subtitle: '梦想是拯救世界...'
-description: 'Java|DevOps|SRE全方位菜鸡\nPS|NS|XBOX全平台制霸\n音游|传火|吃鸡世界级手残'
+description: 'Java|CSharp|DevOps全方位菜鸡\nPS|NS|XBOX全平台制霸\n音游|传火|吃鸡世界级手残'
 keywords:
 author: Daizc
-language: zh-cn
+language: zh-CN
+#  - default
+#  - zh
+#  - zh-HK
+#  - zh-TW
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -104,8 +108,9 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-#theme: nexmoe
 theme: nexmoe
+#theme: landscape
+#theme: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -156,3 +161,50 @@ sitemap:
 #  rel: true
 #  tags: true
 #  categories: true
+
+
+bangumi: # 追番设置
+  enable: true
+  source: bangumi
+  bgmInfoSource: 'bgmApi'
+#  path:
+  vmid: 441310
+  title: '追番列表'
+  quote: '生命不息，追番不止！'
+  show: 1
+  lazyload: true
+  srcValue: '__image__'
+  lazyloadAttrName: 'data-src=__image__'
+#  loading:
+#  showMyComment: false
+#  pagination: false
+#  metaColor:
+#  color:
+#  webp:
+#  progress:
+#  extraOrder:
+#  order: latest
+#  proxy:
+#    host: '代理host'
+#    port: '代理端口'
+  extra_options:
+    key: value
+cinema: # 追剧设置
+  enable: true
+  path:
+  vmid:
+  title: '追剧列表'
+  quote: '生命不息，追剧不止！'
+  show: 1
+  lazyload: true
+  srcValue: '__image__'
+  lazyloadAttrName: 'data-src=__image__'
+  loading:
+  metaColor:
+  color:
+  webp:
+  progress:
+  extraOrder:
+  order:
+  extra_options:
+    key: value

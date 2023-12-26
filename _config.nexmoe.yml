@@ -12,6 +12,7 @@ function: # 功能开关，可选值（true,false）
   clickHeart: true # [已失效] 鼠标点击小心心 ♥
   globalToc: true # 开启该功能会自动开启文章 TOC（文章目录） 功能
   wordCount: false # 是否开启文章字数统计 (true, false)
+  #copyCode: true # 是否允许复制代码块
 
 imageCDN: # 图片 CDN 功能
   enable: true # 开启该功能
@@ -26,18 +27,21 @@ customStyles:
 iconlib: //at.alicdn.com/t/font_1592904_u7sy98fs39g.css
 
 menu:
-  回到首页:
+  首页:
     - /
     - icon-home
-  文章归档:
+  追番:
+    - /bangumis/index.html
+    - icon-container
+  归档:
     - /archive.html
     - icon-container
-#  我的朋友:
-#    - /PY.html
-#  给我赞助:
-#    - /donate.html
-#    - icon-coffee
-  关于我:
+  #  我的朋友:
+  #    - /PY.html
+  #  给我钱:
+  #    - /donate.html
+  #    - icon-coffee
+  关于:
     - /about.html
     - icon-info-circle
 
