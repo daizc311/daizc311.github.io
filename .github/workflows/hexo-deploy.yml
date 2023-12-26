@@ -27,9 +27,9 @@ jobs:
 #            ${{ runner.os }}-node-
       - name: Install Dependencies
 #        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install && npm install hexo-cli -g && hexo bangumi -u
+        run: npm install
       - name: Hexo Deploy
-        uses: sma11black/hexo-action@master
+        uses: daizc311/hexo-action@231227
         with:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
           user_name: daizc311  # (or delete this input setting to use bot account)
