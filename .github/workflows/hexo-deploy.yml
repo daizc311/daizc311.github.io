@@ -27,7 +27,7 @@ jobs:
 #            ${{ runner.os }}-node-
       - name: Install Dependencies
 #        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install && yarn add global hexo && hexo bangumi -u
+        run: npm install && npm install hexo-cli -g && hexo bangumi -u
       - name: Hexo Deploy
         uses: sma11black/hexo-action@master
         with:
