@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>发码平台结构设计 - Bequick.Run</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://i.v2ex.co/IKKW2Tois.jpeg" type="image/jpeg" />
+<meta name="description" content="同事接到个任务要做一个发码平台，但产品没说清楚怎么做，也不造要做成什么样子。虽然跟我没关系，但由于之前就对发码平台的实现逻辑感兴趣，因此基于兴趣进行了业务设计，这里简单记录个人的一些想法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="发码平台结构设计">
+<meta property="og:url" content="https://note.bequick.run/%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Bequick.Run">
+<meta property="og:description" content="同事接到个任务要做一个发码平台，但产品没说清楚怎么做，也不造要做成什么样子。虽然跟我没关系，但由于之前就对发码平台的实现逻辑感兴趣，因此基于兴趣进行了业务设计，这里简单记录个人的一些想法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E4%BA%A4%E4%BA%92%E5%9B%BE.jpg">
+<meta property="article:published_time" content="2021-02-17T02:57:02.000Z">
+<meta property="article:modified_time" content="2024-03-21T14:50:04.936Z">
+<meta property="article:author" content="Daizc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E4%BA%A4%E4%BA%92%E5%9B%BE.jpg">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1711032645552">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1592904_u7sy98fs39g.css">
+
+<link rel="stylesheet" href="/css/style.css?v=1711032645552">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1711032645552">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1711032645552"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.0.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://i.v2ex.co/ACICIYool.jpeg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Daizc"><img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Daizc">
+            <img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc" alt="Daizc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>count.articles</span>52</div>
+        <div><span>count.tags</span>25</div>
+        <div><span>count.categories</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/bangumis/index.html" title="追番">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                追番
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1711032645552"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://t.me/DreamCcc"
+			target="_blank"
+			mdui-tooltip="{content: 'Telegram'}"
+			style="
+				color: rgb(39,167,229);
+				background-color: rgba(39,167,229,.1);
+			"
+		>
+			<i
+				class="nexmoefont icon-telegram"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.v2ex.com/member/DreamSpace"
+			target="_blank"
+			mdui-tooltip="{content: 'V2EX'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont iconCN_VEX_S_NEXMOE"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/daizc311/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/1424744"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://steamcommunity.com/id/daizc311"
+			target="_blank"
+			mdui-tooltip="{content: 'Steam'}"
+			style="
+				color: rgb(14, 71, 161);
+				background-color: rgba(14, 71, 161, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-steam"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/就是一些笔记/">就是一些笔记</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/我永远爱学习/">我永远爱学习</a>
+          <span class="category-list-count">39</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/打打游戏/">打打游戏</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/NET/" style="font-size: 16.67px;">.NET</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Angular/" style="font-size: 13.33px;">Angular</a> <a href="/tags/Blog/" style="font-size: 11.67px;">Blog</a> <a href="/tags/C/" style="font-size: 11.67px;">C</a> <a href="/tags/CSharp/" style="font-size: 16.67px;">CSharp</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/Database/" style="font-size: 11.67px;">Database</a> <a href="/tags/Debug/" style="font-size: 16.67px;">Debug</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/IOT/" style="font-size: 15px;">IOT</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Kubernetes/" style="font-size: 13.33px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Maven/" style="font-size: 11.67px;">Maven</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/" style="font-size: 10px;">乱七八糟</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 15px;">单片机</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/" style="font-size: 10px;">容器化</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(25);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">recent_posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/Java%20Stream%20Reduce%20%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Java Stream Reduce 注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DClass%E4%B8%8ERecord%E4%B8%8EStruct/">[Csharp]Class与RecordStruct</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DTask%E7%9B%B8%E5%85%B3/">[Csharp]Task相关</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DWPF%E9%9B%86%E6%88%90Sqlite%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E8%A7%A3%E5%AF%86/">[Csharp]WPF集成Sqlite与数据库加解密</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5D%E5%8F%AF%E4%B8%BA%E7%A9%BA%E7%9A%84%E7%B1%BB%E5%9E%8B/">[Csharp]可为空的类型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Daizc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br/><br/><img src="https://note.bequick.run/images/github_io.svg"/><br/><br/> <svg viewBox="0 0 105 36" role="img" width="105px" height="41px" aria-hidden="true"><path fill="#222222" d="M11.679 26.754h2.353v6.423h4.111v2.06H11.68v-8.483zM20.58 31.02v-.024c0-2.436 1.965-4.412 4.584-4.412 2.62 0 4.56 1.951 4.56 4.387v.025c0 2.436-1.965 4.41-4.584 4.41-2.618 0-4.56-1.95-4.56-4.386zm6.743 0v-.024c0-1.223-.885-2.291-2.183-2.291-1.285 0-2.147 1.042-2.147 2.266v.025c0 1.222.886 2.29 2.171 2.29 1.298 0 2.159-1.042 2.159-2.266zM32.604 31.517v-4.763h2.389v4.714c0 1.223.618 1.806 1.564 1.806.946 0 1.564-.557 1.564-1.745v-4.775h2.39v4.7c0 2.74-1.564 3.939-3.978 3.939s-3.93-1.223-3.93-3.878M44.112 26.755h3.274c3.032 0 4.79 1.744 4.79 4.192v.025c0 2.447-1.782 4.265-4.838 4.265h-3.226v-8.483zm3.31 6.397c1.408 0 2.34-.775 2.34-2.146v-.024c0-1.357-.932-2.145-2.34-2.145h-.958v4.316l.959-.001zM55.596 26.754h6.791v2.06h-4.438v1.442h4.014v1.951h-4.014v3.03h-2.353v-8.483zM65.661 26.754h2.353v6.423h4.111v2.06h-6.464v-8.483zM78.273 26.693h2.268l3.614 8.544h-2.522l-.62-1.515H77.74l-.606 1.515h-2.474l3.614-8.544zm2.062 5.2l-.946-2.413-.959 2.412h1.905zM87.186 26.754H91.2c1.298 0 2.195.34 2.765.921.498.485.752 1.14.752 1.976v.024c0 1.296-.693 2.156-1.746 2.605l2.025 2.957H92.28l-1.71-2.57h-1.03v2.57h-2.353v-8.483zm3.905 4.072c.8 0 1.262-.388 1.262-1.006v-.024c0-.667-.486-1.006-1.275-1.006h-1.54v2.038l1.553-.002zM98.112 26.754h6.827v2h-4.498v1.284h4.075v1.854h-4.075v1.346H105v1.999h-6.888v-8.483zM6.528 32.014c-.33.744-1.023 1.272-1.944 1.272-1.286 0-2.171-1.067-2.171-2.29v-.025c0-1.223.86-2.266 2.146-2.266.97 0 1.708.595 2.02 1.406h2.48c-.398-2.02-2.173-3.526-4.475-3.526-2.62 0-4.584 1.977-4.584 4.41v.024c0 2.436 1.94 4.388 4.56 4.388 2.24 0 3.991-1.45 4.453-3.393H6.528z"></path><path d="M89.012 22.355l.257-.887c.306-1.056.192-2.031-.321-2.748-.472-.66-1.259-1.049-2.214-1.094l-18.096-.229a.358.358 0 01-.285-.151.367.367 0 01-.04-.326.481.481 0 01.42-.321l18.263-.232c2.166-.099 4.512-1.856 5.333-3.998L93.37 9.65a.659.659 0 00.028-.36C92.216 3.975 87.468 0 81.792 0c-5.23 0-9.67 3.373-11.263 8.061a5.34 5.34 0 00-3.756-1.039 5.356 5.356 0 00-4.637 6.644c-4.099.12-7.386 3.475-7.386 7.6 0 .368.028.735.082 1.1a.354.354 0 00.348.305l33.408.004h.009a.44.44 0 00.415-.32z" fill="#F6821F"></path><path d="M95.04 9.847c-.167 0-.334.004-.5.013a.28.28 0 00-.079.017.285.285 0 00-.182.192l-.712 2.456c-.305 1.055-.192 2.03.322 2.746.471.661 1.258 1.05 2.213 1.094l3.858.232a.351.351 0 01.275.149.365.365 0 01.041.328.484.484 0 01-.42.32l-4.008.232c-2.176.1-4.521 1.856-5.342 3.998l-.29.756a.212.212 0 00.095.262c.03.017.062.027.096.028h13.802a.366.366 0 00.356-.265 9.846 9.846 0 00.367-2.677c-.001-5.457-4.429-9.88-9.891-9.88z" fill="#FBAD41"></path></svg>
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.v2ex.co/ACICIYool.jpeg" alt="发码平台结构设计" loading="lazy">
+            <h1>发码平台结构设计</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2021年02月17日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>同事接到个任务要做一个发码平台，但产品没说清楚怎么做，也不造要做成什么样子。</br><br>虽然跟我没关系，但由于之前就对发码平台的实现逻辑感兴趣，因此基于兴趣进行了业务设计，这里简单记录个人的一些想法。</p>
+<span id="more"></span>
+
+<h2 id="需求猜测"><a href="#需求猜测" class="headerlink" title="需求猜测"></a>需求猜测</h2><p>如果只是为了保证公司内所有的券码的唯一性，那我觉得做一个随机数生成器就足够了，做成平台级的功能没有意义，基于此进行需求猜测：</p>
+<ul>
+<li>唯一性保证：保证业务平台内券码唯一性</li>
+<li>券码生成管理：能查看每种优惠券的生成以及使用情况</li>
+<li>批量生成券码：一次返回限量的券码给业务端</li>
+<li>券码核销：核销并同步回调业务端。</li>
+</ul>
+<h2 id="唯一性保证"><a href="#唯一性保证" class="headerlink" title="唯一性保证"></a>唯一性保证</h2><h3 id="缩短雪花位数"><a href="#缩短雪花位数" class="headerlink" title="缩短雪花位数"></a>缩短雪花位数</h3><p>这个好说。保证唯一性的算法多得很，听到这个需求就想到使用雪花ID。但产品冒出来说要求券码长度在10位以内，这个需要斟酌一下。</br><br>想了一下，雪花ID是64位二进制数,如果把base提高，那么位数就会下降。</br><br>随便做个测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    System.out.println(Long.toString(SnowflakeIdUtil.generateId(), <span class="hljs-number">32</span>));<br>&#125;<br><span class="hljs-comment">// output =&gt; gjnk3gf62400</span><br></code></pre></td></tr></table></figure>
+
+<p>32进制下只有12个字符了，加把劲把进制弄成64试试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    System.out.println(Long.toString(SnowflakeIdUtil.generateId(), <span class="hljs-number">64</span>));<br>&#125;<br><span class="hljs-comment">// output =&gt; 598684081116483584</span><br></code></pre></td></tr></table></figure>
+
+<p>输出变成十进制了，感觉有问题，进去看看代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">java.util.Long:<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">(<span class="hljs-type">long</span> i, <span class="hljs-type">int</span> radix)</span> &#123;<br>        <span class="hljs-comment">// Look Here！ MIN_RADIX = 2   MAX_RADIX = 36</span><br>        <span class="hljs-keyword">if</span> (radix &lt; Character.MIN_RADIX || radix &gt; Character.MAX_RADIX)<br>            radix = <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">if</span> (radix == <span class="hljs-number">10</span>)<br>            <span class="hljs-keyword">return</span> toString(i);<br>   ......<br></code></pre></td></tr></table></figure>
+
+<p>Long这个类中的toString做了限制，只能将number表示为2-36进制编码的字符串,因为(0-9)+(a-z)刚好36个字符。这里没有考虑到大写字符也可以来做编码，<br>如果加上A-Z的大写字符，就有62个字符可用，可以将这个long表示为62进制的字符串，字符串内无特殊字符，既好看又不用考虑转义。 测试Base62：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">使用hutool的Base62：<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    System.out.println(Base62.encode(Longs.toByteArray(nextId)));<br>&#125;<br><span class="hljs-comment">// output =&gt; iDzwMuZe76</span><br></code></pre></td></tr></table></figure>
+
+<p>需求满足！</p>
+<h3 id="不连续性"><a href="#不连续性" class="headerlink" title="不连续性"></a>不连续性</h3><p>这个着实有点头疼，思考了一下把这个拆解为两个部分</p>
+<h4 id="业务线隔离"><a href="#业务线隔离" class="headerlink" title="业务线隔离"></a>业务线隔离</h4><p>总的来说就是要让同一时间内每个业务线生成的ID不连续，这样可以充分降低每个业务线之间券码冲突的可能性（虽然雪花ID本来就不冲突，只要时间不被NTP回调）。</p>
+<p>从SnowFlake类本身着手，由于我们应用跑在k8s内，本身就有全系统唯一的标识，且实例数也不会大于32，所以这里近似的任务SnowFlake中的datacenterId和workId没必要都用，<br>这里将容器的Id对32取余作为datacenterId(此处可能会导致冲突，后期可以与运维协商为容器编号，这里使用编号即可)，再对业务方提供的业务Id对32取余作为workId，这样基本达成了通过业务线隔离Id的要求。<br>11101010111101100010010110000000000</p>
+<h4 id="同一批券码隔离"><a href="#同一批券码隔离" class="headerlink" title="同一批券码隔离"></a>同一批券码隔离</h4><p>虽说同一批券码生成之间不冲突，但是由于雪花ID尾数是个序列，同一批券码生成出来尾数是连续的，这可能会导致相邻的券码被盗用，因此同一批券码隔离也是有必要的。</p>
+<p>还是打算从SnowFlake类着手，64位数，每一位都有用处，其中时间戳占用的空间比较大，占用了整整11位。要想腾空间，就只有拿时间戳开刀了。 首先我们计算1年的时间用时间戳表示需要多长：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">毫秒*秒*分*时*天<br>1000*60*60*24*365 <br> = 31536000000<br> = 0b11101010111101100010010110000000000<br>1年时间需要35个二进制位表示，剩下6个二进制位，可以提供出0b111111(64)个位置<br><br>31536000000*3<br> = 0b1011000000111000100111000010000000000<br>3年的时间需要37个二进制位来表示，剩下4个二进制位，可以提供处0b1111(16)个位置给用户猜测<br><br>31536000000*5<br> = 0b10010010110110011101011101110000000000<br>5年的时间需要38个二进制位来表示，剩下3个二进制位，可以提供处0b111(8)个位置给用户猜测<br><br>感觉差不多了，就用38个二进制位:<br><br>38个二进制位<br>0b11111111111111111111111111111111111111<br> = 274877906943<br>274877906943/1000/3600/24 约 3181.46天 合 8.7年<br><br></code></pre></td></tr></table></figure>
+
+<p>如此这般，便省下来3个二进制位和时间戳前面的符号位一起组成4个二进制位用于放猜解，可以提供16种组合</p>
+<p>这里吐槽一下，这个限制10位要求全局唯一要求生成性能高还要抗猜解真的有点过分，当然雪花算法也并不特别适合这种场景，有其他好的方案就更好了。</p>
+<p>后续重写Snowflake类，重新设置位移位数并新增抗猜解位数就可以了。</p>
+<h2 id="业务以及表结构设计"><a href="#业务以及表结构设计" class="headerlink" title="业务以及表结构设计"></a>业务以及表结构设计</h2><p>这个功能说来简单，其实也有不明确的点：</p>
+<ol>
+<li>一次要生成多少张券？每一批券需不需要记录批次？</li>
+<li>是即时生成还是仅记录数量用时再取？</li>
+<li>需要管理什么字段？</li>
+</ol>
+<p>就个人想法来说，先假设每个系统会有一个账户，系统收到钱后会生成订单，根据订单数额，找本系统添加对应数量的券码。但是由于生成的数量较多，因此在这里并不会真正地生成券码，只会记录该系统拥有对应数量的券码额度。随后调用获取券码接口时，再生成券码，再通过限制该接口的调用频率和最大券码数来控制性能消耗。</p>
+<p>最终交互设计图如下：</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E4%BA%A4%E4%BA%92%E5%9B%BE.jpg" alt="发码平台交互图" data-caption="发码平台交互图" loading="lazy"></p>
+<h3 id="生成管理表设计-省略大家都有的字段-generate-manage"><a href="#生成管理表设计-省略大家都有的字段-generate-manage" class="headerlink" title="生成管理表设计(省略大家都有的字段) generate_manage"></a>生成管理表设计(省略大家都有的字段) generate_manage</h3><table>
+<thead>
+<tr>
+<th>field</br>(驼峰&#x2F;下划线脑内自行转换)</th>
+<th>type</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>varchar(32)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>systemId</td>
+<td>varchar(32)</td>
+<td>具体业务线Id</td>
+</tr>
+<tr>
+<td>systemName</td>
+<td>varchar(128)</td>
+<td>业务系统名冗余在此</br>避免远程查表</td>
+</tr>
+<tr>
+<td>type</td>
+<td>varchar(64)</td>
+<td>这批券码的生成方式(SNOWFLAKE_LITE&#x2F;UUID)</td>
+</tr>
+<tr>
+<td>total</td>
+<td>bigint</td>
+<td>该批次拥有的券码总数</td>
+</tr>
+<tr>
+<td>current</td>
+<td>bigint</td>
+<td>该批次已生成的券码总数（保证原子性）</td>
+</tr>
+<tr>
+<td>systemName</td>
+<td>varchar(128)</td>
+<td>业务系统名冗余在此</br>避免远程查表</td>
+</tr>
+<tr>
+<td>businessTypeTemplate</td>
+<td>varchar(64)</td>
+<td>[模板]提供给业务方存储业务上的类型</br>在获取券码时可以覆盖该值</br>可能是以后做查询的条件</td>
+</tr>
+<tr>
+<td>businessDataTemplate</td>
+<td>json</td>
+<td>[模板]提供给业务方存储该批次券码的公有属性</br>在获取券码时可以覆盖该值</br>券码被消费时将返给业务方</td>
+</tr>
+<tr>
+<td>callbackTemplate</td>
+<td>json</td>
+<td>[模板]券码被消费回调地址</br>在获取券码时可以覆盖该值</td>
+</tr>
+<tr>
+<td>createTime</td>
+<td>date(3)</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id="生成操作记录表设计-省略大家都有的字段-generate-operation"><a href="#生成操作记录表设计-省略大家都有的字段-generate-operation" class="headerlink" title="生成操作记录表设计(省略大家都有的字段) generate_operation"></a>生成操作记录表设计(省略大家都有的字段) generate_operation</h3><table>
+<thead>
+<tr>
+<th>field</br>(驼峰&#x2F;下划线脑内自行转换)</th>
+<th>type</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>varchar(32)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>manageId</td>
+<td>varchar(32)</td>
+<td>关联generate_manage</td>
+</tr>
+<tr>
+<td>total</td>
+<td>bigint</td>
+<td>该批次拥有的券码总数</td>
+</tr>
+<tr>
+<td>original</td>
+<td>bigint</td>
+<td>消费前数量</td>
+</tr>
+<tr>
+<td>consumption</td>
+<td>bigint</td>
+<td>本次消费数量</td>
+</tr>
+<tr>
+<td>remaining</td>
+<td>bigint</td>
+<td>剩余消费数量</td>
+</tr>
+<tr>
+<td>createTime</td>
+<td>date(3)</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id="券码表设计-coupon"><a href="#券码表设计-coupon" class="headerlink" title="券码表设计 coupon"></a>券码表设计 coupon</h3><table>
+<thead>
+<tr>
+<th>field</br>(驼峰&#x2F;下划线脑内自行转换)</th>
+<th>type</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>varchar(32)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>manageId</td>
+<td>varchar(32)</td>
+<td>关联 generate_manage</td>
+</tr>
+<tr>
+<td>operationId</td>
+<td>varchar(32)</td>
+<td>关联 generate_operation</td>
+</tr>
+<tr>
+<td>systemId</td>
+<td>varchar(32)</td>
+<td>[冗余以避免连表]具体业务线Id</td>
+</tr>
+<tr>
+<td>systemName</td>
+<td>varchar(128)</td>
+<td>[冗余以避免连表]业务系统名冗余在此</br>避免远程查表</td>
+</tr>
+<tr>
+<td>generateTime</td>
+<td>date(3)</td>
+<td>[冗余以避免连表]券码生成时间</td>
+</tr>
+<tr>
+<td>code</td>
+<td>varchar(32)</td>
+<td>这个才是券码</td>
+</tr>
+<tr>
+<td>businessType</td>
+<td>varchar(32)</td>
+<td>提供给业务方存储业务上的类型</br>可能是以后做查询的条件</td>
+</tr>
+<tr>
+<td>businessData</td>
+<td>json</td>
+<td>提供给业务方存储该批次券码的公有属性</br>券码被消费时将返给业务方</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>json</td>
+<td>券码被消费回调地址，格式为map为升级预留空间</br>Map&lt;String callbackUrl,String callbackVersion&gt;</td>
+</tr>
+<tr>
+<td>createTime</td>
+<td>date(3)</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id="生成-获取券码API"><a href="#生成-获取券码API" class="headerlink" title="生成&#x2F;获取券码API"></a>生成&#x2F;获取券码API</h3><h4 id="request"><a href="#request" class="headerlink" title="request"></a>request</h4><table>
+<thead>
+<tr>
+<th>field</br>(驼峰&#x2F;下划线脑内自行转换)</th>
+<th>type</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>manageId</td>
+<td>String</td>
+<td>关联 generate_manage</td>
+</tr>
+<tr>
+<td>businessType</td>
+<td>String</td>
+<td>—</td>
+</tr>
+<tr>
+<td>businessData</td>
+<td>JSONObject</td>
+<td>—</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Map&lt;String,String&gt;</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h4 id="response"><a href="#response" class="headerlink" title="response"></a>response</h4><table>
+<thead>
+<tr>
+<th>field</br>(驼峰&#x2F;下划线脑内自行转换)</th>
+<th>type</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>operation</td>
+<td><code>GenerateOperation</code></td>
+<td></td>
+</tr>
+<tr>
+<td>coupons</td>
+<td><code>List&lt;Coupon&gt;</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+    <p></p>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>copyright.author：</strong>Daizc<br>
+        <strong>copyright.permalink：</strong><a href="https://note.bequick.run/%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="https:&#x2F;&#x2F;note.bequick.run&#x2F;%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;note.bequick.run&#x2F;%E5%8F%91%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+  
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置评论框插槽
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E7%8C%9C%E6%B5%8B"><span class="toc-number">1.</span> <span class="toc-text">需求猜测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%94%AF%E4%B8%80%E6%80%A7%E4%BF%9D%E8%AF%81"><span class="toc-number">2.</span> <span class="toc-text">唯一性保证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%A9%E7%9F%AD%E9%9B%AA%E8%8A%B1%E4%BD%8D%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">缩短雪花位数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%BF%9E%E7%BB%AD%E6%80%A7"><span class="toc-number">2.2.</span> <span class="toc-text">不连续性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E7%BA%BF%E9%9A%94%E7%A6%BB"><span class="toc-number">2.2.1.</span> <span class="toc-text">业务线隔离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E4%B8%80%E6%89%B9%E5%88%B8%E7%A0%81%E9%9A%94%E7%A6%BB"><span class="toc-number">2.2.2.</span> <span class="toc-text">同一批券码隔离</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E4%BB%A5%E5%8F%8A%E8%A1%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">业务以及表结构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E8%A1%A8%E8%AE%BE%E8%AE%A1-%E7%9C%81%E7%95%A5%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E7%9A%84%E5%AD%97%E6%AE%B5-generate-manage"><span class="toc-number">3.1.</span> <span class="toc-text">生成管理表设计(省略大家都有的字段) generate_manage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95%E8%A1%A8%E8%AE%BE%E8%AE%A1-%E7%9C%81%E7%95%A5%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E7%9A%84%E5%AD%97%E6%AE%B5-generate-operation"><span class="toc-number">3.2.</span> <span class="toc-text">生成操作记录表设计(省略大家都有的字段) generate_operation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B8%E7%A0%81%E8%A1%A8%E8%AE%BE%E8%AE%A1-coupon"><span class="toc-number">3.3.</span> <span class="toc-text">券码表设计 coupon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-%E8%8E%B7%E5%8F%96%E5%88%B8%E7%A0%81API"><span class="toc-number">3.4.</span> <span class="toc-text">生成&#x2F;获取券码API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#request"><span class="toc-number">3.4.1.</span> <span class="toc-text">request</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#response"><span class="toc-number">3.4.2.</span> <span class="toc-text">response</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src="/extend/rainbowClick.js"></script></div></body></html>

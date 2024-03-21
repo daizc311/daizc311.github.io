@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>集群爆炸，但是修好了 - Bequick.Run</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://i.v2ex.co/IKKW2Tois.jpeg" type="image/jpeg" />
+<meta name="description" content="周一到公司来一看，本地集群连不上了，据说是周末停电关了服务器造成的。既然环境爆炸那啥也干不了只能挂机了， 那可不行，赶快修好了开始干活。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集群爆炸，但是修好了">
+<meta property="og:url" content="https://note.bequick.run/%E9%9B%86%E7%BE%A4%E7%88%86%E7%82%B8%EF%BC%8C%E4%BD%86%E6%98%AF%E4%BF%AE%E5%A5%BD%E4%BA%86/index.html">
+<meta property="og:site_name" content="Bequick.Run">
+<meta property="og:description" content="周一到公司来一看，本地集群连不上了，据说是周末停电关了服务器造成的。既然环境爆炸那啥也干不了只能挂机了， 那可不行，赶快修好了开始干活。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-10T07:54:56.000Z">
+<meta property="article:modified_time" content="2023-07-10T07:54:56.000Z">
+<meta property="article:author" content="Daizc">
+<meta property="article:tag" content="Kubernetes">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1711032645459">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1592904_u7sy98fs39g.css">
+
+<link rel="stylesheet" href="/css/style.css?v=1711032645459">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1711032645459">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1711032645459"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.0.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://i.v2ex.co/ACICIYool.jpeg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Daizc"><img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Daizc">
+            <img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc" alt="Daizc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>count.articles</span>52</div>
+        <div><span>count.tags</span>25</div>
+        <div><span>count.categories</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/bangumis/index.html" title="追番">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                追番
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1711032645460"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://t.me/DreamCcc"
+			target="_blank"
+			mdui-tooltip="{content: 'Telegram'}"
+			style="
+				color: rgb(39,167,229);
+				background-color: rgba(39,167,229,.1);
+			"
+		>
+			<i
+				class="nexmoefont icon-telegram"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.v2ex.com/member/DreamSpace"
+			target="_blank"
+			mdui-tooltip="{content: 'V2EX'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont iconCN_VEX_S_NEXMOE"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/daizc311/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/1424744"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://steamcommunity.com/id/daizc311"
+			target="_blank"
+			mdui-tooltip="{content: 'Steam'}"
+			style="
+				color: rgb(14, 71, 161);
+				background-color: rgba(14, 71, 161, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-steam"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/就是一些笔记/">就是一些笔记</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/我永远爱学习/">我永远爱学习</a>
+          <span class="category-list-count">39</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/打打游戏/">打打游戏</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/NET/" style="font-size: 16.67px;">.NET</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Angular/" style="font-size: 13.33px;">Angular</a> <a href="/tags/Blog/" style="font-size: 11.67px;">Blog</a> <a href="/tags/C/" style="font-size: 11.67px;">C</a> <a href="/tags/CSharp/" style="font-size: 16.67px;">CSharp</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/Database/" style="font-size: 11.67px;">Database</a> <a href="/tags/Debug/" style="font-size: 16.67px;">Debug</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/IOT/" style="font-size: 15px;">IOT</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Kubernetes/" style="font-size: 13.33px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Maven/" style="font-size: 11.67px;">Maven</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/" style="font-size: 10px;">乱七八糟</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 15px;">单片机</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/" style="font-size: 10px;">容器化</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(25);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">recent_posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/Java%20Stream%20Reduce%20%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Java Stream Reduce 注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DClass%E4%B8%8ERecord%E4%B8%8EStruct/">[Csharp]Class与RecordStruct</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DTask%E7%9B%B8%E5%85%B3/">[Csharp]Task相关</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DWPF%E9%9B%86%E6%88%90Sqlite%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E8%A7%A3%E5%AF%86/">[Csharp]WPF集成Sqlite与数据库加解密</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5D%E5%8F%AF%E4%B8%BA%E7%A9%BA%E7%9A%84%E7%B1%BB%E5%9E%8B/">[Csharp]可为空的类型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Daizc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br/><br/><img src="https://note.bequick.run/images/github_io.svg"/><br/><br/> <svg viewBox="0 0 105 36" role="img" width="105px" height="41px" aria-hidden="true"><path fill="#222222" d="M11.679 26.754h2.353v6.423h4.111v2.06H11.68v-8.483zM20.58 31.02v-.024c0-2.436 1.965-4.412 4.584-4.412 2.62 0 4.56 1.951 4.56 4.387v.025c0 2.436-1.965 4.41-4.584 4.41-2.618 0-4.56-1.95-4.56-4.386zm6.743 0v-.024c0-1.223-.885-2.291-2.183-2.291-1.285 0-2.147 1.042-2.147 2.266v.025c0 1.222.886 2.29 2.171 2.29 1.298 0 2.159-1.042 2.159-2.266zM32.604 31.517v-4.763h2.389v4.714c0 1.223.618 1.806 1.564 1.806.946 0 1.564-.557 1.564-1.745v-4.775h2.39v4.7c0 2.74-1.564 3.939-3.978 3.939s-3.93-1.223-3.93-3.878M44.112 26.755h3.274c3.032 0 4.79 1.744 4.79 4.192v.025c0 2.447-1.782 4.265-4.838 4.265h-3.226v-8.483zm3.31 6.397c1.408 0 2.34-.775 2.34-2.146v-.024c0-1.357-.932-2.145-2.34-2.145h-.958v4.316l.959-.001zM55.596 26.754h6.791v2.06h-4.438v1.442h4.014v1.951h-4.014v3.03h-2.353v-8.483zM65.661 26.754h2.353v6.423h4.111v2.06h-6.464v-8.483zM78.273 26.693h2.268l3.614 8.544h-2.522l-.62-1.515H77.74l-.606 1.515h-2.474l3.614-8.544zm2.062 5.2l-.946-2.413-.959 2.412h1.905zM87.186 26.754H91.2c1.298 0 2.195.34 2.765.921.498.485.752 1.14.752 1.976v.024c0 1.296-.693 2.156-1.746 2.605l2.025 2.957H92.28l-1.71-2.57h-1.03v2.57h-2.353v-8.483zm3.905 4.072c.8 0 1.262-.388 1.262-1.006v-.024c0-.667-.486-1.006-1.275-1.006h-1.54v2.038l1.553-.002zM98.112 26.754h6.827v2h-4.498v1.284h4.075v1.854h-4.075v1.346H105v1.999h-6.888v-8.483zM6.528 32.014c-.33.744-1.023 1.272-1.944 1.272-1.286 0-2.171-1.067-2.171-2.29v-.025c0-1.223.86-2.266 2.146-2.266.97 0 1.708.595 2.02 1.406h2.48c-.398-2.02-2.173-3.526-4.475-3.526-2.62 0-4.584 1.977-4.584 4.41v.024c0 2.436 1.94 4.388 4.56 4.388 2.24 0 3.991-1.45 4.453-3.393H6.528z"></path><path d="M89.012 22.355l.257-.887c.306-1.056.192-2.031-.321-2.748-.472-.66-1.259-1.049-2.214-1.094l-18.096-.229a.358.358 0 01-.285-.151.367.367 0 01-.04-.326.481.481 0 01.42-.321l18.263-.232c2.166-.099 4.512-1.856 5.333-3.998L93.37 9.65a.659.659 0 00.028-.36C92.216 3.975 87.468 0 81.792 0c-5.23 0-9.67 3.373-11.263 8.061a5.34 5.34 0 00-3.756-1.039 5.356 5.356 0 00-4.637 6.644c-4.099.12-7.386 3.475-7.386 7.6 0 .368.028.735.082 1.1a.354.354 0 00.348.305l33.408.004h.009a.44.44 0 00.415-.32z" fill="#F6821F"></path><path d="M95.04 9.847c-.167 0-.334.004-.5.013a.28.28 0 00-.079.017.285.285 0 00-.182.192l-.712 2.456c-.305 1.055-.192 2.03.322 2.746.471.661 1.258 1.05 2.213 1.094l3.858.232a.351.351 0 01.275.149.365.365 0 01.041.328.484.484 0 01-.42.32l-4.008.232c-2.176.1-4.521 1.856-5.342 3.998l-.29.756a.212.212 0 00.095.262c.03.017.062.027.096.028h13.802a.366.366 0 00.356-.265 9.846 9.846 0 00.367-2.677c-.001-5.457-4.429-9.88-9.891-9.88z" fill="#FBAD41"></path></svg>
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/集群爆炸_但是修好了/title.png?x-oss-process=style/blog_title" alt="集群爆炸，但是修好了" loading="lazy">
+            <h1>集群爆炸，但是修好了</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2023年07月10日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>周一到公司来一看，本地集群连不上了，据说是周末停电关了服务器造成的。<br><del>既然环境爆炸那啥也干不了只能挂机了，</del> 那可不行，赶快修好了开始干活。</p>
+<span id="more"></span>
+<ol>
+<li>首先ssh能通，至少虚拟机没问题，试试docker ps。有反应，但容器全都停在pause上。同时kubectl get node卡住没有回应。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@vmw253 ~]# docker ps<br> CONTAINER ID   IMAGE                                                       COMMAND                  CREATED         STATUS             PORTS     NAMES<br> 949258e9135c   37c6aeb3663b                                                &quot;kube-controller-man…&quot;   3 hours ago     Up 3 hours                   k8s_kube-controller-manager_kube-controller-manager-vmw253_kube-system_b53e0e776bdd23d5be83ec232a105a76_1036<br> 4a3a50cbf1fb   registry.cn-beijing.aliyuncs.com/kubesphereio/pause:3.4.1   &quot;/pause&quot;                 3 hours ago     Up 3 hours                   k8s_POD_kube-controller-manager-vmw253_kube-system_b53e0e776bdd23d5be83ec232a105a76_11<br> 89aa599bc953   registry.cn-beijing.aliyuncs.com/kubesphereio/pause:3.4.1   &quot;/pause&quot;                 3 hours ago     Up About an hour             k8s_POD_kube-apiserver-vmw253_kube-system_6aa730f99776180fbac39af544cc5c43_11<br> 76914665acbd   56c5af1d00b5                                                &quot;kube-scheduler --au…&quot;   3 hours ago     Up 3 hours                   k8s_kube-scheduler_kube-scheduler-vmw253_kube-system_ceb9697816522e2427509f5707b24a58_1007<br> 8248bd5e395d   registry.cn-beijing.aliyuncs.com/kubesphereio/pause:3.4.1   &quot;/pause&quot;                 3 hours ago     Up 3 hours                   k8s_POD_kube-scheduler-vmw253_kube-system_ceb9697816522e2427509f5707b24a58_11<br></code></pre></td></tr></table></figure></li>
+<li>求助运维老哥，老哥看了下现场，说api-server不见了，可能是etcd爆炸，叫检查下etcd。因为使用kubesphere脚本部署的，所以也不知道etcd怎么启动的，检查了一圈，没有发现etcd的影子。</li>
+<li>ps -ef时意外发现系统定时任务正在拉起etcd的备份任务，由此确定etcd应该是由systemctl管理，随后crontab -l结果如下  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@vmw253 ~]# crontab -l<br>*/5 * * * * /usr/sbin/ntpdate ntp3.aliyun.com &amp;&gt;/dev/null<br>0 3 * * * ps -A -ostat,ppid | grep -e &#x27;^[Zz]&#x27; | awk &#x27;&#123;print &#125;&#x27; | xargs kill -HUP &gt; /dev/null 2&gt;&amp;1<br>*/30 * * * * sh /usr/local/bin/kube-scripts/etcd-backup.sh<br></code></pre></td></tr></table></figure></li>
+<li>检查etcd-backup.sh，发现了备份所在地，从环境变量中取出了数据目录<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">此行声明了备份地址</span><br>BACKUP_DIR=&quot;/var/backups/kube_etcd/etcd-$(date +%Y-%m-%d-%H-%M-%S)&quot;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">此行引用了数据目录变量</span><br>export ETCDCTL_API=2;$ETCDCTL_PATH backup --data-dir $ETCD_DATA_DIR --backup-dir $BACKUP_DIR<br><span class="hljs-meta prompt_"># </span><span class="language-bash">此行调用etcdctl进行备份 (重要-1)</span><br>&#123;<br> export ETCDCTL_API=3;$ETCDCTL_PATH --endpoints=&quot;$ENDPOINTS&quot; snapshot save $BACKUP_DIR/snapshot.db \<br>                                 --cacert=&quot;$ETCDCTL_CA_FILE&quot; \<br>                                 --cert=&quot;$ETCDCTL_CERT&quot; \<br>                                 --key=&quot;$ETCDCTL_KEY&quot;<br>&#125; &gt; /dev/null <br></code></pre></td></tr></table></figure></li>
+<li>检查etcd-backup.sh，发现从环境变量中取出了备份地址，然后从sytemctl status etcd中取到etcd配置，再从etcd配置取到env文件地址(&#x2F;etc&#x2F;etcd.env)<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">因为写的时候已经把etcd修好了，所以Active是running</span><br> [root@vmw253 ~]# systemctl status etcd<br> ● etcd.service - etcd<br> Loaded: loaded (/etc/systemd/system/etcd.service; enabled; vendor preset: disabled)<br> Active: active (running) since 一 2023-07-10 15:06:18 CST; 22min ago<br> Main PID: 36781 (etcd)<br>     Tasks: 25<br> Memory: 97.8M<br> CGroup: /system.slice/etcd.service<br>         └─36781 /usr/local/bin/etcd<br> [root@vmw253 ~]# cat /etc/systemd/system/etcd.service<br> [Unit]<br> Description=etcd<br> After=network.target<br><br> [Service]<br> User=root<br> Type=notify<br> EnvironmentFile=/etc/etcd.env<br> ExecStart=/usr/local/bin/etcd<br> NotifyAccess=all<br> RestartSec=10s<br> LimitNOFILE=40000<br> Restart=always<br><br> [Install]<br> WantedBy=multi-user.target<br></code></pre></td></tr></table></figure></li>
+<li>检查env文件,得到关键的数据目录地址<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs env">ETCD_DATA_DIR=/var/lib/etcd<br></code></pre></td></tr></table></figure></li>
+<li>停止etcd，移除数据目录<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl stop etcd<br>mv /var/lib/etcd /var/lib/etcd.bak<br></code></pre></td></tr></table></figure></li>
+<li>从定时任务触发的命令中发现了etcd的命令行客户端:etcdctl，使用–help看看他的用法，发现一个snapshot restore指令<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@vmw253 ~]# etcdctl snapshot<br>NAME:<br>        snapshot - Manages etcd node snapshots<br><br>USAGE:<br>        etcdctl snapshot &lt;subcommand&gt; [flags]<br><br>API VERSION:<br>        3.4<br><br><br>COMMANDS:<br>        restore Restores an etcd member snapshot to an etcd directory<br>        save    Stores an etcd node backend snapshot to a given file<br>        status  Gets backend snapshot status of a given file<br><br>OPTIONS:<br>-h, --help[=false]    help for snapshot<br><br>GLOBAL OPTIONS:<br>    --cacert=&quot;&quot;                               verify certificates of TLS-enabled secure servers using this CA bundle<br>    --cert=&quot;&quot;                                 identify secure client using this TLS certificate file<br>    --command-timeout=5s                      timeout for short running command (excluding dial timeout)<br>    --debug[=false]                           enable client-side debug logging<br>    --dial-timeout=2s                         dial timeout for client connections<br>-d, --discovery-srv=&quot;&quot;                        domain name to query for SRV records describing cluster endpoints<br>    --discovery-srv-name=&quot;&quot;                   service name to query when using DNS discovery<br>    --endpoints=[127.0.0.1:2379]              gRPC endpoints<br>    --hex[=false]                             print byte strings as hex encoded strings<br>    --insecure-discovery[=true]               accept insecure SRV records describing cluster endpoints<br>    --insecure-skip-tls-verify[=false]        skip server certificate verification (CAUTION: this option should be enabled only for testing purposes)<br>    --insecure-transport[=true]               disable transport security for client connections<br>    --keepalive-time=2s                       keepalive time for client connections<br>    --keepalive-timeout=6s                    keepalive timeout for client connections<br>    --key=&quot;&quot;                                  identify secure client using this TLS key file<br>    --password=&quot;&quot;                             password for authentication (if this option is used, --user option shouldn&#x27;t include password)<br>    --user=&quot;&quot;                                 username[:password] for authentication (prompt if password is not supplied)<br>-w, --write-out=&quot;simple&quot;                      set the output format (fields, json, protobuf, simple, table)<br></code></pre></td></tr></table></figure></li>
+<li>通过备份脚本中的命令(重要-1)和上一步中的提示，反向拼接还原命令<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/usr/local/bin/etcdctl --endpoints=https://192.168.20.233:2379 snapshot restore /var/backups/kube_etcd/etcd-2023-07-08-00-00-01/snapshot.db --cacert=/etc/ssl/etcd/ssl/ca.pem --cert=/etc/ssl/etcd/ssl/admin-vmw253.pem --key=/etc/ssl/etcd/ssl/admin-vmw253-key.pem<br></code></pre></td></tr></table></figure></li>
+<li>很遗憾报了错，说数据目录已存在，旁边运维老哥提示加data-dir参数，于是把刚才得到的参数拼接进去<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/usr/local/bin/etcdctl --endpoints=https://192.168.20.233:2379 snapshot restore /var/backups/kube_etcd/etcd-2023-07-08-00-00-01/snapshot.db --cacert=/etc/ssl/etcd/ssl/ca.pem --cert=/etc/ssl/etcd/ssl/admin-vmw253.pem --key=/etc/ssl/etcd/ssl/admin-vmw253-key.pem<br></code></pre></td></tr></table></figure></li>
+<li>这次不遗憾，看起来成功了，随后启动etcd，未见明显异常。kubectl 也马上返回了结果，随后集群很快恢复了   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@vmw253 ~]# docker ps<br>CONTAINER ID   IMAGE                                                       COMMAND                  CREATED       STATUS          PORTS     NAMES<br>949258e9135c   37c6aeb3663b                                                &quot;kube-controller-man…&quot;   3 hours ago   Up 3 hours                k8s_kube-controller-manager_kube-controller-manager-vmw253_kube-system_b53e0e776bdd23d5be83ec232a105a76_1036<br>4a3a50cbf1fb   registry.cn-beijing.aliyuncs.com/kubesphereio/pause:3.4.1   &quot;/pause&quot;                 3 hours ago   Up 3 hours                k8s_POD_kube-controller-manager-vmw253_kube-system_b53e0e776bdd23d5be83ec232a105a76_11<br>89aa599bc953   registry.cn-beijing.aliyuncs.com/kubesphereio/pause:3.4.1   &quot;/pause&quot;                 3 hours ago   Up 54 minutes             k8s_POD_kube-apiserver-vmw253_kube-system_6aa730f99776180fbac39af544cc5c43_11<br>76914665acbd   56c5af1d00b5                                                &quot;kube-scheduler --au…&quot;   3 hours ago   Up 3 hours                k8s_kube-scheduler_kube-scheduler-vmw253_kube-system_ceb9697816522e2427509f5707b24a58_1007<br>8248bd5e395d   registry.cn-beijing.aliyuncs.com/kubesphereio/pause:3.4.1   &quot;/pause&quot;                 3 hours ago   Up 3 hours                k8s_POD_kube-scheduler-vmw253_kube-system_ceb9697816522e2427509f5707b24a58_11<br>[root@vmw253 ~]# systemctl start etcd<br>[root@vmw253 ~]# kubectl get node<br>NAME     STATUS   ROLES                         AGE    VERSION<br>vmw253   Ready    control-plane,master,worker   525d   v1.23.0<br>vmw254   Ready    worker                        525d   v1.23.0<br>vmw255   Ready    worker                        525d   v1.23.0<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>居然修好了，真实可喜可贺呢:-D</p>
+
+    <p></p>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>copyright.author：</strong>Daizc<br>
+        <strong>copyright.permalink：</strong><a href="https://note.bequick.run/%E9%9B%86%E7%BE%A4%E7%88%86%E7%82%B8%EF%BC%8C%E4%BD%86%E6%98%AF%E4%BF%AE%E5%A5%BD%E4%BA%86/" title="https:&#x2F;&#x2F;note.bequick.run&#x2F;%E9%9B%86%E7%BE%A4%E7%88%86%E7%82%B8%EF%BC%8C%E4%BD%86%E6%98%AF%E4%BF%AE%E5%A5%BD%E4%BA%86&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;note.bequick.run&#x2F;%E9%9B%86%E7%BE%A4%E7%88%86%E7%82%B8%EF%BC%8C%E4%BD%86%E6%98%AF%E4%BF%AE%E5%A5%BD%E4%BA%86&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a>
+    
+</div>
+  
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置评论框插槽
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src="/extend/rainbowClick.js"></script></div></body></html>

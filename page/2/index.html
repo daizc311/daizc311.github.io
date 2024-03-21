@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>Bequick.Run</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://i.v2ex.co/IKKW2Tois.jpeg" type="image/jpeg" />
+<meta name="description" content="Java|CSharp|DevOps全方位菜鸡\nPS|NS|XBOX全平台制霸\n音游|传火|吃鸡世界级手残">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bequick.Run">
+<meta property="og:url" content="https://note.bequick.run/page/2/index.html">
+<meta property="og:site_name" content="Bequick.Run">
+<meta property="og:description" content="Java|CSharp|DevOps全方位菜鸡\nPS|NS|XBOX全平台制霸\n音游|传火|吃鸡世界级手残">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Daizc">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1711032645734">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1592904_u7sy98fs39g.css">
+
+<link rel="stylesheet" href="/css/style.css?v=1711032645734">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1711032645734">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1711032645734"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.0.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://i.v2ex.co/ACICIYool.jpeg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Daizc"><img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Daizc">
+            <img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc" alt="Daizc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>count.articles</span>52</div>
+        <div><span>count.tags</span>25</div>
+        <div><span>count.categories</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/bangumis/index.html" title="追番">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                追番
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1711032645735"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://t.me/DreamCcc"
+			target="_blank"
+			mdui-tooltip="{content: 'Telegram'}"
+			style="
+				color: rgb(39,167,229);
+				background-color: rgba(39,167,229,.1);
+			"
+		>
+			<i
+				class="nexmoefont icon-telegram"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.v2ex.com/member/DreamSpace"
+			target="_blank"
+			mdui-tooltip="{content: 'V2EX'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont iconCN_VEX_S_NEXMOE"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/daizc311/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/1424744"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://steamcommunity.com/id/daizc311"
+			target="_blank"
+			mdui-tooltip="{content: 'Steam'}"
+			style="
+				color: rgb(14, 71, 161);
+				background-color: rgba(14, 71, 161, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-steam"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/就是一些笔记/">就是一些笔记</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/我永远爱学习/">我永远爱学习</a>
+          <span class="category-list-count">39</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/打打游戏/">打打游戏</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/NET/" style="font-size: 16.67px;">.NET</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Angular/" style="font-size: 13.33px;">Angular</a> <a href="/tags/Blog/" style="font-size: 11.67px;">Blog</a> <a href="/tags/C/" style="font-size: 11.67px;">C</a> <a href="/tags/CSharp/" style="font-size: 16.67px;">CSharp</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/Database/" style="font-size: 11.67px;">Database</a> <a href="/tags/Debug/" style="font-size: 16.67px;">Debug</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/IOT/" style="font-size: 15px;">IOT</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Kubernetes/" style="font-size: 13.33px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Maven/" style="font-size: 11.67px;">Maven</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/" style="font-size: 10px;">乱七八糟</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 15px;">单片机</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/" style="font-size: 10px;">容器化</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(25);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">recent_posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/Java%20Stream%20Reduce%20%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Java Stream Reduce 注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DClass%E4%B8%8ERecord%E4%B8%8EStruct/">[Csharp]Class与RecordStruct</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DTask%E7%9B%B8%E5%85%B3/">[Csharp]Task相关</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DWPF%E9%9B%86%E6%88%90Sqlite%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E8%A7%A3%E5%AF%86/">[Csharp]WPF集成Sqlite与数据库加解密</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5D%E5%8F%AF%E4%B8%BA%E7%A9%BA%E7%9A%84%E7%B1%BB%E5%9E%8B/">[Csharp]可为空的类型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Daizc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br/><br/><img src="https://note.bequick.run/images/github_io.svg"/><br/><br/> <svg viewBox="0 0 105 36" role="img" width="105px" height="41px" aria-hidden="true"><path fill="#222222" d="M11.679 26.754h2.353v6.423h4.111v2.06H11.68v-8.483zM20.58 31.02v-.024c0-2.436 1.965-4.412 4.584-4.412 2.62 0 4.56 1.951 4.56 4.387v.025c0 2.436-1.965 4.41-4.584 4.41-2.618 0-4.56-1.95-4.56-4.386zm6.743 0v-.024c0-1.223-.885-2.291-2.183-2.291-1.285 0-2.147 1.042-2.147 2.266v.025c0 1.222.886 2.29 2.171 2.29 1.298 0 2.159-1.042 2.159-2.266zM32.604 31.517v-4.763h2.389v4.714c0 1.223.618 1.806 1.564 1.806.946 0 1.564-.557 1.564-1.745v-4.775h2.39v4.7c0 2.74-1.564 3.939-3.978 3.939s-3.93-1.223-3.93-3.878M44.112 26.755h3.274c3.032 0 4.79 1.744 4.79 4.192v.025c0 2.447-1.782 4.265-4.838 4.265h-3.226v-8.483zm3.31 6.397c1.408 0 2.34-.775 2.34-2.146v-.024c0-1.357-.932-2.145-2.34-2.145h-.958v4.316l.959-.001zM55.596 26.754h6.791v2.06h-4.438v1.442h4.014v1.951h-4.014v3.03h-2.353v-8.483zM65.661 26.754h2.353v6.423h4.111v2.06h-6.464v-8.483zM78.273 26.693h2.268l3.614 8.544h-2.522l-.62-1.515H77.74l-.606 1.515h-2.474l3.614-8.544zm2.062 5.2l-.946-2.413-.959 2.412h1.905zM87.186 26.754H91.2c1.298 0 2.195.34 2.765.921.498.485.752 1.14.752 1.976v.024c0 1.296-.693 2.156-1.746 2.605l2.025 2.957H92.28l-1.71-2.57h-1.03v2.57h-2.353v-8.483zm3.905 4.072c.8 0 1.262-.388 1.262-1.006v-.024c0-.667-.486-1.006-1.275-1.006h-1.54v2.038l1.553-.002zM98.112 26.754h6.827v2h-4.498v1.284h4.075v1.854h-4.075v1.346H105v1.999h-6.888v-8.483zM6.528 32.014c-.33.744-1.023 1.272-1.944 1.272-1.286 0-2.171-1.067-2.171-2.29v-.025c0-1.223.86-2.266 2.146-2.266.97 0 1.708.595 2.02 1.406h2.48c-.398-2.02-2.173-3.526-4.475-3.526-2.62 0-4.584 1.977-4.584 4.41v.024c0 2.436 1.94 4.388 4.56 4.388 2.24 0 3.991-1.45 4.453-3.393H6.528z"></path><path d="M89.012 22.355l.257-.887c.306-1.056.192-2.031-.321-2.748-.472-.66-1.259-1.049-2.214-1.094l-18.096-.229a.358.358 0 01-.285-.151.367.367 0 01-.04-.326.481.481 0 01.42-.321l18.263-.232c2.166-.099 4.512-1.856 5.333-3.998L93.37 9.65a.659.659 0 00.028-.36C92.216 3.975 87.468 0 81.792 0c-5.23 0-9.67 3.373-11.263 8.061a5.34 5.34 0 00-3.756-1.039 5.356 5.356 0 00-4.637 6.644c-4.099.12-7.386 3.475-7.386 7.6 0 .368.028.735.082 1.1a.354.354 0 00.348.305l33.408.004h.009a.44.44 0 00.415-.32z" fill="#F6821F"></path><path d="M95.04 9.847c-.167 0-.334.004-.5.013a.28.28 0 00-.079.017.285.285 0 00-.182.192l-.712 2.456c-.305 1.055-.192 2.03.322 2.746.471.661 1.258 1.05 2.213 1.094l3.858.232a.351.351 0 01.275.149.365.365 0 01.041.328.484.484 0 01-.42.32l-4.008.232c-2.176.1-4.521 1.856-5.342 3.998l-.29.756a.212.212 0 00.095.262c.03.017.062.027.096.028h13.802a.366.366 0 00.356-.265 9.846 9.846 0 00.367-2.677c-.001-5.457-4.429-9.88-9.891-9.88z" fill="#FBAD41"></path></svg>
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><section class="nexmoe-posts">
+    <div class="nexmoe-post">
+        <a href="/%E5%B8%B8%E8%A7%81%E8%BD%AF%E4%BB%B6Proxy%E9%85%8D%E7%BD%AE%E5%90%88%E9%9B%86/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: NaN%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/clash.png?x-oss-process=style/blog_title" alt="常见软件Proxy配置合集" loading="lazy">
+                    <h1>常见软件Proxy配置合集</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年09月08日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%B0%B1%E6%98%AF%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/">就是一些笔记</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <ul>
+<li>System</li>
+<li>APT</li>
+<li>Docker</li>
+</ul>
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/Kubernetes%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E8%B5%B0%E4%BB%A3%E7%90%86/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: NaN%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Kubernetes集群中拉取镜像走代理/title.png?x-oss-process=style/blog_title" alt="Kubernetes集群中拉取镜像走代理" loading="lazy">
+                    <h1>Kubernetes集群中拉取镜像走代理</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年09月05日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <p><strong>三种方式</strong></p>
+<ul>
+<li>systemd中配置docker进程环境变量</li>
+<li>docker守护线程用户代理配置</li>
+<li>配置全局环境变量（大概没效果）</li>
+</ul>
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/%E4%BF%AE%E5%A4%8DUbuntu%E4%B8%8BADB%E8%AE%BE%E5%A4%87%E6%97%A0%E6%9D%83%E9%99%90%E7%9A%84%E9%97%AE%E9%A2%98/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: NaN%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/修复Ubuntu下ADB设备无权限的问题/title.png?x-oss-process=style/blog_title" alt="修复Ubuntu下ADB设备无权限的问题" loading="lazy">
+                    <h1>修复Ubuntu下ADB设备无权限的问题</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年09月05日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <h1 id="修复ADB设备无权限的问题"><a href="#修复ADB设备无权限的问题" class="headerlink" title="修复ADB设备无权限的问题"></a>修复ADB设备无权限的问题</h1><p>接手同事的项目，在服务器(生产)上装了点依赖，重启了下系统，使用ADB连接的所有设备全都断连了。慌得一比，输出大概是下面这个样子。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">data@data:~$ /home/data/.local/share/virtualenvs/script-schedule-exec-w4db_Qrl/lib/python3.10/site-packages/airtest/core/android/static/adb/linux/adb devices<br>List of devices attached<br>7DK7ZLVG99999999        device<br>8144d0f2        no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]<br>9486e0be        no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]<br>9584d066        no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]<br>9LIN4SSC99999999        no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]<br>I7VSE6DIRWLZ6T5H        no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]<br>JTK5T19909001733        device<br>a48ab864        device<br>bf7ddca0        no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]<br>e232d448        no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]<br>ec30a657        unauthorized<br>ef68a8c6        no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html]<br></code></pre></td></tr></table></figure>
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/%E4%BD%BF%E7%94%A8JDBC%E6%93%8D%E4%BD%9CPostgre%E6%97%B6jsonb%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%A2%AB%E8%AF%86%E5%88%AB%E4%B8%BA%E5%8F%82%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: NaN%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/使用JDBC操作Postgre时jsonb操作符被识别为参数的问题/title.png?x-oss-process=style/blog_title" alt="使用JDBC操作Postgre时jsonb操作符被识别为参数的问题" loading="lazy">
+                    <h1>使用JDBC操作Postgre时jsonb操作符被识别为参数的问题</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年08月26日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <h1 id="使用JDBC操作Postgre时jsonb操作符被识别为参数的问题"><a href="#使用JDBC操作Postgre时jsonb操作符被识别为参数的问题" class="headerlink" title="使用JDBC操作Postgre时jsonb操作符被识别为参数的问题"></a>使用JDBC操作Postgre时jsonb操作符被识别为参数的问题</h1><h2 id="一句话解决方式"><a href="#一句话解决方式" class="headerlink" title="一句话解决方式"></a>一句话解决方式</h2><p>把sql中的<code>?</code>替换为<code>??</code>，就能解决</p>
+<p><strong>原SQL</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 可以在pgClient中正常执行</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> project <span class="hljs-keyword">WHERE</span> (tags ?<span class="hljs-operator">&amp;</span> <span class="hljs-keyword">array</span>[<span class="hljs-string">&#x27;Sonar&#x27;</span>])<br></code></pre></td></tr></table></figure>
+<p><strong>现SQL</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 可以通过org.postgresql.Driver正常执行</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> project <span class="hljs-keyword">WHERE</span> (tags ??<span class="hljs-operator">&amp;</span> <span class="hljs-keyword">array</span>[<span class="hljs-string">&#x27;Sonar&#x27;</span>])<br></code></pre></td></tr></table></figure>
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/Linux%E4%B8%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: NaN%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/Linux下的简单网络管理/title.png?x-oss-process=style/blog_title" alt="Linux下的简单网络管理" loading="lazy">
+                    <h1>Linux下的简单网络管理</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年08月25日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <h2 id="使用Netplan管理网络配置"><a href="#使用Netplan管理网络配置" class="headerlink" title="使用Netplan管理网络配置"></a>使用Netplan管理网络配置</h2><h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://netplan.io/reference">Netplan文档地址</a></li>
+<li>Netplan配置地址: <code>/etc/netplan/xxxx.yaml</code></li>
+<li><a target="_blank" rel="noopener" href="https://networkmanager.dev/docs/">NetworkManager文档地址</a></li>
+<li>NetworkManager配置地址: <code>/etc/NetworkManager/NetworkManager.conf</code></li>
+</ul>
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/%E8%A7%A3%E5%86%B3Springdoc-OAS3%E4%B8%ADSchema%E9%87%8D%E5%A4%8D%E7%9A%84%E9%97%AE%E9%A2%98/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: 28.78464818763326%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/解决Springdoc-OAS3中Schema重复的问题/swagger_logo.svg" alt="解决Springdoc-OAS3中Schema重复的问题" loading="lazy">
+                    <h1>解决Springdoc-OAS3中Schema重复的问题</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年08月16日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <p>在使用<code>springdoc-openapi</code>时，如果项目中存在多个SimpleName一致的Class，<br>那在Schema描述中将会依照解析的先后顺序互相覆盖，从而导致Api文档的描述与预期不一致。</p>
+<p><strong>相似问题</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/springfox/springfox/issues/182">Duplicate class names in different packages get squashed in ControllerDocumentation</a></li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>启用<code>springdoc.use-fqn</code>属性，所有的类将解析为全限定名</li>
+<li>重写<code>TypeNameResolver</code>，自定义解析规则</li>
+</ul>
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/%E7%94%B1XXL-admin%E6%97%A5%E5%BF%97%E5%BA%8F%E5%88%97%E5%8C%96%E5%BC%82%E5%B8%B8%E5%AF%BC%E8%87%B4%E7%9A%84%E4%BA%8B%E6%95%85/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: NaN%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/由XXL-admin日志序列化异常导致的事故/title.png?x-oss-process=style/blog_title" alt="由XXL-admin日志序列化异常导致的事故" loading="lazy">
+                    <h1>由XXL-admin日志序列化异常导致的事故</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年08月12日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><ol>
+<li>客户端回调日志序列化出现问题</li>
+<li>服务端收到callback后反序列化失败抛出500</li>
+<li>客户端收到500错误码无限重试</li>
+<li>由于配置错误多个客户端扫描了NFS上同一个日志目录</li>
+<li>多个客户端重试同一条日志，<strong>错误被放大</strong></li>
+<li>服务端错误日志中打印了出入参，由于大量客户端重发callback，日志狂刷</li>
+<li>xxl服务端日志滚动规则仅仅配置了日期滚动，未配置按大小滚动，<strong>错误兜底失败</strong></li>
+<li>服务器用于存储日志的磁盘爆满，所有服务都爆炸啦！！（高兴</li>
+</ol>
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/%E4%B8%BAOracle%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E5%9D%97%E5%AD%98%E5%82%A8/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: NaN%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/为Oracle实例挂载块存储/title.png?x-oss-process=style/blog_title" alt="为Oracle实例挂载块存储" loading="lazy">
+                    <h1>为Oracle实例挂载块存储</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年08月12日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <p>所谓块存储说人话就是云硬盘，购买块存储简单理解就是买了块已经做好scsi的硬盘，买块硬盘之后插到服务器上就能用了。<br>大概流程就是下面这种：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">购买块存储 -&gt; 附加到实例 -&gt; 分区 -&gt; 挂载  <br></code></pre></td></tr></table></figure>
+<p>如果需要多个实例共享一个空间的话则有多种方式</p>
+<ul>
+<li>将块存储同时挂载到多个实例，再将存储中分区的文件系统格式化为共享型存储系统</li>
+<li>将块存储挂载到单个实例上，再将使用NFS共享块存储</li>
+</ul>
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/%E6%90%AD%E5%BB%BAMaven%E8%84%9A%E6%89%8B%E6%9E%B6%E6%97%B6%E4%B8%80%E4%BA%9B%E5%B9%B6%E4%B8%8D%E5%A4%AA%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98/">
+            
+                <div class="nexmoe-post-cover mdui-ripple absolute" style="padding-top: NaN%;"> 
+                    <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/搭建Maven脚手架时一些并不太常见的问题/title.png?x-oss-process=style/blog_title" alt="搭建Maven脚手架时一些并不太常见的问题" loading="lazy">
+                    <h1>搭建Maven脚手架时一些并不太常见的问题</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年08月10日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            
+        </article>
+    </div>
+
+    <div class="nexmoe-post">
+        <a href="/deepin%E4%B8%8B%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E6%96%87%E4%BB%B6%E6%95%B0%E9%87%8F%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6/">
+            
+                <div class="nexmoe-post-cover mdui-ripple"> 
+                    <img src="https://i.v2ex.co/ACICIYool.jpeg" alt="文件观察者数量超过系统限制" loading="lazy">
+                    <h1>文件观察者数量超过系统限制</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年06月16日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%B0%B1%E6%98%AF%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/">就是一些笔记</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+        <article>
+            <h3 id="症状1"><a href="#症状1" class="headerlink" title="症状1"></a>症状1</h3><p>在系统文件管理器中新建文件时不会自动刷新。</p>
+<h3 id="症状2"><a href="#症状2" class="headerlink" title="症状2"></a>症状2</h3><p>启动Angular项目报了如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs log">Watchpack Error (watcher): Error: ENOSPC: System limit for number of file watchers reached, watch &#x27;/home/daizc/IdeaProjects/beam/beam-frontend/src/main/angular/node_modules/@webcomponents/webcomponentsjs&#x27;<br>Watchpack Error (watcher): Error: ENOSPC: System limit for number of file watchers reached, watch &#x27;/home/daizc/IdeaProjects/beam/beam-frontend/src/main/angular/node_modules/@webcomponents&#x27;<br>Watchpack Error (watcher): Error: ENOSPC: System limit for number of file watchers reached, watch &#x27;/home/daizc/IdeaProjects/beam/beam-frontend/src/main/angular/node_modules/@types/trusted-types&#x27;<br>Watchpack Error (watcher): Error: ENOSPC: System limit for number of file watchers reached, watch &#x27;/home/daizc/IdeaProjects/beam/beam-frontend/src/main/angular/node_modules/@types&#x27;<br></code></pre></td></tr></table></figure>
+        </article>
+    </div>
+</section><nav class="nexmoe-page-nav"><a class="extend prev" rel="prev" href="/"><i class="nexmoefont icon-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="nexmoefont icon-right"></i></a></nav></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src="/extend/rainbowClick.js"></script></div></body></html>

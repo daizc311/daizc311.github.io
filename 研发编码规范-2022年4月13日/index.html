@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>研发编码规范 - Bequick.Run</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://i.v2ex.co/IKKW2Tois.jpeg" type="image/jpeg" />
+<meta name="description" content="研发编码规范产品-应用关系描述 产品是进行缺陷管理、需求管理的最小单位 按照业务线作区分   应用是进行代码开发的最小单位 一个应用对应一个代码仓库    产品与应用为一对多的关系，即一个产品有多个应用。 产品具有以下基本属性  displayName 显示名称（中文名称，仅做显示之用） name        英文全称 perfix      前缀（5个字符以内）  应用具有以下基本属性  di">
+<meta property="og:type" content="article">
+<meta property="og:title" content="研发编码规范">
+<meta property="og:url" content="https://note.bequick.run/%E7%A0%94%E5%8F%91%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83-2022%E5%B9%B44%E6%9C%8813%E6%97%A5/index.html">
+<meta property="og:site_name" content="Bequick.Run">
+<meta property="og:description" content="研发编码规范产品-应用关系描述 产品是进行缺陷管理、需求管理的最小单位 按照业务线作区分   应用是进行代码开发的最小单位 一个应用对应一个代码仓库    产品与应用为一对多的关系，即一个产品有多个应用。 产品具有以下基本属性  displayName 显示名称（中文名称，仅做显示之用） name        英文全称 perfix      前缀（5个字符以内）  应用具有以下基本属性  di">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-13T08:53:00.000Z">
+<meta property="article:modified_time" content="2024-03-21T14:50:04.936Z">
+<meta property="article:author" content="Daizc">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1711032645516">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1592904_u7sy98fs39g.css">
+
+<link rel="stylesheet" href="/css/style.css?v=1711032645516">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1711032645516">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1711032645516"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.0.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://i.v2ex.co/ACICIYool.jpeg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Daizc"><img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Daizc">
+            <img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc" alt="Daizc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>count.articles</span>52</div>
+        <div><span>count.tags</span>25</div>
+        <div><span>count.categories</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/bangumis/index.html" title="追番">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                追番
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1711032645516"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://t.me/DreamCcc"
+			target="_blank"
+			mdui-tooltip="{content: 'Telegram'}"
+			style="
+				color: rgb(39,167,229);
+				background-color: rgba(39,167,229,.1);
+			"
+		>
+			<i
+				class="nexmoefont icon-telegram"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.v2ex.com/member/DreamSpace"
+			target="_blank"
+			mdui-tooltip="{content: 'V2EX'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont iconCN_VEX_S_NEXMOE"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/daizc311/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/1424744"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://steamcommunity.com/id/daizc311"
+			target="_blank"
+			mdui-tooltip="{content: 'Steam'}"
+			style="
+				color: rgb(14, 71, 161);
+				background-color: rgba(14, 71, 161, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-steam"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/就是一些笔记/">就是一些笔记</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/我永远爱学习/">我永远爱学习</a>
+          <span class="category-list-count">39</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/打打游戏/">打打游戏</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/NET/" style="font-size: 16.67px;">.NET</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Angular/" style="font-size: 13.33px;">Angular</a> <a href="/tags/Blog/" style="font-size: 11.67px;">Blog</a> <a href="/tags/C/" style="font-size: 11.67px;">C</a> <a href="/tags/CSharp/" style="font-size: 16.67px;">CSharp</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/Database/" style="font-size: 11.67px;">Database</a> <a href="/tags/Debug/" style="font-size: 16.67px;">Debug</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/IOT/" style="font-size: 15px;">IOT</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Kubernetes/" style="font-size: 13.33px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Maven/" style="font-size: 11.67px;">Maven</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/" style="font-size: 10px;">乱七八糟</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 15px;">单片机</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/" style="font-size: 10px;">容器化</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(25);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">recent_posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/Java%20Stream%20Reduce%20%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Java Stream Reduce 注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DClass%E4%B8%8ERecord%E4%B8%8EStruct/">[Csharp]Class与RecordStruct</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DTask%E7%9B%B8%E5%85%B3/">[Csharp]Task相关</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DWPF%E9%9B%86%E6%88%90Sqlite%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E8%A7%A3%E5%AF%86/">[Csharp]WPF集成Sqlite与数据库加解密</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5D%E5%8F%AF%E4%B8%BA%E7%A9%BA%E7%9A%84%E7%B1%BB%E5%9E%8B/">[Csharp]可为空的类型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Daizc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br/><br/><img src="https://note.bequick.run/images/github_io.svg"/><br/><br/> <svg viewBox="0 0 105 36" role="img" width="105px" height="41px" aria-hidden="true"><path fill="#222222" d="M11.679 26.754h2.353v6.423h4.111v2.06H11.68v-8.483zM20.58 31.02v-.024c0-2.436 1.965-4.412 4.584-4.412 2.62 0 4.56 1.951 4.56 4.387v.025c0 2.436-1.965 4.41-4.584 4.41-2.618 0-4.56-1.95-4.56-4.386zm6.743 0v-.024c0-1.223-.885-2.291-2.183-2.291-1.285 0-2.147 1.042-2.147 2.266v.025c0 1.222.886 2.29 2.171 2.29 1.298 0 2.159-1.042 2.159-2.266zM32.604 31.517v-4.763h2.389v4.714c0 1.223.618 1.806 1.564 1.806.946 0 1.564-.557 1.564-1.745v-4.775h2.39v4.7c0 2.74-1.564 3.939-3.978 3.939s-3.93-1.223-3.93-3.878M44.112 26.755h3.274c3.032 0 4.79 1.744 4.79 4.192v.025c0 2.447-1.782 4.265-4.838 4.265h-3.226v-8.483zm3.31 6.397c1.408 0 2.34-.775 2.34-2.146v-.024c0-1.357-.932-2.145-2.34-2.145h-.958v4.316l.959-.001zM55.596 26.754h6.791v2.06h-4.438v1.442h4.014v1.951h-4.014v3.03h-2.353v-8.483zM65.661 26.754h2.353v6.423h4.111v2.06h-6.464v-8.483zM78.273 26.693h2.268l3.614 8.544h-2.522l-.62-1.515H77.74l-.606 1.515h-2.474l3.614-8.544zm2.062 5.2l-.946-2.413-.959 2.412h1.905zM87.186 26.754H91.2c1.298 0 2.195.34 2.765.921.498.485.752 1.14.752 1.976v.024c0 1.296-.693 2.156-1.746 2.605l2.025 2.957H92.28l-1.71-2.57h-1.03v2.57h-2.353v-8.483zm3.905 4.072c.8 0 1.262-.388 1.262-1.006v-.024c0-.667-.486-1.006-1.275-1.006h-1.54v2.038l1.553-.002zM98.112 26.754h6.827v2h-4.498v1.284h4.075v1.854h-4.075v1.346H105v1.999h-6.888v-8.483zM6.528 32.014c-.33.744-1.023 1.272-1.944 1.272-1.286 0-2.171-1.067-2.171-2.29v-.025c0-1.223.86-2.266 2.146-2.266.97 0 1.708.595 2.02 1.406h2.48c-.398-2.02-2.173-3.526-4.475-3.526-2.62 0-4.584 1.977-4.584 4.41v.024c0 2.436 1.94 4.388 4.56 4.388 2.24 0 3.991-1.45 4.453-3.393H6.528z"></path><path d="M89.012 22.355l.257-.887c.306-1.056.192-2.031-.321-2.748-.472-.66-1.259-1.049-2.214-1.094l-18.096-.229a.358.358 0 01-.285-.151.367.367 0 01-.04-.326.481.481 0 01.42-.321l18.263-.232c2.166-.099 4.512-1.856 5.333-3.998L93.37 9.65a.659.659 0 00.028-.36C92.216 3.975 87.468 0 81.792 0c-5.23 0-9.67 3.373-11.263 8.061a5.34 5.34 0 00-3.756-1.039 5.356 5.356 0 00-4.637 6.644c-4.099.12-7.386 3.475-7.386 7.6 0 .368.028.735.082 1.1a.354.354 0 00.348.305l33.408.004h.009a.44.44 0 00.415-.32z" fill="#F6821F"></path><path d="M95.04 9.847c-.167 0-.334.004-.5.013a.28.28 0 00-.079.017.285.285 0 00-.182.192l-.712 2.456c-.305 1.055-.192 2.03.322 2.746.471.661 1.258 1.05 2.213 1.094l3.858.232a.351.351 0 01.275.149.365.365 0 01.041.328.484.484 0 01-.42.32l-4.008.232c-2.176.1-4.521 1.856-5.342 3.998l-.29.756a.212.212 0 00.095.262c.03.017.062.027.096.028h13.802a.366.366 0 00.356-.265 9.846 9.846 0 00.367-2.677c-.001-5.457-4.429-9.88-9.891-9.88z" fill="#FBAD41"></path></svg>
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.v2ex.co/ACICIYool.jpeg" alt="研发编码规范" loading="lazy">
+            <h1>研发编码规范</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年04月13日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h2 id="研发编码规范"><a href="#研发编码规范" class="headerlink" title="研发编码规范"></a>研发编码规范</h2><h4 id="产品-应用关系描述"><a href="#产品-应用关系描述" class="headerlink" title="产品-应用关系描述"></a>产品-应用关系描述</h4><ul>
+<li>产品是进行<code>缺陷管理</code>、<code>需求管理</code>的最小单位<ul>
+<li>按照业务线作区分</li>
+</ul>
+</li>
+<li>应用是进行<code>代码开发</code>的最小单位<ul>
+<li>一个应用对应一个代码仓库</li>
+</ul>
+</li>
+</ul>
+<p>产品与应用为一对多的关系，即一个产品有多个应用。</p>
+<p>产品具有以下基本属性</p>
+<ul>
+<li>displayName 显示名称（中文名称，仅做显示之用）</li>
+<li>name        英文全称</li>
+<li>perfix      前缀（5个字符以内）</li>
+</ul>
+<p>应用具有以下基本属性</p>
+<ul>
+<li>displayName 显示名称（中文名称，仅做显示之用）</li>
+<li>name        英文全称（默认为Maven工件Id）</li>
+<li>simpleName  简短名称（14个字符以内）</li>
+</ul>
+<h3 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h3><h4 id="项目命名规则"><a href="#项目命名规则" class="headerlink" title="项目命名规则"></a>项目命名规则</h4><ol>
+<li><p>Maven项目名：（由脚手架自动生成）</p>
+<ul>
+<li>项目名(<code>artifactId</code>)统一使用小写，以中划线<code>-</code>作为分隔符</li>
+<li>API模块的<code>artifactId</code>应该以<code>-api</code>结尾</li>
+<li>应用模块如果与API包在同一个仓库中，则<code>artifactId</code>应以’-biz’结尾。</li>
+<li>应用模块位于单独的代码仓库中，则<code>artifactId</code>无需添加后缀。</li>
+</ul>
+</li>
+<li><p>Java单体项目名规则： <code>&lt;语言&gt;-&lt;业务名称&gt;-&lt;项目类型&gt;</code></p>
+<ul>
+<li>语言<ul>
+<li>java</li>
+<li>php</li>
+<li>node</li>
+</ul>
+</li>
+<li>业务名称<ul>
+<li>auth</li>
+<li>product</li>
+<li>resource-center</li>
+</ul>
+</li>
+<li>项目类型<ul>
+<li>cloud</li>
+<li>boot</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text"><br>单体项目<br>java-xxxxx-cloud<br>java-xxxxx-cloud-api<br><br>聚合项目<br>ng-xxxxx<br>  |- ng-xxxxx-api<br>  |- ng-xxxxx-biz<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>Maven GroupId必须满足以下正则表达式<ul>
+<li><code>^com.kailin.*</code></li>
+</ul>
+</li>
+</ol>
+<h4 id="类命名规则"><a href="#类命名规则" class="headerlink" title="类命名规则"></a>类命名规则</h4><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>后缀</th>
+<th>例子</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表名</td>
+<td>-</td>
+<td>user_detail</td>
+<td>表名仅做建议，根据业务可自行添加前缀后缀</td>
+</tr>
+<tr>
+<td>复合实体</td>
+<td>-</td>
+<td>UserDetail</td>
+<td>简单CRUD场景下，用于代替领域对象、数据对象的功能</br><b>无法替代DTO和VO</b></td>
+</tr>
+<tr>
+<td>领域对象</td>
+<td>Domian</td>
+<td>UserDetailDomain</td>
+<td>胖实体，拥有业务上的方法，无法从数据库直接得到，</br></br>简单CRUD无需领域对象&#x2F;复合实体的，可与DO混用</td>
+</tr>
+<tr>
+<td>数据对象</td>
+<td>DO</td>
+<td>UserDetailDO</td>
+<td>从数据库中直接查询得到的对象，一般会类上存在ORM相关的注解</br></br>简单CRUD场景下可用复合实体&#x2F;领域对象代替</td>
+</tr>
+<tr>
+<td>数据传输对象</td>
+<td>DTO</td>
+<td>UserDetailDTO</td>
+<td>一般是放在Api包中提供出去</td>
+</tr>
+<tr>
+<td>用与前端展示的POJO类</td>
+<td>VO</td>
+<td>UserDetailVO</td>
+<td>-</td>
+</tr>
+<tr>
+<td>数据库映射接口</td>
+<td>Mapper</td>
+<td>UserMapper</td>
+<td>Mybatis用</td>
+</tr>
+<tr>
+<td>数据库映射接口</td>
+<td>Repository</td>
+<td>UserRepository</td>
+<td>JPA用</td>
+</tr>
+<tr>
+<td>数据Service接口</td>
+<td>IService</td>
+<td>UserDetailIService</td>
+<td>使用MybatisPlus时，用于区分<code>业务Service</code>和<code>数据Service</code></td>
+</tr>
+<tr>
+<td>数据Service实现</td>
+<td>IServiceImpl</td>
+<td>UserDetailIServiceImpl</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Service接口</td>
+<td>Service</td>
+<td>UserDetailService</td>
+<td>真实提供业务的Service接口</td>
+</tr>
+<tr>
+<td>Service实现</td>
+<td>ServiceImpl</td>
+<td>UserDetailServiceImpl</td>
+<td>-</td>
+</tr>
+<tr>
+<td>web接口</td>
+<td>Controller</td>
+<td>UserDetailController</td>
+<td>-</td>
+</tr>
+<tr>
+<td>web接口入参</td>
+<td>Param</td>
+<td>UserDetailParam</td>
+<td>执行特定业务时所需的入参</td>
+</tr>
+<tr>
+<td>web接口查询复合参数</td>
+<td>Query</td>
+<td>UserDetailQuery</td>
+<td>【仅建议】执行特定查询时所用的<b>查询</b>参数</td>
+</tr>
+<tr>
+<td>工具类</td>
+<td>Utils</td>
+<td>DateUtils</td>
+<td>一个工具类是一个工具集，因此用复数 </br><b>自己编写工具类之前先看看项目内已引入工具能不能满足需求</b></br>使用优先顺序为 commons.lang3 &gt; hutool &gt; spring &gt; 自己编写</td>
+</tr>
+<tr>
+<td>常量类</td>
+<td>Constants</td>
+<td>UserTypeConstants</td>
+<td>一个常量类中含有多个常量，因此用复数</td>
+</tr>
+<tr>
+<td>枚举类</td>
+<td>Enum</td>
+<td>UserTypeEnum</td>
+<td>枚举不是一个集合，而是一个类型定义，</td>
+</tr>
+</tbody></table>
+<h4 id="数据访问层命名规则"><a href="#数据访问层命名规则" class="headerlink" title="数据访问层命名规则"></a>数据访问层命名规则</h4><h5 id="接口方法规范（参照JPA规范）"><a href="#接口方法规范（参照JPA规范）" class="headerlink" title="接口方法规范（参照JPA规范）"></a>接口方法规范（参照JPA规范）</h5><ul>
+<li>使用<code>get</code>、<code>find</code>、<code>list</code>、<code>stream</code>、<code>update</code>、<code>save</code>、<code>delete</code>作为前缀</li>
+<li>使用<code>By</code>、<code>OrderBy</code>、<code>GroupBy</code>作为谓词</li>
+<li>方法命名规则： <code>&lt;前缀&gt;&lt;实体名or字段名&gt;&lt;谓词1&gt;&lt;字段名1&gt;&lt;谓词2&gt;&lt;字段名2&gt;</code></li>
+<li>当查询结果为实体时，实体名可省略：<ul>
+<li>如<code>getUserById()</code>省略实体名为<code>getById()</code></li>
+</ul>
+</li>
+<li>当查询结果为实体的派生对象时时，实体名可省略为后缀：<ul>
+<li>如<code>getUserVOById()</code>省略实体名为<code>getVOById()</code></li>
+</ul>
+</li>
+<li>当查询结果为字段名或者特定对象时，不可省略<ul>
+<li>如<code>getPasswordById()</code>无法省略</li>
+<li>如<code>getLoginSlatAndPasswordById()</code>无法省略</li>
+</ul>
+</li>
+</ul>
+<h5 id="前缀规范"><a href="#前缀规范" class="headerlink" title="前缀规范"></a>前缀规范</h5><ol>
+<li>获取单个对象的方法用 get 做前缀时，返回<code>T</code>或者<code>null</code>。<ul>
+<li>如： <code>UserDetailDO getUserDetailById()</code>;</li>
+</ul>
+</li>
+<li>【推荐】获取单个对象的方法用 find 做前缀时，返回<code>Optional&lt;T&gt;</code>。<ul>
+<li>如： <code>Optional&lt;UserDetailDO&gt; findUserDetailByName()</code>。</li>
+<li>如： <code>Optional&lt;UserDetailDO&gt; findUserDetailByName()</code>。</li>
+</ul>
+</li>
+<li>获取多个对象的方法用 list 做前缀时，实体采用复数结尾，返回<code>&lt;? extend Collection&gt;&lt;T&gt;</code>即Collection的子类<ul>
+<li>如： <code>List&lt;UserDetailDO&gt; list()</code>(省略对象名)。</li>
+<li>如： <code>List&lt;UserDetailDO&gt; listUserDetails()</code>。</li>
+<li>如： <code>Set&lt;UserDetailDO&gt; listUserDetailsByCreateTime(Date createTime)</code>。</li>
+<li>如： <code>Queue&lt;UserDetailDO&gt; listUserDetailsByAge(Long age)</code>。</li>
+</ul>
+</li>
+<li>【推荐】获取多个对象的方法用 stream 做前缀时，实体采用复数结尾，返回<code>Stream&lt;T&gt;</code><ul>
+<li>如： <code>Stream&lt;UserDetail&gt; stream()</code>(省略对象名)。</li>
+<li>如： <code>Stream&lt;UserDetail&gt; streamUserDetails()</code>。</li>
+</ul>
+</li>
+<li>分页查询对象的方法用 page 做前缀，复数结尾。<ul>
+<li>如： <code>Page&lt;UserDetail&gt; pageUserDetails(PageParam param)</code>。</li>
+</ul>
+</li>
+<li>统计总数的方法用 count 做前缀。<ul>
+<li>如： <code>Long countByAge(Long age)</code>。</li>
+</ul>
+</li>
+<li>插入的方法用 save 做前缀。 返回保存的实体.<ul>
+<li>如： <code>UserDetailDO save(UserDetailDO saveDO)</code>。</li>
+</ul>
+</li>
+<li>删除的方法用 delete 做前缀。返回受影响行数。<ul>
+<li>如： <code>Long deleteById(String id)</code>。</li>
+</ul>
+</li>
+<li>修改的方法用 update 做前缀。批量修改时返回受影响行数，单个值修改时返回修改后实体。<ul>
+<li>如： <code>UserDetailDO|Long updateById(UserDetailDO updateDO)</code>。</li>
+<li>如： <code>Long updateByCreateTime(UserDetailDO updateDO,Date createTime)</code>。</li>
+</ul>
+</li>
+<li>执行特定操作的方法使用其操作名做前缀。如： sendSms 发送短信，noticeUser 通知用户，uploadPic 上传图片，downloadFile 下载文件</li>
+</ol>
+<h4 id="数据库命名规则"><a href="#数据库命名规则" class="headerlink" title="数据库命名规则"></a>数据库命名规则</h4><ol>
+<li>数据库库名命名规则：<code>&lt;产品前缀&gt;_&lt;应用简称&gt;</code>命名<ul>
+<li>如<code>ng_kboss_auth</code>，其中<code>ng_kboss</code>为产品前缀，<code>auth</code>为应用简称。</li>
+<li>如<code>hneduexam</code>应修改为<code>hn_edu_exam</code>，其中<code>hn_edu</code>为产品前缀，<code>exam</code>为应用简称。</li>
+</ul>
+</li>
+<li>表名和字段名均采用小写，以下划线分隔，如<code>collection_account</code>、<code>edu_report_operate_loss_record</code></li>
+<li>如果手动建索引，名称需要使用<code>idx_&lt;表名/表名首字母简写&gt;_&lt;字段名&gt;</code>的模式</li>
+<li>数据库中遇到时间字段，需要使用<code>datetime(3)</code>类型,否则会查询时会存在舍入问题</li>
+<li>请注意：业务状态字段和软删除字段需要分离，即<code>is_delete</code>字段不能进行业务控制</li>
+<li>公共命名规范如下表<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>空&#x2F;默认值</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>is_delete</td>
+<td>tinyint(4)</td>
+<td>DEFAULT ‘0’</td>
+<td>软删除字段(0 未删除 1 已删除)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>datetime(3)</td>
+<td>DEFAULT CURRENT_TIMESTAMP</td>
+<td>创建时间</td>
+<td>-</td>
+</tr>
+<tr>
+<td>update_time</td>
+<td>datetime(3)</td>
+<td>DEFAULT CURRENT_TIMESTAMP</br>ON UPDATE CURRENT_TIMESTAMP</td>
+<td>更新时间</td>
+<td>-</td>
+</tr>
+<tr>
+<td>create_user_id</td>
+<td>varchar(32)</td>
+<td>DEFAULT NULL</td>
+<td>创建者id</td>
+<td>非必需，视业务而定</td>
+</tr>
+<tr>
+<td>create_user_name</td>
+<td>varchar(255)</td>
+<td>DEFAULT NULL</td>
+<td>创建者名称</td>
+<td>非必需，视业务而定</td>
+</tr>
+<tr>
+<td>update_user_id</td>
+<td>varchar(32)</td>
+<td>DEFAULT NULL</td>
+<td>修改者id</td>
+<td>非必需，视业务而定</td>
+</tr>
+<tr>
+<td>update_user_name</td>
+<td>varchar(255)</td>
+<td>DEFAULT NULL</td>
+<td>修改者名称</td>
+<td>非必需，视业务而定</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="编码规则"><a href="#编码规则" class="headerlink" title="编码规则"></a>编码规则</h3><!-- 
+1. 禁止在POJO互相转换时使用`BeanUtils.copyProperties()`或其他自动拷贝属性值的工具，领域模型之间的字段对应关系需要手动维护。
+    - 使用属性拷贝工具会使得频繁修改字段时，字段的维护变得困难。并且多次重复拷贝会带来大量隐蔽的bug并消耗更多的性能。
+ -->
+<ol start="2">
+<li><p>尽量避免使用<code>java.sql.Date</code>，应使用<code>java.util.Date</code></p>
+</li>
+<li><p>尽量避免止将<code>SimpleDateFormat</code>等线程不安全的类定义为静态变量。如果定义为 static，必须加锁。</p>
+</li>
+</ol>
+<h3 id="代码开发以及分支规范"><a href="#代码开发以及分支规范" class="headerlink" title="代码开发以及分支规范"></a>代码开发以及分支规范</h3><h4 id="分支类型"><a href="#分支类型" class="headerlink" title="分支类型"></a>分支类型</h4><ul>
+<li>主分支，唯一主分支为<code>master</code></li>
+<li>功能分支，实际进行开发时，开发人员实际编写的分支，以<code>feature/&lt;功能名称&gt;</code>命名</li>
+<li>热修复分支，从某个发布分支迁出，完成修复后合并回发布分支和主分支，以<code>hotfix/&lt;release分支版本号&gt;/&lt;需要修复的功能&gt;</code>命名</li>
+</ul>
+<h4 id="版本命名规则"><a href="#版本命名规则" class="headerlink" title="版本命名规则"></a>版本命名规则</h4><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>命名规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Maven工件</td>
+<td>Artifact Version</td>
+<td><code>&lt;框架版本&gt;/&lt;功能版本&gt;/&lt;修订版本&gt;</code> </br> <ul><li>框架版本: 框架变更时+1</li><li>功能版本: 功能迭代时+1  (累加，不清零)</li><li>修订版本: 修复BUG时+1   (累加，不清零)</li></ul></td>
+</tr>
+<tr>
+<td>功能分支</td>
+<td>Branch Name</td>
+<td><code>feature/&lt;Feature Name&gt;-&lt;Date yyyyMMdd&gt;</code></td>
+</tr>
+<tr>
+<td>测试分支</td>
+<td>Branch Name</td>
+<td><code>test/&lt;Date yyyyMMdd&gt;/&lt;Feature A&gt;/&lt;Feature B&gt;</code></td>
+</tr>
+<tr>
+<td>热发布分支</td>
+<td>Branch Name</td>
+<td><code>hotfix/&lt;Feature A&gt;/</code></td>
+</tr>
+<tr>
+<td>发布标签（单体项目）</td>
+<td>Release Tag</td>
+<td><code>&lt;Artifact Version&gt;</code></td>
+</tr>
+<tr>
+<td>发布标签（聚合项目）</td>
+<td>Release Tag</td>
+<td><code>&lt;Artifact Name&gt;/&lt;Artifact Version&gt;</code></td>
+</tr>
+</tbody></table>
+<h4 id="分支流程介绍"><a href="#分支流程介绍" class="headerlink" title="分支流程介绍"></a>分支流程介绍</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">flowchart TB<br>    subgraph multi[单功能开发分支流程]<br>        direction LR<br>        s_dev(开发)<br>        s_feature_test(测试)<br>        s_dev -.-&gt; s_feature_test        <br>        s_dev  --&gt; s_pre<br>        s_pre(预发\nmaster分支) <br>        s_pre_test(预发布测试)<br>        s_prod(发布\n产品验收\n打ReleaseTag)<br>        s_pre --&gt; s_pre_test --&gt; s_prod<br>    end<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">flowchart TB<br>    subgraph multi[多功能开发分支流程]<br>        direction LR<br>        m_fa(开发A功能\nfeature分支)<br>        m_fb(开发B功能\nfeature分支) <br><br>        m_fa -.-&gt; test<br>        m_fb -.-&gt; test(功能测试\ntest分支) <br><br>        m_fa --&gt; m_pre_a(预发A功能\nmaster分支) --&gt; m_pord_a(发布\n打ReleaseTag)<br><br>        m_fb --&gt; m_pre_b(预发B功能\nmaster分支) --&gt; m_pord_b(发布\n打ReleaseTag)<br>    end<br></code></pre></td></tr></table></figure>
+
+<h4 id="分支介绍"><a href="#分支介绍" class="headerlink" title="分支介绍"></a>分支介绍</h4><p>分支类型：</p>
+<ul>
+<li>主分支，唯一主分支为<code>master</code></li>
+<li>功能分支，实际进行开发时，开发人员实际编写的分支，以<code>feature/&lt;功能名称&gt;</code>命名</li>
+<li>*测试分支，所有含有<code>test/</code>前缀的分支都为测试分支，以<code>test/&lt;对应功能分支的名称&gt;</code>命名 <!-- - 热修复分支，从某个发布分支迁出，完成修复后合并回发布分支和主分支，以`hotfix/<release分支版本号>/<需要修复的功能>`命名 --></li>
+</ul>
+<h5 id="主分支-master"><a href="#主分支-master" class="headerlink" title="主分支 master"></a>主分支 <code>master</code></h5><p>对应环境:</p>
+<ul>
+<li><code>预发布环境-pre</code></li>
+<li><code>*生产环境-prod</code></li>
+</ul>
+<p>生命周期:</p>
+<ul>
+<li>永久有效</li>
+</ul>
+<p>分支特征:</p>
+<ul>
+<li>该分支受到保护，无法直接通过push提交代码，仅仅可通过合并PullRequest更新</li>
+<li>该分支的代码一定是 <strong>可用的</strong> 代码，随时随地都可以通过流水线完成构建</li>
+<li>线上的应用一定是通过主分支打包得到的</li>
+<li>主分支上的代码<strong>不一定</strong>与线上代码一致</li>
+<li>开发人员<strong>无需</strong>在本地建立同名分支以跟踪master</li>
+</ul>
+<h5 id="（可选）公共测试分支-test"><a href="#（可选）公共测试分支-test" class="headerlink" title="（可选）公共测试分支 test"></a>（可选）公共测试分支 <code>test</code></h5><p>建议命名规范: <code>test\&lt;Date yyyyMMdd&gt;\&lt;功能名称A&gt;\&lt;功能名称B&gt;</code></p>
+<p>对应环境:</p>
+<ul>
+<li><code>测试环境-test (功能测试-多分支)</code></li>
+</ul>
+<p>生命周期:</p>
+<ul>
+<li>当多个功能需要并行进行测试时，从任一feature分支中迁出，并merge所有需要测试的分支</li>
+<li>当功能均测试完成或仅剩一个功能后，可以删除此分支</li>
+</ul>
+<p>分支特征:</p>
+<ul>
+<li>该分支用于支持同一项目同时开发、测试多个新功能</li>
+<li>同一个项目串行进行开发任务时，此分支无需存在，直接由feature分支代替本分支功能</li>
+<li>由于pre测试并不在本分支上运行，所以pre环境做出的改动不会应用到本分支上，本分支的代码不一定准确，非必要不使用本分支做测试</li>
+<li>该分支仅进行功能测试</li>
+<li>该分支<strong>禁止</strong>反向合并到其他<strong>任何</strong>分支</li>
+</ul>
+<h5 id="功能分支-feature"><a href="#功能分支-feature" class="headerlink" title="功能分支 feature/&lt;功能名称&gt;-&lt;Date yyyyMMdd&gt;"></a>功能分支 <code>feature/&lt;功能名称&gt;-&lt;Date yyyyMMdd&gt;</code></h5><p>对应环境:</p>
+<ul>
+<li><code>开发环境-dev</code></li>
+<li><code>测试环境-test (功能测试-单分支)</code></li>
+</ul>
+<p>生命周期:</p>
+<ul>
+<li>当开发人员接到开发任务并完成任务拆解后，根据具体的任务创建功能分支</li>
+<li>当该功能完成发布，顺利上线并创建<code>release</code>分支后，该功能分支应该被删除</li>
+</ul>
+<p>分支特征:</p>
+<ul>
+<li>该分支<strong>必须</strong>也<strong>只能</strong>从<code>master</code>分支签出</li>
+<li>该分支的代码一定是 <strong>最新的</strong> 代码，由<strong>开发人员</strong>自行开发和维护</li>
+<li>使用该分支的开发人员<strong>必须</strong>在<code>上班前</code>和<code>下班前</code>从<code>master</code>拉取并合并代码</li>
+<li>拉取<code>master</code>发生代码冲突时，如非特意更改，应以<code>master</code>分支代码为准</li>
+<li>当测试人员使用此分支进行<strong>功能测试</strong></li>
+</ul>
+<h5 id="热发布分支-hotfix"><a href="#热发布分支-hotfix" class="headerlink" title="热发布分支 hotfix/&lt;release分支版本号&gt;/&lt;需要修复的功能&gt;"></a>热发布分支 <code>hotfix/&lt;release分支版本号&gt;/&lt;需要修复的功能&gt;</code></h5><p>对应环境:</p>
+<ul>
+<li><code>生产环境-prod</code></li>
+</ul>
+<p>生命周期:</p>
+<ul>
+<li>当生产环境出现bug时，由<code>开发人员</code>从对应的<code>Release Tag</code>中签出</li>
+<li>当该bug修复完成后:<ul>
+<li>移动签出的<code>Release Tag</code>到当前分支</li>
+<li>将该分支并入<code>master</code>分支中</li>
+<li>删除热发布分支</li>
+</ul>
+</li>
+</ul>
+<p>分支特征:</p>
+<ul>
+<li>该分支由<strong>开发人员</strong>新建，只能从对应的<code>Release Tag</code>中签出</li>
+<li>该分支的代码一定是 <strong>准确的</strong> <strong>可用于生产的</strong> 代码，可以随时进行打包上线</li>
+<li>该分支应始终<strong>落后或等同</strong>于<code>master</code>分支</li>
+</ul>
+<h3 id="分支管理-GitGraph"><a href="#分支管理-GitGraph" class="headerlink" title="分支管理 GitGraph"></a>分支管理 GitGraph</h3><h4 id="图例"><a href="#图例" class="headerlink" title="图例"></a>图例</h4><ul>
+<li>方块形状节点： 测试提测节点</li>
+<li>中空圆形节点： 由merge产生的commit节点</li>
+<li>被标签标记的节点： 实际生产上线的节点</li>
+</ul>
+<h4 id="最简流程"><a href="#最简流程" class="headerlink" title="最简流程"></a>最简流程</h4>  <p>同时仅有一个功能进行开发时的最简流程，无需test分支，且无pre环境。</p>
+  <div class="mermaid">
+    %%{init: { 'logLevel': 'debug', 'theme': 'base' ,'startOnLoad': true } }%%
+    gitGraph
+    commit
+    branch feature-a
+    commit
+    commit type:HIGHLIGHT
+    commit type:HIGHLIGHT
+    checkout main
+    merge feature-a
+    commit tag:"release-A"
+
+  </div>
+
+<h4 id="Hotfix流程"><a href="#Hotfix流程" class="headerlink" title="Hotfix流程"></a>Hotfix流程</h4>  <p>生产上线后出现重大Bug需要进行线上修复的流程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">%%&#123;init: &#123; &#x27;logLevel&#x27;: &#x27;debug&#x27;, &#x27;theme&#x27;: &#x27;base&#x27; ,&#x27;startOnLoad&#x27;: true &#125; &#125;%%<br>gitGraph<br>commit tag:&quot;release-A&quot;<br>branch hotfix<br>commit<br>commit tag:&quot;release-A-2&quot;<br>checkout main<br>commit tag:&quot;release-B&quot;<br>commit tag:&quot;release-C&quot;<br>commit<br>merge hotfix<br></code></pre></td></tr></table></figure>
+
+<h4 id="多功能并行开发流程"><a href="#多功能并行开发流程" class="headerlink" title="多功能并行开发流程"></a>多功能并行开发流程</h4>  <p>同时有多个功能进行并行开发时的的复杂管理流程，需要借助一个不可信的临时test分支同时进行多个功能的测试。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">%%&#123;init: &#123; &#x27;logLevel&#x27;: &#x27;debug&#x27;, &#x27;theme&#x27;: &#x27;base&#x27; ,&#x27;startOnLoad&#x27;: true &#125; &#125;%%<br>gitGraph<br>commit<br>branch feature-b<br>branch feature-a<br>commit<br>commit<br>checkout feature-b<br>commit<br>commit<br>branch test<br>merge feature-a<br>commit type:HIGHLIGHT<br>checkout feature-a<br>commit<br>commit<br>checkout test<br>merge feature-a<br>checkout main<br>merge feature-a<br>commit id:&quot;pre-A-a123&quot; type:HIGHLIGHT<br>checkout feature-a<br>commit<br>checkout main<br>merge feature-a<br>commit id:&quot;pre-A-a124&quot; type:HIGHLIGHT<br>commit tag:&quot;release-A&quot;<br>merge feature-b<br>commit id:&quot;pre-B-a125&quot; type:HIGHLIGHT<br>commit tag:&quot;release-B&quot;<br></code></pre></td></tr></table></figure>
+    <p></p>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>copyright.author：</strong>Daizc<br>
+        <strong>copyright.permalink：</strong><a href="https://note.bequick.run/%E7%A0%94%E5%8F%91%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83-2022%E5%B9%B44%E6%9C%8813%E6%97%A5/" title="https:&#x2F;&#x2F;note.bequick.run&#x2F;%E7%A0%94%E5%8F%91%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83-2022%E5%B9%B44%E6%9C%8813%E6%97%A5&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;note.bequick.run&#x2F;%E7%A0%94%E5%8F%91%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83-2022%E5%B9%B44%E6%9C%8813%E6%97%A5&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+  
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置评论框插槽
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%94%E5%8F%91%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-number">1.</span> <span class="toc-text">研发编码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A7%E5%93%81-%E5%BA%94%E7%94%A8%E5%85%B3%E7%B3%BB%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.0.1.</span> <span class="toc-text">产品-应用关系描述</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.1.</span> <span class="toc-text">命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.1.1.</span> <span class="toc-text">项目命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.1.2.</span> <span class="toc-text">类命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E5%B1%82%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.1.3.</span> <span class="toc-text">数据访问层命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%B9%E6%B3%95%E8%A7%84%E8%8C%83%EF%BC%88%E5%8F%82%E7%85%A7JPA%E8%A7%84%E8%8C%83%EF%BC%89"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">接口方法规范（参照JPA规范）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E8%A7%84%E8%8C%83"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">前缀规范</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.1.4.</span> <span class="toc-text">数据库命名规则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E8%A7%84%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text">编码规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E4%BB%A5%E5%8F%8A%E5%88%86%E6%94%AF%E8%A7%84%E8%8C%83"><span class="toc-number">1.3.</span> <span class="toc-text">代码开发以及分支规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">分支类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.3.2.</span> <span class="toc-text">版本命名规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.3.3.</span> <span class="toc-text">分支流程介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.3.4.</span> <span class="toc-text">分支介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BB%E5%88%86%E6%94%AF-master"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">主分支 master</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%E5%85%AC%E5%85%B1%E6%B5%8B%E8%AF%95%E5%88%86%E6%94%AF-test"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">（可选）公共测试分支 test</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF-feature"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">功能分支 feature&#x2F;&lt;功能名称&gt;-&lt;Date yyyyMMdd&gt;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%83%AD%E5%8F%91%E5%B8%83%E5%88%86%E6%94%AF-hotfix"><span class="toc-number">1.3.4.4.</span> <span class="toc-text">热发布分支 hotfix&#x2F;&lt;release分支版本号&gt;&#x2F;&lt;需要修复的功能&gt;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86-GitGraph"><span class="toc-number">1.4.</span> <span class="toc-text">分支管理 GitGraph</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E4%BE%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">图例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%AE%80%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.2.</span> <span class="toc-text">最简流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hotfix%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.3.</span> <span class="toc-text">Hotfix流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%8A%9F%E8%83%BD%E5%B9%B6%E8%A1%8C%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.4.</span> <span class="toc-text">多功能并行开发流程</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src="/extend/rainbowClick.js"></script></div></body></html>

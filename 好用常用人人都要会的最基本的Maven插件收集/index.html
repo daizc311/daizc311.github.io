@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>好用常用人人都要会的最基本的Maven插件收集 - Bequick.Run</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://i.v2ex.co/IKKW2Tois.jpeg" type="image/jpeg" />
+<meta name="description" content="把手上的好几个项目的pom整理了一遍 规范了一下model 整理出了一些插件 方便新手们入门maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="好用常用人人都要会的最基本的Maven插件收集">
+<meta property="og:url" content="https://note.bequick.run/%E5%A5%BD%E7%94%A8%E5%B8%B8%E7%94%A8%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%A6%81%E4%BC%9A%E7%9A%84%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84Maven%E6%8F%92%E4%BB%B6%E6%94%B6%E9%9B%86/index.html">
+<meta property="og:site_name" content="Bequick.Run">
+<meta property="og:description" content="把手上的好几个项目的pom整理了一遍 规范了一下model 整理出了一些插件 方便新手们入门maven">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-10T19:05:56.000Z">
+<meta property="article:modified_time" content="2020-02-20T07:41:36.000Z">
+<meta property="article:author" content="Daizc">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Maven">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1711032645586">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1592904_u7sy98fs39g.css">
+
+<link rel="stylesheet" href="/css/style.css?v=1711032645586">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1711032645586">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1711032645586"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.0.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://i.v2ex.co/ACICIYool.jpeg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Daizc"><img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Daizc">
+            <img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc" alt="Daizc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>count.articles</span>52</div>
+        <div><span>count.tags</span>25</div>
+        <div><span>count.categories</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/bangumis/index.html" title="追番">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                追番
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1711032645587"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://t.me/DreamCcc"
+			target="_blank"
+			mdui-tooltip="{content: 'Telegram'}"
+			style="
+				color: rgb(39,167,229);
+				background-color: rgba(39,167,229,.1);
+			"
+		>
+			<i
+				class="nexmoefont icon-telegram"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.v2ex.com/member/DreamSpace"
+			target="_blank"
+			mdui-tooltip="{content: 'V2EX'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont iconCN_VEX_S_NEXMOE"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/daizc311/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/1424744"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://steamcommunity.com/id/daizc311"
+			target="_blank"
+			mdui-tooltip="{content: 'Steam'}"
+			style="
+				color: rgb(14, 71, 161);
+				background-color: rgba(14, 71, 161, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-steam"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/就是一些笔记/">就是一些笔记</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/我永远爱学习/">我永远爱学习</a>
+          <span class="category-list-count">39</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/打打游戏/">打打游戏</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/NET/" style="font-size: 16.67px;">.NET</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Angular/" style="font-size: 13.33px;">Angular</a> <a href="/tags/Blog/" style="font-size: 11.67px;">Blog</a> <a href="/tags/C/" style="font-size: 11.67px;">C</a> <a href="/tags/CSharp/" style="font-size: 16.67px;">CSharp</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/Database/" style="font-size: 11.67px;">Database</a> <a href="/tags/Debug/" style="font-size: 16.67px;">Debug</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/IOT/" style="font-size: 15px;">IOT</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Kubernetes/" style="font-size: 13.33px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Maven/" style="font-size: 11.67px;">Maven</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/" style="font-size: 10px;">乱七八糟</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 15px;">单片机</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/" style="font-size: 10px;">容器化</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(25);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">recent_posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/Java%20Stream%20Reduce%20%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Java Stream Reduce 注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DClass%E4%B8%8ERecord%E4%B8%8EStruct/">[Csharp]Class与RecordStruct</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DTask%E7%9B%B8%E5%85%B3/">[Csharp]Task相关</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DWPF%E9%9B%86%E6%88%90Sqlite%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E8%A7%A3%E5%AF%86/">[Csharp]WPF集成Sqlite与数据库加解密</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5D%E5%8F%AF%E4%B8%BA%E7%A9%BA%E7%9A%84%E7%B1%BB%E5%9E%8B/">[Csharp]可为空的类型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Daizc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br/><br/><img src="https://note.bequick.run/images/github_io.svg"/><br/><br/> <svg viewBox="0 0 105 36" role="img" width="105px" height="41px" aria-hidden="true"><path fill="#222222" d="M11.679 26.754h2.353v6.423h4.111v2.06H11.68v-8.483zM20.58 31.02v-.024c0-2.436 1.965-4.412 4.584-4.412 2.62 0 4.56 1.951 4.56 4.387v.025c0 2.436-1.965 4.41-4.584 4.41-2.618 0-4.56-1.95-4.56-4.386zm6.743 0v-.024c0-1.223-.885-2.291-2.183-2.291-1.285 0-2.147 1.042-2.147 2.266v.025c0 1.222.886 2.29 2.171 2.29 1.298 0 2.159-1.042 2.159-2.266zM32.604 31.517v-4.763h2.389v4.714c0 1.223.618 1.806 1.564 1.806.946 0 1.564-.557 1.564-1.745v-4.775h2.39v4.7c0 2.74-1.564 3.939-3.978 3.939s-3.93-1.223-3.93-3.878M44.112 26.755h3.274c3.032 0 4.79 1.744 4.79 4.192v.025c0 2.447-1.782 4.265-4.838 4.265h-3.226v-8.483zm3.31 6.397c1.408 0 2.34-.775 2.34-2.146v-.024c0-1.357-.932-2.145-2.34-2.145h-.958v4.316l.959-.001zM55.596 26.754h6.791v2.06h-4.438v1.442h4.014v1.951h-4.014v3.03h-2.353v-8.483zM65.661 26.754h2.353v6.423h4.111v2.06h-6.464v-8.483zM78.273 26.693h2.268l3.614 8.544h-2.522l-.62-1.515H77.74l-.606 1.515h-2.474l3.614-8.544zm2.062 5.2l-.946-2.413-.959 2.412h1.905zM87.186 26.754H91.2c1.298 0 2.195.34 2.765.921.498.485.752 1.14.752 1.976v.024c0 1.296-.693 2.156-1.746 2.605l2.025 2.957H92.28l-1.71-2.57h-1.03v2.57h-2.353v-8.483zm3.905 4.072c.8 0 1.262-.388 1.262-1.006v-.024c0-.667-.486-1.006-1.275-1.006h-1.54v2.038l1.553-.002zM98.112 26.754h6.827v2h-4.498v1.284h4.075v1.854h-4.075v1.346H105v1.999h-6.888v-8.483zM6.528 32.014c-.33.744-1.023 1.272-1.944 1.272-1.286 0-2.171-1.067-2.171-2.29v-.025c0-1.223.86-2.266 2.146-2.266.97 0 1.708.595 2.02 1.406h2.48c-.398-2.02-2.173-3.526-4.475-3.526-2.62 0-4.584 1.977-4.584 4.41v.024c0 2.436 1.94 4.388 4.56 4.388 2.24 0 3.991-1.45 4.453-3.393H6.528z"></path><path d="M89.012 22.355l.257-.887c.306-1.056.192-2.031-.321-2.748-.472-.66-1.259-1.049-2.214-1.094l-18.096-.229a.358.358 0 01-.285-.151.367.367 0 01-.04-.326.481.481 0 01.42-.321l18.263-.232c2.166-.099 4.512-1.856 5.333-3.998L93.37 9.65a.659.659 0 00.028-.36C92.216 3.975 87.468 0 81.792 0c-5.23 0-9.67 3.373-11.263 8.061a5.34 5.34 0 00-3.756-1.039 5.356 5.356 0 00-4.637 6.644c-4.099.12-7.386 3.475-7.386 7.6 0 .368.028.735.082 1.1a.354.354 0 00.348.305l33.408.004h.009a.44.44 0 00.415-.32z" fill="#F6821F"></path><path d="M95.04 9.847c-.167 0-.334.004-.5.013a.28.28 0 00-.079.017.285.285 0 00-.182.192l-.712 2.456c-.305 1.055-.192 2.03.322 2.746.471.661 1.258 1.05 2.213 1.094l3.858.232a.351.351 0 01.275.149.365.365 0 01.041.328.484.484 0 01-.42.32l-4.008.232c-2.176.1-4.521 1.856-5.342 3.998l-.29.756a.212.212 0 00.095.262c.03.017.062.027.096.028h13.802a.366.366 0 00.356-.265 9.846 9.846 0 00.367-2.677c-.001-5.457-4.429-9.88-9.891-9.88z" fill="#FBAD41"></path></svg>
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="https://dreamccc-note.oss-cn-chengdu.aliyuncs.com/note/images/posts/好用常用人人都要会的最基本的Maven插件收集/title.jpg?x-oss-process=style/blog_title" alt="好用常用人人都要会的最基本的Maven插件收集" loading="lazy">
+            <h1>好用常用人人都要会的最基本的Maven插件收集</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2019年03月11日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>把手上的好几个项目的pom整理了一遍 规范了一下model 整理出了一些插件 方便新手们入门maven</p>
+<span id="more"></span>
+
+<h1 id="好用常用人人都要会的最基本的Maven插件收集"><a href="#好用常用人人都要会的最基本的Maven插件收集" class="headerlink" title="好用常用人人都要会的最基本的Maven插件收集"></a>好用常用人人都要会的最基本的Maven插件收集</h1><p>大部分的插件其实都可以从<a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/index.html">MAVEN官方的可用插件列表</a>中直接找到<br>在这里取了比较常用并且实用的几个插件做一点说明<br>大多数使用场景无非是：</p>
+<ul>
+<li>要自定义打包的名称</li>
+<li>要将打包后的jar包自动复制到某处</li>
+<li>要将外置lib目录和maven依赖一起打进去</li>
+<li>要根据环境复制对应的配置文件</li>
+</ul>
+<p>这里选出的插件足以应对大部分情况了 </p>
+<h2 id="Maven依赖管理插件maven-dependency-plugin"><a href="#Maven依赖管理插件maven-dependency-plugin" class="headerlink" title="Maven依赖管理插件maven-dependency-plugin"></a>Maven依赖管理插件<a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/maven-dependency-plugin">maven-dependency-plugin</a></h2><p>主要用于管理依赖，比如引入某个特殊的jar包，或者从某个jar包中提取文件<br><code>tree</code>命令和<code>display-ancestors</code>命令在搭建工程时是比较好用的，可以很方便的找出重复依赖项，保证依赖版本一致</p>
+<h3 id="常用功能"><a href="#常用功能" class="headerlink" title="常用功能"></a>常用功能</h3><ul>
+<li>list 列出的依赖关系</li>
+<li>tree 以树型结构列出的依赖关系</li>
+<li>copy-dependencies 拷贝某个依赖项</li>
+<li>unpack-dependencies 解包某个依赖项</li>
+<li>display-ancestors 显示所有父依赖</li>
+</ul>
+<h2 id="Maven构建小助手-build-helper-maven-plugin"><a href="#Maven构建小助手-build-helper-maven-plugin" class="headerlink" title="Maven构建小助手 build-helper-maven-plugin"></a>Maven构建小助手 <a target="_blank" rel="noopener" href="https://www.mojohaus.org/build-helper-maven-plugin/">build-helper-maven-plugin</a></h2><p>主要用于为POM生成各种属性,比如打包时间、IP地址之类的，功能比较多就不上代码了。</p>
+<h3 id="常用功能-1"><a href="#常用功能-1" class="headerlink" title="常用功能"></a>常用功能</h3><ul>
+<li>add-source 将更多<code>source</code>目录添加到POM</li>
+<li>add-test-source 将更多<code>test source</code>目录添加到POM</li>
+<li>add-resource 将更多<code>resource directories</code>目录添加到POM</li>
+<li>add-test-resource 将更多<code>test resource directories</code>目录添加到POM</li>
+<li>attach-artifact Attach additional artifacts to be installed and deployed.  不知道???干啥的</li>
+<li>maven-version 获取Maven核心版本</li>
+<li>regex-property 使用正则生成某个属性</li>
+<li>regex-properties使用正则生成属性</li>
+<li>released-version Resolve the latest released version of this project.</li>
+<li>parse-version Parse the version into different properties.</li>
+<li>remove-project-artifact 用于在构建过程中删除某个作为依赖的项目以节省空间</li>
+<li>reserve-network-port 保留一个未使用的端口号的随机列表</li>
+<li>local-ip 获取当前主机IP</li>
+<li>cpu-count 获取当前主机CPU核心数</li>
+<li>timestamp-property 生成一个事件放入指定属性中 常用于在包名上附加打包时间</li>
+<li>uptodate-property 检查某个属性根据检查结果设置其他属性</li>
+<li>uptodate-properties 检查多个属性根据检查结果设置多个其他属性</li>
+<li>rootlocation 重定义多模块构建的根目录</li>
+</ul>
+<h2 id="复制并重命名插件-Copy-Rename-Maven-Plugin"><a href="#复制并重命名插件-Copy-Rename-Maven-Plugin" class="headerlink" title="复制并重命名插件 Copy Rename Maven Plugin"></a>复制并重命名插件 <a target="_blank" rel="noopener" href="https://coderplus.github.io/copy-rename-maven-plugin/">Copy Rename Maven Plugin</a></h2><p>功能字如其名,就是用来复制和重命名的，可以用来复制打包好的jar包，也可以在打包过程中复制文件。</p>
+<h3 id="常用功能-2"><a href="#常用功能-2" class="headerlink" title="常用功能"></a>常用功能</h3><ul>
+<li>copy 复制</li>
+<li>rename 重命名</li>
+<li>没了</li>
+</ul>
+<h3 id="一个小栗子"><a href="#一个小栗子" class="headerlink" title="一个小栗子"></a>一个小栗子</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupid</span>&gt;</span>com.coderplus.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupid</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactid</span>&gt;</span>copy-rename-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactid</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>copy-file<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">phase</span>&gt;</span>package<span class="hljs-tag">&lt;/<span class="hljs-name">phase</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>copy<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">sourcefile</span>&gt;</span>target/$&#123;project.build.finalName&#125;.jar<span class="hljs-tag">&lt;/<span class="hljs-name">sourcefile</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">destinationfile</span>&gt;</span>/xingyi/$&#123;project.build.finalName&#125;.jar<span class="hljs-tag">&lt;/<span class="hljs-name">destinationfile</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Maven编译插件-maven-compiler-plugin"><a href="#Maven编译插件-maven-compiler-plugin" class="headerlink" title="Maven编译插件 maven-compiler-plugin"></a>Maven编译插件 <a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/maven-compiler-plugin/">maven-compiler-plugin</a></h2><p>主要用于设定编译环境和编译器的属性,是比较基础的插件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs xml"> <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupid</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupid</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactid</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactid</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.8.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 一般而言，target与source是保持一致的，但是，有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中不能使用低版本jdk中不支持的语法 )，会存在target不同于source的情况 --&gt;</span><br>        <span class="hljs-comment">&lt;!-- 源代码使用的JDK版本 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 需要生成的目标class文件的编译版本 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span> <br>        <span class="hljs-comment">&lt;!-- 字符集编码 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">encoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">encoding</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">verbose</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">verbose</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">showwarnings</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">showwarnings</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 要使compilerVersion标签生效，还需要将fork设为true，用于明确表示编译版本配置的可用 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">fork</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">fork</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 指定插件将使用的编译器的版本 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">compilerversion</span>&gt;</span>1.5<span class="hljs-tag">&lt;/<span class="hljs-name">compilerversion</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 编译器使用的初始内存 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meminitial</span>&gt;</span>128m<span class="hljs-tag">&lt;/<span class="hljs-name">meminitial</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 编译器使用的最大内存 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">maxmem</span>&gt;</span>512m<span class="hljs-tag">&lt;/<span class="hljs-name">maxmem</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--使用指定的javac命令，例如：&lt;executable&gt;$&#123;JAVA_1_4_HOME&#125;/bin/javac&lt;/executable&gt; --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">executable</span>&gt;</span><span class="hljs-comment">&lt;!-- path-to-javac --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">executable</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 跳过测试 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">skiptests</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">skiptests</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 这个选项用来传递编译器自身不包含但是却支持的参数选项--&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">compilerargument</span>&gt;</span>-verbose -bootclasspath $&#123;java.home&#125;\lib\rt.jar<span class="hljs-tag">&lt;/<span class="hljs-name">compilerargument</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="SpringBootMaven插件spring-boot-maven-plugin"><a href="#SpringBootMaven插件spring-boot-maven-plugin" class="headerlink" title="SpringBootMaven插件spring-boot-maven-plugin"></a>SpringBootMaven插件<a target="_blank" rel="noopener" href="https://www.mojohaus.org/build-helper-maven-plugin/">spring-boot-maven-plugin</a></h3><h4 id="configuration-layout-ZIP-的用处"><a href="#configuration-layout-ZIP-的用处" class="headerlink" title="configuration.layout&#x3D;ZIP 的用处"></a>configuration.layout&#x3D;ZIP 的用处</h4><h6 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h6><ul>
+<li><a href="%22http://weyprecht.de/2018/05/02/how-to-really-package-and-deploy-a-spring-boot-application/%22">How to really package and deploy a Spring Boot application</a></li>
+</ul>
+<h6 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h6><p>将该工程的布局改为ZIP布局，所有的lib将外置到jar包外，在打包时将com.example:demo下的所有依赖放入外置的lib目录</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">groupid</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupid</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">artifactid</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactid</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">layout</span>&gt;</span>ZIP<span class="hljs-tag">&lt;/<span class="hljs-name">layout</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">includes</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">groupid</span>&gt;</span>com.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupid</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">artifactid</span>&gt;</span>demo<span class="hljs-tag">&lt;/<span class="hljs-name">artifactid</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">includes</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+    <p></p>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>copyright.author：</strong>Daizc<br>
+        <strong>copyright.permalink：</strong><a href="https://note.bequick.run/%E5%A5%BD%E7%94%A8%E5%B8%B8%E7%94%A8%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%A6%81%E4%BC%9A%E7%9A%84%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84Maven%E6%8F%92%E4%BB%B6%E6%94%B6%E9%9B%86/" title="https:&#x2F;&#x2F;note.bequick.run&#x2F;%E5%A5%BD%E7%94%A8%E5%B8%B8%E7%94%A8%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%A6%81%E4%BC%9A%E7%9A%84%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84Maven%E6%8F%92%E4%BB%B6%E6%94%B6%E9%9B%86&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;note.bequick.run&#x2F;%E5%A5%BD%E7%94%A8%E5%B8%B8%E7%94%A8%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%A6%81%E4%BC%9A%E7%9A%84%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84Maven%E6%8F%92%E4%BB%B6%E6%94%B6%E9%9B%86&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Java/" rel="tag">Java</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Maven/" rel="tag">Maven</a>
+    
+</div>
+  
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置评论框插槽
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A5%BD%E7%94%A8%E5%B8%B8%E7%94%A8%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%A6%81%E4%BC%9A%E7%9A%84%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84Maven%E6%8F%92%E4%BB%B6%E6%94%B6%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">好用常用人人都要会的最基本的Maven插件收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6maven-dependency-plugin"><span class="toc-number">1.1.</span> <span class="toc-text">Maven依赖管理插件maven-dependency-plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.1.</span> <span class="toc-text">常用功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven%E6%9E%84%E5%BB%BA%E5%B0%8F%E5%8A%A9%E6%89%8B-build-helper-maven-plugin"><span class="toc-number">1.2.</span> <span class="toc-text">Maven构建小助手 build-helper-maven-plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">常用功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%B9%B6%E9%87%8D%E5%91%BD%E5%90%8D%E6%8F%92%E4%BB%B6-Copy-Rename-Maven-Plugin"><span class="toc-number">1.3.</span> <span class="toc-text">复制并重命名插件 Copy Rename Maven Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">常用功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A0%97%E5%AD%90"><span class="toc-number">1.3.2.</span> <span class="toc-text">一个小栗子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven%E7%BC%96%E8%AF%91%E6%8F%92%E4%BB%B6-maven-compiler-plugin"><span class="toc-number">1.4.</span> <span class="toc-text">Maven编译插件 maven-compiler-plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBootMaven%E6%8F%92%E4%BB%B6spring-boot-maven-plugin"><span class="toc-number">1.4.1.</span> <span class="toc-text">SpringBootMaven插件spring-boot-maven-plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#configuration-layout-ZIP-%E7%9A%84%E7%94%A8%E5%A4%84"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">configuration.layout&#x3D;ZIP 的用处</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%B5%84%E6%96%99"><span class="toc-number">1.4.1.1.0.1.</span> <span class="toc-text">资料</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">1.4.1.1.0.2.</span> <span class="toc-text">作用</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src="/extend/rainbowClick.js"></script></div></body></html>

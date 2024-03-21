@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>解决由https转发导致的SpringCloudGateway转发异常 - Bequick.Run</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="https://i.v2ex.co/IKKW2Tois.jpeg" type="image/jpeg" />
+<meta name="description" content="错误日志如下: 12345678910111213141516171819202122232425262728293031323334353637383940414243444546472021-07-27 15:51:31.302  WARN [TID:TID-1419928421240946688][PID:1][or-http-epoll-2] r.netty.http.client.Htt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决由https转发导致的SpringCloudGateway转发异常">
+<meta property="og:url" content="https://note.bequick.run/%E8%A7%A3%E5%86%B3%E7%94%B1https%E8%BD%AC%E5%8F%91%E5%AF%BC%E8%87%B4%E7%9A%84SpringCloudGateway%E8%BD%AC%E5%8F%91%E5%BC%82%E5%B8%B8/index.html">
+<meta property="og:site_name" content="Bequick.Run">
+<meta property="og:description" content="错误日志如下: 12345678910111213141516171819202122232425262728293031323334353637383940414243444546472021-07-27 15:51:31.302  WARN [TID:TID-1419928421240946688][PID:1][or-http-epoll-2] r.netty.http.client.Htt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-26T03:06:50.000Z">
+<meta property="article:modified_time" content="2024-03-21T14:50:04.936Z">
+<meta property="article:author" content="Daizc">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Debug">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1711032645548">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1592904_u7sy98fs39g.css">
+
+<link rel="stylesheet" href="/css/style.css?v=1711032645548">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1711032645548">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1711032645548"></script>
+
+ 
+
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.0.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://i.v2ex.co/ACICIYool.jpeg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Daizc"><img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Daizc">
+            <img src="https://i.v2ex.co/IKKW2Toi.jpeg" alt="Daizc" alt="Daizc">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>count.articles</span>52</div>
+        <div><span>count.tags</span>25</div>
+        <div><span>count.categories</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/bangumis/index.html" title="追番">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                追番
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1711032645548"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://t.me/DreamCcc"
+			target="_blank"
+			mdui-tooltip="{content: 'Telegram'}"
+			style="
+				color: rgb(39,167,229);
+				background-color: rgba(39,167,229,.1);
+			"
+		>
+			<i
+				class="nexmoefont icon-telegram"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.v2ex.com/member/DreamSpace"
+			target="_blank"
+			mdui-tooltip="{content: 'V2EX'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont iconCN_VEX_S_NEXMOE"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/daizc311/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/1424744"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://steamcommunity.com/id/daizc311"
+			target="_blank"
+			mdui-tooltip="{content: 'Steam'}"
+			style="
+				color: rgb(14, 71, 161);
+				background-color: rgba(14, 71, 161, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-steam"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/就是一些笔记/">就是一些笔记</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/我永远爱学习/">我永远爱学习</a>
+          <span class="category-list-count">39</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/打打游戏/">打打游戏</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/NET/" style="font-size: 16.67px;">.NET</a> <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Angular/" style="font-size: 13.33px;">Angular</a> <a href="/tags/Blog/" style="font-size: 11.67px;">Blog</a> <a href="/tags/C/" style="font-size: 11.67px;">C</a> <a href="/tags/CSharp/" style="font-size: 16.67px;">CSharp</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/Database/" style="font-size: 11.67px;">Database</a> <a href="/tags/Debug/" style="font-size: 16.67px;">Debug</a> <a href="/tags/Games/" style="font-size: 10px;">Games</a> <a href="/tags/Hexo/" style="font-size: 11.67px;">Hexo</a> <a href="/tags/IOT/" style="font-size: 15px;">IOT</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Kubernetes/" style="font-size: 13.33px;">Kubernetes</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Maven/" style="font-size: 11.67px;">Maven</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/" style="font-size: 10px;">乱七八糟</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" style="font-size: 15px;">单片机</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/" style="font-size: 10px;">容器化</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(25);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">recent_posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/Java%20Stream%20Reduce%20%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Java Stream Reduce 注意事项</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DClass%E4%B8%8ERecord%E4%B8%8EStruct/">[Csharp]Class与RecordStruct</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DTask%E7%9B%B8%E5%85%B3/">[Csharp]Task相关</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5DWPF%E9%9B%86%E6%88%90Sqlite%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8A%A0%E8%A7%A3%E5%AF%86/">[Csharp]WPF集成Sqlite与数据库加解密</a>
+          </li>
+        
+          <li>
+            <a href="/%5BCsharp%5D%E5%8F%AF%E4%B8%BA%E7%A9%BA%E7%9A%84%E7%B1%BB%E5%9E%8B/">[Csharp]可为空的类型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Daizc
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br/><br/><img src="https://note.bequick.run/images/github_io.svg"/><br/><br/> <svg viewBox="0 0 105 36" role="img" width="105px" height="41px" aria-hidden="true"><path fill="#222222" d="M11.679 26.754h2.353v6.423h4.111v2.06H11.68v-8.483zM20.58 31.02v-.024c0-2.436 1.965-4.412 4.584-4.412 2.62 0 4.56 1.951 4.56 4.387v.025c0 2.436-1.965 4.41-4.584 4.41-2.618 0-4.56-1.95-4.56-4.386zm6.743 0v-.024c0-1.223-.885-2.291-2.183-2.291-1.285 0-2.147 1.042-2.147 2.266v.025c0 1.222.886 2.29 2.171 2.29 1.298 0 2.159-1.042 2.159-2.266zM32.604 31.517v-4.763h2.389v4.714c0 1.223.618 1.806 1.564 1.806.946 0 1.564-.557 1.564-1.745v-4.775h2.39v4.7c0 2.74-1.564 3.939-3.978 3.939s-3.93-1.223-3.93-3.878M44.112 26.755h3.274c3.032 0 4.79 1.744 4.79 4.192v.025c0 2.447-1.782 4.265-4.838 4.265h-3.226v-8.483zm3.31 6.397c1.408 0 2.34-.775 2.34-2.146v-.024c0-1.357-.932-2.145-2.34-2.145h-.958v4.316l.959-.001zM55.596 26.754h6.791v2.06h-4.438v1.442h4.014v1.951h-4.014v3.03h-2.353v-8.483zM65.661 26.754h2.353v6.423h4.111v2.06h-6.464v-8.483zM78.273 26.693h2.268l3.614 8.544h-2.522l-.62-1.515H77.74l-.606 1.515h-2.474l3.614-8.544zm2.062 5.2l-.946-2.413-.959 2.412h1.905zM87.186 26.754H91.2c1.298 0 2.195.34 2.765.921.498.485.752 1.14.752 1.976v.024c0 1.296-.693 2.156-1.746 2.605l2.025 2.957H92.28l-1.71-2.57h-1.03v2.57h-2.353v-8.483zm3.905 4.072c.8 0 1.262-.388 1.262-1.006v-.024c0-.667-.486-1.006-1.275-1.006h-1.54v2.038l1.553-.002zM98.112 26.754h6.827v2h-4.498v1.284h4.075v1.854h-4.075v1.346H105v1.999h-6.888v-8.483zM6.528 32.014c-.33.744-1.023 1.272-1.944 1.272-1.286 0-2.171-1.067-2.171-2.29v-.025c0-1.223.86-2.266 2.146-2.266.97 0 1.708.595 2.02 1.406h2.48c-.398-2.02-2.173-3.526-4.475-3.526-2.62 0-4.584 1.977-4.584 4.41v.024c0 2.436 1.94 4.388 4.56 4.388 2.24 0 3.991-1.45 4.453-3.393H6.528z"></path><path d="M89.012 22.355l.257-.887c.306-1.056.192-2.031-.321-2.748-.472-.66-1.259-1.049-2.214-1.094l-18.096-.229a.358.358 0 01-.285-.151.367.367 0 01-.04-.326.481.481 0 01.42-.321l18.263-.232c2.166-.099 4.512-1.856 5.333-3.998L93.37 9.65a.659.659 0 00.028-.36C92.216 3.975 87.468 0 81.792 0c-5.23 0-9.67 3.373-11.263 8.061a5.34 5.34 0 00-3.756-1.039 5.356 5.356 0 00-4.637 6.644c-4.099.12-7.386 3.475-7.386 7.6 0 .368.028.735.082 1.1a.354.354 0 00.348.305l33.408.004h.009a.44.44 0 00.415-.32z" fill="#F6821F"></path><path d="M95.04 9.847c-.167 0-.334.004-.5.013a.28.28 0 00-.079.017.285.285 0 00-.182.192l-.712 2.456c-.305 1.055-.192 2.03.322 2.746.471.661 1.258 1.05 2.213 1.094l3.858.232a.351.351 0 01.275.149.365.365 0 01.041.328.484.484 0 01-.42.32l-4.008.232c-2.176.1-4.521 1.856-5.342 3.998l-.29.756a.212.212 0 00.095.262c.03.017.062.027.096.028h13.802a.366.366 0 00.356-.265 9.846 9.846 0 00.367-2.677c-.001-5.457-4.429-9.88-9.891-9.88z" fill="#FBAD41"></path></svg>
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.v2ex.co/ACICIYool.jpeg" alt="解决由https转发导致的SpringCloudGateway转发异常" loading="lazy">
+            <h1>解决由https转发导致的SpringCloudGateway转发异常</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2021年07月26日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%88%91%E6%B0%B8%E8%BF%9C%E7%88%B1%E5%AD%A6%E4%B9%A0/">我永远爱学习</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>错误日志如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs log">2021-07-27 15:51:31.302  WARN [TID:TID-1419928421240946688][PID:1][or-http-epoll-2] r.netty.http.client.HttpClientConnect    [299]: [id: 0xe9859259, L:/10.42.8.227:41228 ! R:10.42.4.120/10.42.4.120:8080] The connection observed an error<br><br>io.netty.handler.codec.DecoderException: io.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record: 485454502f312e31203430302042616420526571756573740d0a436f6e74656e742d4c656e6774683a20300d0a436f6e6e656374696f6e3a20636c6f73650d0a0d0a<br>        at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:477)<br>        at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:276)<br>        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)<br>        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)<br>        at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)<br>        at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)<br>        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)<br>        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)<br>        at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)<br>        at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:795)<br>        at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:480)<br>        at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:378)<br>        at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)<br>        at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)<br>        at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)<br>        at java.lang.Thread.run(Thread.java:748)<br>Caused by: io.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record: 485454502f312e31203430302042616420526571756573740d0a436f6e74656e742d4c656e6774683a20300d0a436f6e6e656374696f6e3a20636c6f73650d0a0d0a<br>        at io.netty.handler.ssl.SslHandler.decodeJdkCompatible(SslHandler.java:1213)<br>        Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException:<br>Error has been observed at the following site(s):<br>        |_ checkpoint â‡¢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]<br>        |_ checkpoint â‡¢ com.alibaba.csp.sentinel.adapter.spring.webflux.SentinelWebFluxFilter [DefaultWebFilterChain]<br>        |_ checkpoint â‡¢ org.springframework.boot.actuate.metrics.web.reactive.server.MetricsWebFilter [DefaultWebFilterChain]<br>        |_ checkpoint â‡¢ HTTP GET &quot;/某个service/v2/api-docs&quot; [ExceptionHandlingWebHandler]<br>Stack trace:<br>                at io.netty.handler.ssl.SslHandler.decodeJdkCompatible(SslHandler.java:1213)<br>                at io.netty.handler.ssl.SslHandler.decode(SslHandler.java:1280)<br>                at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:507)<br>                at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:446)<br>                at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:276)<br>                at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)<br>                at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)<br>                at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)<br>                at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)<br>                at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)<br>                at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)<br>                at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)<br>                at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:795)<br>                at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:480)<br>                at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:378)<br>                at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)<br>                at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)<br>                at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)<br>                at java.lang.Thread.run(Thread.java:748)<br></code></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>这是一个很奇怪的只在测试环境存在的异常。</br><br>生产环境一切正常，测试环境访问以http访问正常，以https访问出现出现500错误。</p>
+<h4 id="开发架构"><a href="#开发架构" class="headerlink" title="开发架构"></a>开发架构</h4><ul>
+<li>spring-boot:2.3.12.RELEASE</li>
+<li>spring-cloud:Hoxton.SR8</li>
+<li>spring-cloud-alibaba:2.2.5.RELEASE</li>
+</ul>
+<h4 id="生产环境链路："><a href="#生产环境链路：" class="headerlink" title="生产环境链路："></a>生产环境链路：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">访问域名 =公网dns=&gt; 云服务商slb =lb&amp;https转http=&gt; ingress-nginx =lb=&gt; service-gateway =lb=&gt; service<br></code></pre></td></tr></table></figure>
+
+<h4 id="测试环境链路："><a href="#测试环境链路：" class="headerlink" title="测试环境链路："></a>测试环境链路：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">访问域名 =内网dns=&gt; ingress-nginx =lb&amp;https转http=&gt; service-gateway =lb=&gt; service<br></code></pre></td></tr></table></figure>
+
+<h2 id="Debug思路"><a href="#Debug思路" class="headerlink" title="Debug思路"></a>Debug思路</h2><ol>
+<li>查看应用日志发现service并未收到该请求，请求在service-gateway已经失败了，判断是网关问题。</li>
+<li>查看网关日志发现报错（见文章一开始处的日志）。<ol>
+<li>请求在nettyClient处的SSLHandler报错，说明网关的filter流程已经走完</li>
+<li>最终异常是NotSslRecordException，直译为<code>非SSL记录异常</code>，不知道为啥会抛出这个异常</li>
+</ol>
+</li>
+<li>在网关中加日志走一波，打印这个请求的所有HttpHeader，对比问题请求与正常请求的特征<ol>
+<li>查看问题请求的Header <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">header:<br>    Host: &quot;aaa-bbb-test.xxx.com&quot;,<br>    X-Scheme: &quot;https&quot;<br>    X-Request-ID: &quot;37cd98713db6b101d813171e0be609a&quot;,<br>    X-Forwarded-For: &quot;aaa-bbb-test.xxx.com&quot;,<br>    X-Forwarded-Port: &quot;443&quot;,<br>    X-Forwarded-Proto: &quot;https&quot;,<br>    referer: &quot;https://aaa-bbb-test.xxx.com/doc.html&quot;,<br>    ....此处略过ContentType、Accept<br></code></pre></td></tr></table></figure></li>
+<li>Header中有转发来源的部分头部，先尝试在Filter中除掉这些头部试试 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Mono&lt;Void&gt; <span class="hljs-title function_">filter</span><span class="hljs-params">(ServerWebExchange exchange, GatewayFilterChain chain)</span> &#123;<br>      <br>    <span class="hljs-type">ServerHttpRequest</span> <span class="hljs-variable">serverHttpRequest</span> <span class="hljs-operator">=</span> exchange.getRequest().mutate()<br>            .headers(h -&gt; &#123;<br>                h.remove(<span class="hljs-string">&quot;X-Forwarded-For&quot;</span>);<br>                h.remove(<span class="hljs-string">&quot;X-Forwarded-Port&quot;</span>);<br>                h.remove(<span class="hljs-string">&quot;X-Forwarded-Proto&quot;</span>);<br>            &#125;)<br>            .build();<br>    <span class="hljs-keyword">return</span> chain.filter(exchange.mutate().request(serverHttpRequest).build());<br>&#125;<br></code></pre></td></tr></table></figure>
+然而并没有什么卵用，异常依旧。</li>
+<li>根据异常堆栈可知，是在发起请求时出现问题，尝试找到请求发起类<ul>
+<li>由于网关使用webflux导致通过日志查看的堆栈的信息不够全面，通过本地调试正常请求查看异步堆栈跟踪到请求发起类<code>NettyRoutingFilter</code></li>
+<li>110行处发现一个协议判断的代码  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java">        <span class="hljs-keyword">public</span> Mono&lt;Void&gt; <span class="hljs-title function_">filter</span><span class="hljs-params">(ServerWebExchange exchange, GatewayFilterChain chain)</span> &#123;<br>           <span class="hljs-type">URI</span> <span class="hljs-variable">requestUrl</span> <span class="hljs-operator">=</span> exchange.getRequiredAttribute(GATEWAY_REQUEST_URL_ATTR);<br>    <br>           <span class="hljs-type">String</span> <span class="hljs-variable">scheme</span> <span class="hljs-operator">=</span> requestUrl.getScheme();<br>           <span class="hljs-keyword">if</span> (isAlreadyRouted(exchange)<br>           || (!<span class="hljs-string">&quot;http&quot;</span>.equals(scheme) &amp;&amp; !<span class="hljs-string">&quot;https&quot;</span>.equals(scheme))) &#123;<br>           <span class="hljs-keyword">return</span> chain.filter(exchange);<br>           &#125;<br>           setAlreadyRouted(exchange);<br>           ...<br>    ```     <br>- 这个`scheme`控制了网关向其他服务的转发协议，决定这个变量的是`requestUrl`<br>- `requestUrl`是从exchange取出来的，通过查看`GATEWAY_REQUEST_URL_ATTR`这个常量的引用，找到了`requestUrl`<br>  的来源`ReactiveLoadBalancerClientFilter#filter[<span class="hljs-number">113</span>]`<br>- 发现源码注释<br></code></pre></td></tr></table></figure>
+<pre><code>    // if the `lb:&lt;scheme&gt;` mechanism was used, use `&lt;scheme&gt;` as the default,
+    // if the loadbalancer doesn&#39;t provide one.
+</code></pre>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">- 根据源码注释修改网关的配置<br></code></pre></td></tr></table></figure>
+<pre><code>修改前:
+[
+  &#123;
+  &quot;id&quot;: &quot;service-a&quot;,
+  &quot;name&quot;: &quot;A服务&quot;,
+  &quot;predicates&quot;: [&quot;Path=/service-a/**&quot;],
+  &quot;filters&quot;: [],
+  &quot;uri&quot;: &quot;lb://service-a&quot;
+  &#125;
+]
+修改后:
+[
+  &#123;
+  &quot;id&quot;: &quot;service-a&quot;,
+  &quot;name&quot;: &quot;A服务&quot;,
+  &quot;predicates&quot;: [&quot;Path=/service-a/**&quot;],
+  &quot;filters&quot;: [],
+  &quot;uri&quot;: &quot;lb:http://service-a&quot;
+  &#125;
+]
+</code></pre>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">    4. 服务恢复正常了<br><br><br>## 找到根本原因<br>    <br>#### 整理出SpringCloudGateway的请求处理流程的关键类：<br><br> 1. 由LoadBalancerUriTools计算scheme、host、port。其中scheme由`overrideScheme`和``<br>    1. `org.springframework.cloud.gateway.filter.ReactiveLoadBalancerClientFilter#filter[108]`<br>    2. `org.springframework.cloud.client.loadbalancer.LoadBalancerUriTools#doReconstructURI[100]`<br><br> 2. 共享 GATEWAY_REQUEST_URL_ATTR 变量给其他的Filter<br>    1. `org.springframework.cloud.gateway.filter.ReactiveLoadBalancerClientFilter#filter[113]`<br>    2. `org.springframework.cloud.gateway.filter.NettyRoutingFilter#filter[108]`<br><br> 3. 交由Netty发起请求<br>    1. `org.springframework.cloud.gateway.filter.NettyRoutingFilter#filter[108]`<br><br>#### 问题发生在第一步：由LoadBalancerUriTools计算scheme、host、port<br> 1. 在ReactiveLoadBalancerClientFilter中，主要逻辑如下<br>    ```java<br>        return choose(exchange).doOnNext(response -&gt; &#123;<br>    <br>            if (!response.hasServer()) &#123;<br>                throw NotFoundException.create(properties.isUse404(),<br>                        &quot;Unable to find instance for &quot; + url.getHost());<br>            &#125;<br>    <br>            URI uri = exchange.getRequest().getURI();<br>    <br>            // if the `lb:&lt;scheme&gt;` mechanism was used, use `&lt;scheme&gt;` as the default,<br>            // if the loadbalancer doesn&#x27;t provide one.<br>            String overrideScheme = null;<br>            if (schemePrefix != null) &#123;<br>                overrideScheme = url.getScheme();<br>            &#125;<br>    <br>            DelegatingServiceInstance serviceInstance = new DelegatingServiceInstance(<br>                    response.getServer(), overrideScheme);<br>    <br>            URI requestUrl = reconstructURI(serviceInstance, uri);<br>    <br>            if (log.isTraceEnabled()) &#123;<br>                log.trace(&quot;LoadBalancerClientFilter url chosen: &quot; + requestUrl);<br>            &#125;<br>            exchange.getAttributes().put(GATEWAY_REQUEST_URL_ATTR, requestUrl);<br>        &#125;).then(chain.filter(exchange));<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>此处的<code>overrideScheme</code>就是刚才配置中添加的<code>http:</code>,这是优先级最高的配置</li>
+<li>然后<code>response.getServer()</code>和<code>overrideScheme</code>被送入委派类DelegatingServiceInstance中，项目中ServiceInstance的实现类是NacosServiceInstance</li>
+<li>紧接着<code>reconstructURI(serviceInstance, uri);</code>被执行，重建后的URI的scheme、host、port都是从<code>ServiceInstance</code>中获取的</li>
+<li>由于NacosServiceInstance没实现getScheme()，因此进入接口的default方法返回null值<ul>
+<li><code>org.springframework.cloud.gateway.support.DelegatingServiceInstance#getScheme[76]</code></li>
+<li><code>org.springframework.cloud.client.ServiceInstance#getScheme[71]</code></li>
+</ul>
+</li>
+<li>由于路由配置和服务实例中都没有取到scheme最终选取了原始URI中的scheme<ul>
+<li><code>org.springframework.cloud.client.loadbalancer.LoadBalancerUriTools#computeScheme</code></li>
+</ul>
+</li>
+<li>NettyRoutingFilter将Response原样送出，协议是https内容是http，因此导致在建立TLS链接时发生了异常<ul>
+<li><code>org.springframework.cloud.gateway.filter.NettyRoutingFilter#filter[147]</code></li>
+</ul>
+</li>
+</ol>
+
+    <p></p>
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>copyright.author：</strong>Daizc<br>
+        <strong>copyright.permalink：</strong><a href="https://note.bequick.run/%E8%A7%A3%E5%86%B3%E7%94%B1https%E8%BD%AC%E5%8F%91%E5%AF%BC%E8%87%B4%E7%9A%84SpringCloudGateway%E8%BD%AC%E5%8F%91%E5%BC%82%E5%B8%B8/" title="https:&#x2F;&#x2F;note.bequick.run&#x2F;%E8%A7%A3%E5%86%B3%E7%94%B1https%E8%BD%AC%E5%8F%91%E5%AF%BC%E8%87%B4%E7%9A%84SpringCloudGateway%E8%BD%AC%E5%8F%91%E5%BC%82%E5%B8%B8&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;note.bequick.run&#x2F;%E8%A7%A3%E5%86%B3%E7%94%B1https%E8%BD%AC%E5%8F%91%E5%AF%BC%E8%87%B4%E7%9A%84SpringCloudGateway%E8%BD%AC%E5%8F%91%E5%BC%82%E5%B8%B8&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Debug/" rel="tag">Debug</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Java/" rel="tag">Java</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Spring/" rel="tag">Spring</a>
+    
+</div>
+  
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置评论框插槽
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">开发架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%93%BE%E8%B7%AF%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">生产环境链路：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E9%93%BE%E8%B7%AF%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">测试环境链路：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debug%E6%80%9D%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">Debug思路</span></a>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script src="/extend/rainbowClick.js"></script></div></body></html>
